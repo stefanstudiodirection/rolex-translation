@@ -197,22 +197,22 @@ function initFilters() {
       .flatMap((category) => {
         console.log('Category:', category);
         const filteredCategory = category.filter((checkboxDiv) => {
-          const hasRedirectedCheckedClass = checkboxDiv.classList.contains('w--redirected-checked');
+          const classList = [...checkboxDiv.classList];
           console.log('Checkbox Div:', checkboxDiv);
+          console.log('Classes:', classList);
+          const hasRedirectedCheckedClass = classList.includes('w--redirected-checked');
           console.log('Has Redirected Checked Class:', hasRedirectedCheckedClass);
           return hasRedirectedCheckedClass;
         });
         console.log('Filtered Category:', filteredCategory);
         const mappedFilters = filteredCategory.map((checkboxDiv) => {
           console.log('Next Element Sibling:', checkboxDiv.nextElementSibling);
-          return checkboxDiv.nextElementSibling.getAttribute('fs-cmsfilter-field');
+          return checkboxDiv.nextElementSibling && checkboxDiv.nextElementSibling.getAttribute('fs-cmsfilter-field');
         });
         console.log('Mapped Filters:', mappedFilters);
         return mappedFilters;
       });
 
-    console.log('Selected Filters:');
-    console.log(selectedFilters);
 
     // Iterate over each watch element
     watchElements.forEach((watchElement) => {
