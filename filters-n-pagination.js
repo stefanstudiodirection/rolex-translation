@@ -197,8 +197,10 @@ function initFilters() {
       .flatMap((category) => {
         console.log('Category:', category);
         const filteredCategory = category.filter((checkboxDiv) => {
+          const hasRedirectedCheckedClass = checkboxDiv.classList.contains('w--redirected-checked');
           console.log('Checkbox Div:', checkboxDiv);
-          return checkboxDiv.classList.contains('w--redirected-checked');
+          console.log('Has Redirected Checked Class:', hasRedirectedCheckedClass);
+          return hasRedirectedCheckedClass;
         });
         console.log('Filtered Category:', filteredCategory);
         const mappedFilters = filteredCategory.map((checkboxDiv) => {
