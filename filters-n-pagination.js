@@ -81,7 +81,7 @@ function displayItems(itemsPerPage) {
 
 function updatePageNumbers(itemsPerPage) {
     const pageContainer = document.getElementById('page-container');
-    pageContainer.textContent = paginationData.currentPage;
+    pageContainer.textContent = 'Page' + paginationData.currentPage;
     paginationData.totalPages = Math.ceil(paginationData.totalItems / itemsPerPage);
 }
 
