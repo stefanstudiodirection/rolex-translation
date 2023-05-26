@@ -80,32 +80,8 @@ function displayItems(itemsPerPage) {
 }
 
 function updatePageNumbers(itemsPerPage) {
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
-
-    let prevButton = document.querySelector('.prev-page');
-    let nextButton = document.querySelector('.next-page');
-
-    const pageNumbersContainer = document.createElement('div');
-    pageNumbersContainer.classList.add('page-numbers');
-
-    paginationContainer.appendChild(prevButton);
-    paginationContainer.appendChild(pageNumbersContainer);
-    paginationContainer.appendChild(nextButton);
-
-    const productsContainer = document.getElementById('products-container');
-    productsContainer.parentNode.insertBefore(paginationContainer, productsContainer.nextSibling);
-
-    paginationData.totalPages = Math.ceil(paginationData.totalItems / itemsPerPage);
-
-    pageNumbersContainer.innerHTML = '';
-    for (let i = 1; i <= paginationData.totalPages; i++) {
-        const pageNumber = document.createElement('span');
-        if (i === paginationData.currentPage) {
-            pageNumber.classList.add('active');
-        }
-        pageNumbersContainer.appendChild(pageNumber);
-    }
+    const pageContainer = document.getElementById('page-container');
+    pageContainer.textContent = paginationData.currentPage;
 }
 
 function handlePrevButtonClick() {
