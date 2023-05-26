@@ -125,6 +125,7 @@ function createPaginationForProducts(itemsPerPage) {
 
     console.log('Total items: ' + paginationData.totalItems);
 
+    paginationData.currentPage = 1;
     updatePageNumbers(itemsPerPage);
     displayItems(itemsPerPage);
 
@@ -237,6 +238,7 @@ function initFilters() {
         });
 
         // Call your pagination function here
+        paginationData.currentPage = 1;
         createPaginationForProducts(18);
     }
 }
