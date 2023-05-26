@@ -194,10 +194,20 @@ function initFilters() {
   function applyFilters(filterCategories, watchElements) {
     // Get the selected filter values for each category
     const selectedFilters = Object.values(filterCategories)
-      .flatMap((category) =>
-        category.filter((checkboxDiv) => checkboxDiv.classList.contains('w--redirected-checked'))
-          .map((checkboxDiv) => checkboxDiv.nextElementSibling.getAttribute('fs-cmsfilter-field'))
-      );
+      .flatMap((category) => {
+        console.log('Category:', category);
+        const filteredCategory = category.filter((checkboxDiv) => {
+          console.log('Checkbox Div:', checkboxDiv);
+          return checkboxDiv.classList.contains('w--redirected-checked');
+        });
+        console.log('Filtered Category:', filteredCategory);
+        const mappedFilters = filteredCategory.map((checkboxDiv) => {
+          console.log('Next Element Sibling:', checkboxDiv.nextElementSibling);
+          return checkboxDiv.nextElementSibling.getAttribute('fs-cmsfilter-field');
+        });
+        console.log('Mapped Filters:', mappedFilters);
+        return mappedFilters;
+      });
 
     console.log('Selected Filters:');
     console.log(selectedFilters);
