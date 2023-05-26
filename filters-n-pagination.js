@@ -184,6 +184,9 @@ function initFilters() {
       }
     });
 
+    console.log('Filter Categories:');
+    console.log(filterCategories);
+
     // Resolve the promise
     resolve();
   });
@@ -195,6 +198,9 @@ function initFilters() {
         category.filter((checkboxDiv) => checkboxDiv.classList.contains('w--redirected-checked'))
           .map((checkboxDiv) => checkboxDiv.nextElementSibling.getAttribute('fs-cmsfilter-field'))
       );
+
+    console.log('Selected Filters:');
+    console.log(selectedFilters);
 
     // Iterate over each watch element
     watchElements.forEach((watchElement) => {
@@ -214,5 +220,6 @@ function initFilters() {
     createPaginationForProducts(18);
   }
 }
+
 
 
