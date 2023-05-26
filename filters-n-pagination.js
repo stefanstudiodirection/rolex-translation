@@ -165,11 +165,8 @@ function initFilters() {
           filterCategories[categoryName] = [];
         }
 
-        // Add the filter checkbox to the corresponding category
-        filterCategories[categoryName].push(checkbox);
-          
-        console.log('filter categories');
-        console.log(filterCategories);
+        // Add the filter checkbox div to the corresponding category
+        filterCategories[categoryName].push(checkboxDiv);
 
         checkbox.addEventListener('change', () => {
           // Add the class to the div representing the custom checkbox
@@ -190,36 +187,32 @@ function initFilters() {
     // Resolve the promise
     resolve();
   });
-    
-    function applyFilters(filterCategories, watchElements) {
-      // Get the selected filter values for each category
-        const selectedFilters = Object.values(filterCategories)
-          .flatMap((category) =>
-            category.filter((checkbox) => checkbox.classList.contains('w--redirected-checked')).map((checkbox) =>
-              checkbox.getAttribute('fs-cmsfilter-field')
-            )
-          );
 
-        console.log('selected filters: ');
-        console.log(selectedFilters);
+  function applyFilters(filterCategories, watchElements) {
+    // Get the selected filter values for each category
+    const selectedFilters = Object.values(filterCategories)
+      .flatMap((category) =>
+        category.filter((checkboxDiv) => checkboxDiv.classList.contains('w--redirected-checked'))
+          .map((checkboxDiv) => checkboxDiv.nextElementSibling.getAttribute('fs-cmsfilter-field'))
+      );
 
-      // Iterate over each watch element
-      watchElements.forEach((watchElement) => {
-        // Get the filter values from the watch element
-        const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]'))
-          .map((filter) => filter.getAttribute('fs-cmsfilter-field'));
+    // Iterate over each watch element
+    watchElements.forEach((watchElement) => {
+      // Get the filter values from the watch element
+      const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]'))
+        .map((filter) => filter.getAttribute('fs-cmsfilter-field'));
 
-        // Check if the watch should be displayed or hidden based on the selected filters
-        const shouldDisplay = selectedFilters.some((filter) => filterValues.includes(filter));
+      // Check if the watch should be displayed or hidden based on the selected filters
+      const shouldDisplay = selectedFilters.some((filter) => filterValues.includes(filter));
 
-        // Apply display style to the watch element
-        watchElement.style.display = shouldDisplay ? 'block' : 'none';
-      });
+      // Apply display style to the watch element
+      watchElement.style.display = shouldDisplay ? 'block' : 'none';
+    });
 
-      // Call your pagination function here
-      paginationData.currentPage = 1;
-      createPaginationForProducts(18);
-}
+    // Call your pagination function here
+    paginationData.currentPage = 1;
+    createPaginationForProducts(18);
+  }
 }
 
 
