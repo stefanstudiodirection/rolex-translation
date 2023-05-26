@@ -231,7 +231,7 @@ function initFilters() {
 
 
             // Check if the watch should be displayed or hidden based on the selected filters
-            const shouldDisplay = selectedFilters.every((filter) => filterValues.includes(filter));
+            const shouldDisplay = selectedFilters.some((filter) => filterValues.includes(filter));
 
             // Apply display style to the watch element
             watchElement.style.display = shouldDisplay ? 'block' : 'none';
