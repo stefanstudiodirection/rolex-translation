@@ -137,7 +137,7 @@ function handleNextButtonClick() {
 }
 
 function createPaginationForProducts(itemsPerPage) {
-    document.getElementByClass('rolex-pagination-box')[0].style.display = 'none';
+    document.getElementsByClassName('rolex-pagination-box')[0].style.display = 'none';
     
     const productsContainer = document.getElementById('products-container');
     const productItems = Array.from(productsContainer.getElementsByClassName('rolex-grid-item')).filter(item => item.style.display !== 'none');
