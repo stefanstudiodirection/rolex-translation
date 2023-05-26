@@ -193,15 +193,17 @@ function initFilters() {
     
     function applyFilters(filterCategories, watchElements) {
       // Get the selected filter values for each category
-      const selectedFilters = Object.values(filterCategories)
-        .map((category) =>
-          category
-            .filter((checkbox) => checkbox.checked)
-            .map((checkbox) => checkbox.getAttribute('fs-cmsfilter-field'))
-        )
-        .flat();
-        
-      console.log('selected filters');
+      const selectedFilters = Array.from(filterParentElements)
+          .filter((parentElement) => {
+            const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
+            return checkboxDiv.classList.contains('w--redirected-checked');
+          })
+          .map((parentElement) => {
+            const label = parentElement.querySelector('.rolex-form-text');
+            return label.getAttribute('fs-cmsfilter-field');
+          });
+
+        console.log('selected filters: ');
         console.log(selectedFilters);
 
       // Iterate over each watch element
