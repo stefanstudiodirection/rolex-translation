@@ -142,103 +142,92 @@ function createPaginationForProducts(itemsPerPage) {
 }
 
 function initFilters() {
-    return new Promise((resolve) => {
-        // Get the filter checkboxes and watch elements
-        const filterParentElements = document.querySelectorAll('.rolex-form-checkbox');
-        console.log('checkboxes: ');
-        console.log(filterParentElements);
-        watchElements = document.querySelectorAll('.rolex-grid-item');
+  return new Promise((resolve) => {
+    // Get the filter checkboxes and watch elements
+    const filterParentElements = document.querySelectorAll('.rolex-form-checkbox');
+    console.log('checkboxes: ');
+    console.log(filterParentElements);
+    watchElements = document.querySelectorAll('.rolex-grid-item');
 
-        // Keep track of the number of event listeners applied
-        let listenersApplied = 0;
+    // Group the filters by category
+    const filterCategories = {};
+    let currentCategory = null;
 
-        // Add event listener to each filter checkbox
-        filterParentElements.forEach((parentElement) => {
-            console.log('Adding change listener...');
-            const checkbox = parentElement.querySelector('input[type="checkbox"]');
-            checkbox.addEventListener('change', () => {
-                // Add the class to the div representing the custom checkbox
-                const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
-                setTimeout(() => {
-                    if (checkbox.checked) {
-                        checkboxDiv.classList.add('w--redirected-checked');
-                    } else {
-                        checkboxDiv.classList.remove('w--redirected-checked');
-                    }
-                });
+    // Add event listener to each filter checkbox
+    filterParentElements.forEach((parentElement) => {
+      console.log('Adding change listener...');
+      const checkbox = parentElement.querySelector('input[type="checkbox"]');
+      const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
+      const label = parentElement.querySelector('label');
 
+      // Check if the element is a label
+      if (label) {
+        const categoryName = label.getAttribute('for');
 
-                // Handle the change event
-                applyFilters();
-            });
+        // Check if the category has changed
+        if (currentCategory !== categoryName) {
+          currentCategory = categoryName;
+          filterCategories[currentCategory] = [];
+        }
 
+        // Add the filter checkbox to the corresponding category
+        filterCategories[currentCategory].push(checkbox);
 
-            // Increase the count of applied listeners
-            listenersApplied++;
-
-            // Check if all event listeners have been applied
-            if (listenersApplied === filterParentElements.length) {
-                console.log('All event listeners applied.');
-
-                // Add event listener to reset link
-                waitForElm('.some-class').then((elm) => {
-                    const resetLink = document.querySelector('.Rolex-reset');
-                    resetLink.addEventListener('click', () => {
-                        // Reset all checkboxes to false
-                        filterParentElements.forEach((parentElement) => {
-                            const checkbox = parentElement.querySelector('input[type="checkbox"]');
-                            checkbox.checked = false;
-                        });
-
-                        // Trigger filter change event to apply changes
-                        const filterChangeEvent = new Event('change');
-                        filterParentElements[0].dispatchEvent(filterChangeEvent);
-                    });
-
-                    resolve(); // Resolve the promise
-                });
-
+        checkbox.addEventListener('change', () => {
+          // Add the class to the div representing the custom checkbox
+          setTimeout(() => {
+            if (checkbox.checked) {
+              checkboxDiv.classList.add('w--redirected-checked');
+            } else {
+              checkboxDiv.classList.remove('w--redirected-checked');
             }
+          });
+
+          // Handle the change event
+          applyFilters(filterCategories);
         });
+      }
     });
 
-    function applyFilters() {
-        console.log('applying filters...');
-        console.log('checkboxes: ');
-        const filterParentElements = document.querySelectorAll('.rolex-form-checkbox');
-        console.log(filterParentElements);
-        // Get the selected filter values
-        const selectedFilters = Array.from(filterParentElements)
-            .filter((parentElement) => {
-                const checkbox = parentElement.querySelector('input[type="checkbox"]');
-                return checkbox.checked;
-            })
-            .map((parentElement) => {
-                const label = parentElement.querySelector('.rolex-form-text');
-                return label.textContent;
-            });
+    // Resolve the promise
+    resolve();
+  });
+    
+    function applyFilters(filterCategories) {
+      console.log('applying filters...');
+      console.log('checkboxes: ');
 
-        console.log('selected filters: ');
-        console.log(selectedFilters);
+      // Get the selected filter values for each category
+      const selectedFilters = Object.values(filterCategories)
+        .map((category) =>
+          category
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => checkbox.getAttribute('for'))
+        )
+        .flat();
 
-        watchElements = document.querySelectorAll('.rolex-grid-item');
+      console.log('selected filters: ');
+      console.log(selectedFilters);
 
-        // Iterate over each watch element
-        watchElements.forEach((watchElement) => {
-            // Get the filter values from the watch element
-            const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]'))
-                .map((filter) => filter.innerHTML);
+      watchElements = document.querySelectorAll('.rolex-grid-item');
 
+      // Iterate over each watch element
+      watchElements.forEach((watchElement) => {
+        // Get the filter values from the watch element
+        const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]'))
+          .map((filter) => filter.innerHTML);
 
-            // Check if the watch should be displayed or hidden based on the selected filters
-            const shouldDisplay = selectedFilters.some((filter) => filterValues.includes(filter));
+        // Check if the watch should be displayed or hidden based on the selected filters
+        const shouldDisplay = selectedFilters.some((filter) => filterValues.includes(filter));
 
-            // Apply display style to the watch element
-            watchElement.style.display = shouldDisplay ? 'block' : 'none';
-        });
+        // Apply display style to the watch element
+        watchElement.style.display = shouldDisplay ? 'block' : 'none';
+      });
 
-        // Call your pagination function here
-        paginationData.currentPage = 1;
-        createPaginationForProducts(18);
+      // Call your pagination function here
+      paginationData.currentPage = 1;
+      createPaginationForProducts(18);
     }
+    
 }
+
