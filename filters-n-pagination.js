@@ -290,7 +290,7 @@ function initFilters() {
       document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'none';
       document.getElementById('empty-state').style.display = 'block';
     } else {
-      document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'block';
+      document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'flex';
       document.getElementById('empty-state').style.display = 'none';
     }
 
