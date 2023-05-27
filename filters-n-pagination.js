@@ -270,6 +270,9 @@ function initFilters() {
       console.log('empty results...');
       document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'none';
       document.getElementById('empty-state').style.display = 'block';
+    } else {
+      document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'block';
+      document.getElementById('empty-state').style.display = 'none';
     }
 
     // Call your pagination function here
