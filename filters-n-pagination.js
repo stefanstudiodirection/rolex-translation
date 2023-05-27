@@ -124,8 +124,26 @@ function createPaginationForProducts(itemsPerPage) {
     paginationData.productItems = productItems;
 
     // console.log('Total items: ' + paginationData.totalItems);
+    
+    // Get the URL of the current page
+    const url = new URL(window.location.href);
 
-    paginationData.currentPage = 1;
+    // Get the value of the f4984b32_page query parameter
+    const pageParam = url.searchParams.get('f4984b32_page');
+
+    // Check if the parameter exists and its value is a number
+    if (pageParam && !isNaN(pageParam)) {
+      // Perform your desired action here
+      console.log('The value of f4984b32_page is a number:', pageParam);
+      paginationData.currentPage = pageParam;
+      
+    } else {
+      // Handle the case when the parameter doesn't exist or its value is not a number
+      console.log('The f4984b32_page parameter is missing or its value is not a number.');
+      paginationData.currentPage = 1;
+    }
+
+    
     updatePageNumbers(itemsPerPage);
     displayItems(itemsPerPage);
 
@@ -144,6 +162,7 @@ function createPaginationForProducts(itemsPerPage) {
 function initFilters() {
   return new Promise((resolve) => {
     document.getElementById('empty-state').style.display = 'none';
+    
     // Get the filter checkboxes and watch elements
     const filterParentElements = document.querySelectorAll('.rolex-form-checkbox');
     console.log('checkboxes: ');
