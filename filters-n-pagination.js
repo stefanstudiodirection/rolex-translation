@@ -244,11 +244,13 @@ function initFilters() {
 
         // Check if any of the filters in the group match the watch element's filters
         return filtersInGroup.some((parentElement) => {
-          const checkbox = parentElement.querySelector('input[type="checkbox"]');
           const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
-          const isChecked = checkbox.checked && checkboxDiv.classList.contains('w--redirected-checked');
+          const isChecked = checkboxDiv.classList.contains('w--redirected-checked');
           const label = parentElement.querySelector('.rolex-form-text');
           const filterName = label.textContent;
+          console.log('Processing filter with name: ' + filterName);
+          console.log('Is Checked: ' + isChecked);
+            
           return isChecked && filterValues.includes(filterName);
         });
       });
