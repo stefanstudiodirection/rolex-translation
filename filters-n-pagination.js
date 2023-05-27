@@ -143,6 +143,7 @@ function createPaginationForProducts(itemsPerPage) {
 
 function initFilters() {
   return new Promise((resolve) => {
+    document.getElementById('empty-state').style.display = 'none';
     // Get the filter checkboxes and watch elements
     const filterParentElements = document.querySelectorAll('.rolex-form-checkbox');
     console.log('checkboxes: ');
@@ -268,6 +269,7 @@ function initFilters() {
     if (isListEmpty) {
       console.log('empty results...');
       document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'none';
+      document.getElementById('empty-state').style.display = 'block';
     }
 
     // Call your pagination function here
