@@ -71,14 +71,22 @@ function updatePageUrl(val) {
   window.history.replaceState({}, '', url);
 }
 
-function handleFilterURL(filters) {
+function handleFilterURL(filterName, addFlag) {
   const url = new URL(window.location.href);
-  const filterNames = filters.map(filter => filter.filterName);
+  const filters = url.searchParams.get('filters');
 
-  url.searchParams.set('filters', filterNames.join(','));
-
-  window.history.replaceState({}, '', url);
-}
+  if (addFlag) {
+    if (filters) {
+      url.searchParams.set('filters', `${filters},${filterName}`);
+    } else {
+      url.searchParams.set('filters', filterName);
+    }
+  } else {
+    if (filters) {
+      const updatedFilters = filters.split(',').filter(name => name !== filterName);
+      url.searchParams.set('filters', updatedFilters.join(','));
+    }
+  }
 
 function displayItems(itemsPerPage) {
 
@@ -204,10 +212,14 @@ function initFilters() {
         // Add the class to the div representing the custom checkbox
         const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
         setTimeout(() => {
+           const label = parentElement.querySelector('.rolex-form-text');
+           const filterValue = label.textContent;
           if (checkbox.checked) {
             checkboxDiv.classList.add('w--redirected-checked');
+            handleFilterURL(filterName, true);
           } else {
             checkboxDiv.classList.remove('w--redirected-checked');
+            handleFilterURL(filterName, false);
           }
         });
 
