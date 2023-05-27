@@ -228,6 +228,8 @@ function initFilters() {
         
       console.log('Filter Values: ');
       console.log(filterValues);
+        
+      let isListEmpty = true;
 
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
@@ -252,6 +254,7 @@ function initFilters() {
           const filterName = label.textContent;
           console.log('Processing filter with name: ' + filterName);
           console.log('Is Checked: ' + isChecked);
+          isListEmpty = !(isChecked && filterValues.includes(filterName));
 
           return isChecked && filterValues.includes(filterName);
         });
@@ -260,6 +263,10 @@ function initFilters() {
 
       // Apply display style to the watch element
       watchElement.style.display = shouldDisplay ? 'block' : 'none';
+        
+      if (isListEmpty) {
+          
+      }
     });
 
     // Call your pagination function here
