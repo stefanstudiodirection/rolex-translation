@@ -176,10 +176,10 @@ function initFilters() {
             } else {
               checkboxDiv.classList.remove('w--redirected-checked');
             }
-          });
-
+              
           // Handle the change event
           applyFilters(filterCategories, watchElements);
+          });
         });
       }
     });
