@@ -242,19 +242,19 @@ function initFilters() {
           return true;
         }
 
-        // Check if any of the filters in the group match the watch element's filters
         return filtersInGroup.some((parentElement) => {
-          const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
-          const isChecked = checkboxDiv.classList.contains('w--redirected-checked');
-          console.log('checkbox div: ');
-          console.log(checkboxDiv);
+          const checkbox = parentElement.querySelector('input[type="checkbox"]');
+          const isChecked = checkbox.checked;
+          console.log('Checkbox input: ');
+          console.log(checkbox);
           const label = parentElement.querySelector('.rolex-form-text');
           const filterName = label.textContent;
           console.log('Processing filter with name: ' + filterName);
           console.log('Is Checked: ' + isChecked);
-            
+
           return isChecked && filterValues.includes(filterName);
         });
+
       });
 
       // Apply display style to the watch element
