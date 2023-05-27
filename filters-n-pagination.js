@@ -71,6 +71,15 @@ function updatePageUrl(val) {
   window.history.replaceState({}, '', url);
 }
 
+function handleFilterURL(filters) {
+  const url = new URL(window.location.href);
+  const filterNames = filters.map(filter => filter.filterName);
+
+  url.searchParams.set('filters', filterNames.join(','));
+
+  window.history.replaceState({}, '', url);
+}
+
 function displayItems(itemsPerPage) {
 
     // console.log('Total items in display items: ' + paginationData.productItems.length);
@@ -294,6 +303,9 @@ function initFilters() {
         });
 
       });
+        
+      console.log('Should display: ');
+      console.log(shouldDisplay);
 
       // Apply display style to the watch element
       if (shouldDisplay) {
