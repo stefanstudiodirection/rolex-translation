@@ -263,11 +263,12 @@ function initFilters() {
 
       // Apply display style to the watch element
       watchElement.style.display = shouldDisplay ? 'block' : 'none';
-        
-      if (isListEmpty) {
-          document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'none';
-      }
     });
+      
+    if (isListEmpty) {
+      console.log('empty results...');
+      document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'none';
+    }
 
     // Call your pagination function here
     createPaginationForProducts(18);
