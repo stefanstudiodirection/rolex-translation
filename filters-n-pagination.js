@@ -197,7 +197,7 @@ function initFilters() {
       .flatMap((category) => {
         console.log('Category:', category);
         const filteredCategory = category.filter((checkboxDiv) => {
-          const classList = [...checkboxDiv.classList];
+          const classList = Array.from(checkboxDiv.classList);
           console.log('Checkbox Div:', checkboxDiv);
           console.log('Classes:', classList);
           const hasRedirectedCheckedClass = classList.includes('w--redirected-checked');
