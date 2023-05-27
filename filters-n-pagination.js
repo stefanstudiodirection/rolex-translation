@@ -230,7 +230,7 @@ function initFilters() {
 
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
-        const filtersInGroup = filterParentElements.filter(
+        const filtersInGroup = Array.from(filterParentElements).filter(
           (parentElement) => parentElement.querySelector('input[type="checkbox"]').getAttribute('filter-group') === filterGroup
         );
           
