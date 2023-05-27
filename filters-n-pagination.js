@@ -297,7 +297,7 @@ function initFilters() {
 
       // Apply display style to the watch element
       if (shouldDisplay) {
-          isListEmpty = true;
+          isListEmpty = false;
       }
       watchElement.style.display = shouldDisplay ? 'block' : 'none';
     });
