@@ -246,6 +246,8 @@ function initFilters() {
         return filtersInGroup.some((parentElement) => {
           const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
           const isChecked = checkboxDiv.classList.contains('w--redirected-checked');
+          console.log('checkbox div: ');
+          console.log(checkboxDiv);
           const label = parentElement.querySelector('.rolex-form-text');
           const filterName = label.textContent;
           console.log('Processing filter with name: ' + filterName);
