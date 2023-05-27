@@ -225,7 +225,6 @@ function initFilters() {
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
       const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
-      );
         
       console.log('Filter Values: ');
       console.log(filterValues);
