@@ -58,6 +58,19 @@ const paginationData = {
     totalPages: 0
 };
 
+function updatePageUrl(val) {
+  const url = new URL(window.location.href);
+  const pageParam = url.searchParams.get('f4984b32_page');
+
+  if (pageParam) {
+    url.searchParams.set('f4984b32_page', val);
+  } else {
+    url.searchParams.append('f4984b32_page', val);
+  }
+
+  window.history.replaceState({}, '', url);
+}
+
 function displayItems(itemsPerPage) {
 
     // console.log('Total items in display items: ' + paginationData.productItems.length);
@@ -94,6 +107,7 @@ function handlePrevButtonClick() {
             });
         });
         paginationData.currentPage--;
+        updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
     }
@@ -108,6 +122,7 @@ function handleNextButtonClick() {
             });
         });
         paginationData.currentPage++;
+        updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
     }
