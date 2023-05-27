@@ -219,6 +219,8 @@ function initFilters() {
 
     console.log('selected filters: ');
     console.log(selectedFilters);
+      
+    let isListEmpty = true;
 
     watchElements = document.querySelectorAll('.rolex-grid-item');
       
@@ -229,8 +231,6 @@ function initFilters() {
       console.log('Filter Values: ');
       console.log(filterValues);
         
-      let isListEmpty = true;
-
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
         const filtersInGroup = Array.from(filterParentElements).filter(
