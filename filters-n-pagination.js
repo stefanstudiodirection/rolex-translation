@@ -289,14 +289,16 @@ function initFilters() {
           const filterName = label.textContent;
           console.log('Processing filter with name: ' + filterName);
           console.log('Is Checked: ' + isChecked);
-          isListEmpty = !(isChecked && filterValues.includes(filterName));
-
+            
           return isChecked && filterValues.includes(filterName);
         });
 
       });
 
       // Apply display style to the watch element
+      if (shouldDisplay) {
+          isListEmpty = true;
+      }
       watchElement.style.display = shouldDisplay ? 'block' : 'none';
     });
       
