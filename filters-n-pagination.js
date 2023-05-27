@@ -265,7 +265,7 @@ function initFilters() {
       watchElement.style.display = shouldDisplay ? 'block' : 'none';
         
       if (isListEmpty) {
-          document.getElementByClassName('rolex-pagination__container').style.display = none;
+          document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'none';
       }
     });
 
