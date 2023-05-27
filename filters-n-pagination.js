@@ -227,6 +227,9 @@ function initFilters() {
       const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map(
         (filter) => filter.getAttribute('fs-cmsfilter-field')
       );
+        
+      console.log('Filter Values: ');
+      console.log(filterValues);
 
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
