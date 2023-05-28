@@ -247,7 +247,7 @@ function initFilters() {
         });
 
         // Handle the change event
-        applyFilters();
+        applyFilters(true);
       });
 
       // Increase the count of applied listeners
@@ -300,7 +300,7 @@ function initFilters() {
     });
   });
 
-  function applyFilters() {
+  function applyFilters(reset) {
     console.log('applying filters...');
     console.log('checkboxes: ');
     const filterParentElements = document.querySelectorAll('.rolex-form-checkbox');
@@ -381,7 +381,7 @@ function initFilters() {
     }
 
     // Call your pagination function here
-    createPaginationForProducts(18, true);
+    createPaginationForProducts(18, reset);
     }
 }
 
