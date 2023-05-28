@@ -157,7 +157,7 @@ function handleNextButtonClick() {
     }
 }
 
-function createPaginationForProducts(itemsPerPage) {
+function createPaginationForProducts(itemsPerPage, reset) {
     document.getElementsByClassName('rolex-pagination-box')[0].style.display = 'none';
 
     const productsContainer = document.getElementById('products-container');
@@ -176,7 +176,7 @@ function createPaginationForProducts(itemsPerPage) {
     const pageParam = url.searchParams.get('f4984b32_page');
 
     // Check if the parameter exists and its value is a number
-    if (pageParam && !isNaN(pageParam)) {
+    if (pageParam && !isNaN(pageParam) && !reset) {
       // Perform your desired action here
       console.log('The value of f4984b32_page is a number:', pageParam);
       paginationData.currentPage = pageParam;
@@ -363,7 +363,7 @@ function initFilters() {
     }
 
     // Call your pagination function here
-    createPaginationForProducts(18);
+    createPaginationForProducts(18, true);
     }
 }
 
