@@ -263,7 +263,9 @@ function initFilters() {
             // Reset all checkboxes to false
             filterParentElements.forEach((parentElement) => {
               const checkbox = parentElement.querySelector('input[type="checkbox"]');
+              const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
+              checkboxDiv.classList.add('w--redirected-checked');
             });
 
             // Trigger filter change event to apply changes
@@ -278,7 +280,9 @@ function initFilters() {
               const filterValue = label.textContent;
               
               if (filterNames.includes(filterValue)) {
+                  console.log('setting filter: ' + filterValue);
                   const checkbox = parentElement.querySelector('input[type="checkbox"]');
+                  const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
                   checkbox.checked = true;
                   checkboxDiv.classList.add('w--redirected-checked');
               }
