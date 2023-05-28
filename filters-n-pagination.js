@@ -76,7 +76,7 @@ function handleFilterURL(filterName, addFlag) {
   const filters = url.searchParams.get('filters');
     
   console.log('UPDATING FILTER URL');
-  cosnole.log(filterName);
+  console.log(filterName);
   console.log(addFlag);
     
   
