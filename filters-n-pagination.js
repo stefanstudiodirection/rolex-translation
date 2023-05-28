@@ -320,8 +320,8 @@ function initFilters() {
       // Get the filter values from the watch element
       const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
         
-      console.log('Filter Values: ');
-      console.log(filterValues);
+//       console.log('Filter Values: ');
+//       console.log(filterValues);
         
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
@@ -329,8 +329,8 @@ function initFilters() {
           (parentElement) => parentElement.querySelector('input[type="checkbox"]').getAttribute('filter-group') === filterGroup
         );
           
-        console.log('Filters in Group: ');
-        console.log(filtersInGroup);
+//         console.log('Filters in Group: ');
+//         console.log(filtersInGroup);
 
         // If no filters are selected in the group, consider it a match
         if (!filtersInGroup.length) {
@@ -340,20 +340,20 @@ function initFilters() {
         return filtersInGroup.some((parentElement) => {
           const checkbox = parentElement.querySelector('input[type="checkbox"]');
           const isChecked = checkbox.checked;
-          console.log('Checkbox input: ');
-          console.log(checkbox);
+//           console.log('Checkbox input: ');
+//           console.log(checkbox);
           const label = parentElement.querySelector('.rolex-form-text');
           const filterName = label.textContent;
-          console.log('Processing filter with name: ' + filterName);
-          console.log('Is Checked: ' + isChecked);
+//           console.log('Processing filter with name: ' + filterName);
+//           console.log('Is Checked: ' + isChecked);
             
           return isChecked && filterValues.includes(filterName);
         });
 
       });
         
-      console.log('Should display: ');
-      console.log(shouldDisplay);
+//       console.log('Should display: ');
+//       console.log(shouldDisplay);
 
       // Apply display style to the watch element
       if (shouldDisplay) {
