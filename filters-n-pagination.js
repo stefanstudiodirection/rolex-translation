@@ -183,6 +183,8 @@ function handleNextButtonClick() {
 
 function createPaginationForProducts(itemsPerPage, reset) {
     document.getElementsByClassName('rolex-pagination-box')[0].style.display = 'none';
+    
+    document.getElementsByClassName('prev-page')[0].style.cursor = 'pointer';
 
     const productsContainer = document.getElementById('products-container');
     const productItems = Array.from(productsContainer.getElementsByClassName('rolex-grid-item')).filter(item => item.style.display !== 'none');
