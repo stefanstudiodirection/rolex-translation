@@ -87,6 +87,7 @@ function handleFilterURL(filterName, addFlag) {
       url.searchParams.set('filters', updatedFilters.join(','));
     }
   }
+}
 
 function displayItems(itemsPerPage) {
 
