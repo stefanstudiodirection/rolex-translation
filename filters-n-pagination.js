@@ -265,7 +265,7 @@ function initFilters() {
               const checkbox = parentElement.querySelector('input[type="checkbox"]');
               const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
-              checkboxDiv.classList.add('w--redirected-checked');
+              checkboxDiv.classList.remove('w--redirected-checked');
             });
 
             // Trigger filter change event to apply changes
