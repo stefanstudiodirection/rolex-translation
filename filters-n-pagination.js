@@ -151,6 +151,12 @@ function handlePrevButtonClick() {
         displayItems(paginationData.itemsPerPage);
         
         document.getElementsByClassName('next-page')[0].style.display = 'block';
+        
+        if (parseInt(paginationData.currentPage) === 1) {
+            document.getElementsByClassName('prev-page')[0].style.display = 'none';
+        } 
+        
+        
     }
 }
 
@@ -166,6 +172,8 @@ function handleNextButtonClick() {
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
         
         if (paginationData.currentPage + 1 === paginationData.totalPages) {
             document.getElementsByClassName('next-page')[0].style.display = 'none';
