@@ -151,6 +151,12 @@ function handlePrevButtonClick() {
         displayItems(paginationData.itemsPerPage);
         
         document.getElementsByClassName('next-page')[0].style.display = 'block';
+        
+        if (parseInt(paginationData.currentPage) === 1) {
+            document.getElementsByClassName('prev-page')[0].style.display = 'none';
+        } 
+        
+        
     }
 }
 
@@ -167,6 +173,8 @@ function handleNextButtonClick() {
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
         
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
+        
         if (paginationData.currentPage + 1 === paginationData.totalPages) {
             document.getElementsByClassName('next-page')[0].style.display = 'none';
         } 
@@ -175,6 +183,8 @@ function handleNextButtonClick() {
 
 function createPaginationForProducts(itemsPerPage, reset) {
     document.getElementsByClassName('rolex-pagination-box')[0].style.display = 'none';
+    
+    document.getElementsByClassName('prev-page')[0].style.cursor = 'pointer';
 
     const productsContainer = document.getElementById('products-container');
     const productItems = Array.from(productsContainer.getElementsByClassName('rolex-grid-item')).filter(item => item.style.display !== 'none');
@@ -219,13 +229,13 @@ function createPaginationForProducts(itemsPerPage, reset) {
     prevButton.addEventListener('click', handlePrevButtonClick);
     nextButton.addEventListener('click', handleNextButtonClick);
     
-    if (paginationData.currentPage === 1) {
+    if (parseInt(paginationData.currentPage) === 1) {
         document.getElementsByClassName('prev-page')[0].style.display = 'none';
     } else {
         document.getElementsByClassName('prev-page')[0].style.display = 'block';
     }
     
-    if (((paginationData.productItems.length - 1) / paginationData.itemsPerPage + 1) === paginationData.currentPage) {
+    if (((paginationData.productItems.length - 1) / paginationData.itemsPerPage + 1) === parseInt(paginationData.currentPage)) {
         document.getElementsByClassName('next-page')[0].style.display = 'none';
     } else {
         document.getElementsByClassName('next-page')[0].style.display = 'block';
