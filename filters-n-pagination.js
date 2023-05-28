@@ -285,10 +285,13 @@ function initFilters() {
                   const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
                   checkbox.checked = true;
                   checkboxDiv.classList.add('w--redirected-checked');
+                  
               }
               
               
             });
+            
+            applyFilters();
 
           resolve(); // Resolve the promise
         });
