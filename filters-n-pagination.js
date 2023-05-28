@@ -74,11 +74,19 @@ function updatePageUrl(val) {
 function handleFilterURL(filterName, addFlag) {
   const url = new URL(window.location.href);
   const filters = url.searchParams.get('filters');
+    
+  console.log('UPDATING FILTER URL');
+  cosnole.log(filterName);
+  console.log(addFlag);
+    
+  
 
   if (addFlag) {
     if (filters) {
+      console.log('Filters present');
       url.searchParams.set('filters', `${filters},${filterName}`);
     } else {
+      console.log('Filters not present');
       url.searchParams.set('filters', filterName);
     }
   } else {
