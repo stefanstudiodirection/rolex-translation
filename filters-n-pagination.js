@@ -89,6 +89,17 @@ function handleFilterURL(filterName, addFlag) {
   }
 }
 
+function parseFilterQuery() {
+  const url = new URL(window.location.href);
+  const filters = url.searchParams.get('filters');
+
+  if (filters) {
+    return filters.split(',');
+  }
+
+  return [];
+}
+
 function displayItems(itemsPerPage) {
 
     // console.log('Total items in display items: ' + paginationData.productItems.length);
@@ -236,8 +247,8 @@ function initFilters() {
         console.log('All event listeners applied.');
 
         // Add event listener to reset link
-        waitForElm('.some-class').then((elm) => {
-          const resetLink = document.querySelector('.Rolex-reset');
+        waitForElm('.w-checkbox-input').then((elm) => {
+          const resetLink = document.querySelector('.rolex-reset');
           resetLink.addEventListener('click', () => {
             // Reset all checkboxes to false
             filterParentElements.forEach((parentElement) => {
@@ -249,6 +260,21 @@ function initFilters() {
             const filterChangeEvent = new Event('change');
             filterParentElements[0].dispatchEvent(filterChangeEvent);
           });
+            
+          const filterNames = parseFilterQuery();
+            
+          filterParentElements.forEach((parentElement) => {
+              const label = parentElement.querySelector('.rolex-form-text');
+              const filterValue = label.textContent;
+              
+              if (filterNames.includes(filterValue)) {
+                  const checkbox = parentElement.querySelector('input[type="checkbox"]');
+                  checkbox.checked = true;
+                  checkboxDiv.classList.add('w--redirected-checked');
+              }
+              
+              
+            });
 
           resolve(); // Resolve the promise
         });
