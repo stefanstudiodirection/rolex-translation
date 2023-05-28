@@ -217,10 +217,10 @@ function initFilters() {
            const filterValue = label.textContent;
           if (checkbox.checked) {
             checkboxDiv.classList.add('w--redirected-checked');
-            handleFilterURL(filterName, true);
+            handleFilterURL(filterValue, true);
           } else {
             checkboxDiv.classList.remove('w--redirected-checked');
-            handleFilterURL(filterName, false);
+            handleFilterURL(filterValue, false);
           }
         });
 
