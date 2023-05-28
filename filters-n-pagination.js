@@ -1,6 +1,6 @@
 function fetchAndModifyProducts() {
-    // if (window.location.pathname === '/rolex/watches') {
-    if (true) { // Keep the URL check as always true
+    if (window.location.pathname === '/rolex/watches') {
+//     if (true) { // Keep the URL check as always true
         // console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
 
