@@ -95,6 +95,7 @@ function handleFilterURL(filterName, addFlag) {
       url.searchParams.set('filters', updatedFilters.join(','));
     }
   }
+  window.history.replaceState({}, '', url);
 }
 
 function parseFilterQuery() {
