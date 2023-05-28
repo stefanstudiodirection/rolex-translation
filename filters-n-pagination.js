@@ -149,6 +149,8 @@ function handlePrevButtonClick() {
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        document.getElementsByClassName('next-page')[0].style.display = 'block';
     }
 }
 
@@ -164,6 +166,10 @@ function handleNextButtonClick() {
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        if (paginationData.currentPage + 1 === paginationData.totalPages) {
+            document.getElementsByClassName('next-page')[0].style.display = 'none';
+        } 
     }
 }
 
@@ -212,6 +218,20 @@ function createPaginationForProducts(itemsPerPage, reset) {
     // Add event listeners
     prevButton.addEventListener('click', handlePrevButtonClick);
     nextButton.addEventListener('click', handleNextButtonClick);
+    
+    if (paginationData.currentPage === 1) {
+        document.getElementsByClassName('prev-page')[0].style.display = 'none';
+    } else {
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
+    }
+    
+    if (((paginationData.productItems.length - 1) / paginationData.itemsPerPage) + 1 ) ===  paginationData.currentPage) {
+        document.getElementsByClassName('next-page')[0].style.display = 'none';
+    } else {
+        document.getElementsByClassName('next-page')[0].style.display = 'block';
+    }
+    
+    
 }
 
 function initFilters() {
