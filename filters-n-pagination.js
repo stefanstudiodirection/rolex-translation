@@ -140,8 +140,11 @@ function updatePageNumbers(itemsPerPage) {
 function handlePrevButtonClick() {
     if (paginationData.currentPage > 1) {
         setTimeout(() => {
+            const scrollToSection = document.getElementById('watches-section');
+            const offset = 200;
+            const topPosition = scrollToSection.offsetTop - offset;
             window.scrollTo({
-                top: 100,
+                top: topPosition,
                 behavior: 'smooth'
             });
         });
@@ -163,8 +166,11 @@ function handlePrevButtonClick() {
 function handleNextButtonClick() {
     if (paginationData.currentPage < paginationData.totalPages) {
         setTimeout(() => {
+            const scrollToSection = document.getElementById('watches-section');
+            const offset = 200;
+            const topPosition = scrollToSection.offsetTop - offset;
             window.scrollTo({
-                top: 100,
+                top: topPosition,
                 behavior: 'smooth'
             });
         });
