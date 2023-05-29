@@ -140,7 +140,7 @@ function updatePageNumbers(itemsPerPage) {
 function handlePrevButtonClick() {
     if (paginationData.currentPage > 1) {
         setTimeout(() => {
-            if(typeof document.getElementByClassName('rolex-grid-wrap')){
+            if(typeof document.getElementsByClassName('rolex-grid-wrap')[0]){
                 var sectionOffset = $('.rolex-grid-wrap').offset().top;
                 var scrollToPosition = sectionOffset - 200;
                 $(window).scrollTop(scrollToPosition);
@@ -170,10 +170,16 @@ function handlePrevButtonClick() {
 function handleNextButtonClick() {
     if (paginationData.currentPage < paginationData.totalPages) {
         setTimeout(() => {
-            window.scrollTo({
+            if(typeof document.getElementsByClassName('rolex-grid-wrap')[0]){
+                var sectionOffset = $('.rolex-grid-wrap').offset().top;
+                var scrollToPosition = sectionOffset - 200;
+                $(window).scrollTop(scrollToPosition);
+            } else {
+                window.scrollTo({
                 top: 100,
                 behavior: 'smooth'
-            });
+                });
+            }
         });
         paginationData.currentPage++;
         updatePageUrl(paginationData.currentPage);
