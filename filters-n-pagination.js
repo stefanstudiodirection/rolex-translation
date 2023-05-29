@@ -140,10 +140,17 @@ function updatePageNumbers(itemsPerPage) {
 function handlePrevButtonClick() {
     if (paginationData.currentPage > 1) {
         setTimeout(() => {
-            window.scrollTo({
+            if(typeof document.getElementByClassName('rolex-grid-wrap')){
+                var sectionOffset = $('.rolex-grid-wrap').offset().top;
+                var scrollToPosition = sectionOffset - 200;
+                $(window).scrollTop(scrollToPosition);
+            } else {
+                window.scrollTo({
                 top: 100,
                 behavior: 'smooth'
-            });
+                });
+            }
+            
         });
         paginationData.currentPage--;
         updatePageUrl(paginationData.currentPage);
