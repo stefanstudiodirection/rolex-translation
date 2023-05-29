@@ -302,6 +302,7 @@ function initFilters() {
               const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
               checkboxDiv.classList.remove('w--redirected-checked');
+              applyFilters();
             });
 
             // Trigger filter change event to apply changes
