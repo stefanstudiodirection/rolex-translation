@@ -18,10 +18,21 @@ function fetchAndModifyProducts() {
                     // console.log('Parsed products length: ' + parsedProducts.children().length)
                     if (parsedProducts.children().length >= 100) {
                         clearInterval(checkAppendInterval);
+                        
+                        document.head.appendChild(scriptElement);
+                        
                         $('#products-container').append(parsedProducts);
                         // console.log('Products appended successfully.');
-                        createPaginationForProducts(18);
-                        resolve();
+                        
+                        var scriptElement = document.createElement('script');
+                        scriptElement.src = 'https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsnest@1/cmsnest.js';
+                        scriptElement.defer = true;
+                        
+                        setTimeout(() => {
+                            createPaginationForProducts(18);
+                            resolve();
+                        }, 100);
+                        
                     }
                 }, 100);
             });
