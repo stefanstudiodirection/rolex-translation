@@ -384,4 +384,3 @@ function initFilters() {
     createPaginationForProducts(18, reset);
     }
 }
-
