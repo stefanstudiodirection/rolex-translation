@@ -16,7 +16,7 @@ function fetchAndModifyProducts() {
             var appendPromise = new Promise((resolve, reject) => {
                 var checkAppendInterval = setInterval(() => {
                     // console.log('Parsed products length: ' + parsedProducts.children().length)
-                    if (parsedProducts.children().length >= 0) {
+                    if (parsedProducts.children().length >= 100) {
                         clearInterval(checkAppendInterval);
                         $('#products-container').append(parsedProducts);
                         // console.log('Products appended successfully.');
@@ -61,12 +61,12 @@ const paginationData = {
 
 function updatePageUrl(val) {
   const url = new URL(window.location.href);
-  const pageParam = url.searchParams.get('f4984b32_page');
+  const pageParam = url.searchParams.get('page');
 
   if (pageParam) {
-    url.searchParams.set('f4984b32_page', val);
+    url.searchParams.set('page', val);
   } else {
-    url.searchParams.append('f4984b32_page', val);
+    url.searchParams.append('page', val);
   }
 
   window.history.replaceState({}, '', url);
@@ -212,17 +212,17 @@ function createPaginationForProducts(itemsPerPage, reset) {
     const url = new URL(window.location.href);
 
     // Get the value of the f4984b32_page query parameter
-    const pageParam = url.searchParams.get('f4984b32_page');
+    const pageParam = url.searchParams.get('page');
 
     // Check if the parameter exists and its value is a number
     if (pageParam && !isNaN(pageParam) && !reset) {
       // Perform your desired action here
-      console.log('The value of f4984b32_page is a number:', pageParam);
+      console.log('The value of age is a number:', pageParam);
       paginationData.currentPage = pageParam;
       
     } else {
       // Handle the case when the parameter doesn't exist or its value is not a number
-      console.log('The f4984b32_page parameter is missing or its value is not a number.');
+      console.log('The page parameter is missing or its value is not a number.');
       paginationData.currentPage = 1;
       updatePageUrl(1);
     }
