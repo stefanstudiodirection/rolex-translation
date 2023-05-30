@@ -19,14 +19,13 @@ function fetchAndModifyProducts() {
                     if (parsedProducts.children().length >= 100) {
                         clearInterval(checkAppendInterval);
                         
-                        document.head.appendChild(scriptElement);
-                        
                         $('#products-container').append(parsedProducts);
                         // console.log('Products appended successfully.');
                         
                         var scriptElement = document.createElement('script');
                         scriptElement.src = 'https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsnest@1/cmsnest.js';
                         scriptElement.defer = true;
+                        document.body.appendChild(scriptElement);
                         
                         setTimeout(() => {
                             createPaginationForProducts(18);
