@@ -384,7 +384,7 @@ function initFilters() {
         const parsedFilterValues = [];
         filterValues = filterValues.map(value => {
           if (value.includes(';')) {
-            parsedFilterValues.push(value.split(';'));
+            parsedFilterValues.push(...value.split(';'));
           } else {
             parsedFilterValues.push(value);
           }
