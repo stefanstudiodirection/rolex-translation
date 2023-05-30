@@ -120,7 +120,7 @@ function displayItems(itemsPerPage) {
         console.log(paginationData);
         console.log(paginationData.currentPage);
         console.log(itemsPerPage);
-        if (i >= (paginationData.currentPage - 1) * itemsPerPage && i < paginationData.currentPage * itemsPerPage) {
+        if (i >= (paginationData.currentPage - 1) * itemsPerPage && i > paginationData.currentPage * itemsPerPage) {
             // console.log('true');
             paginationData.productItems[i].style.display = 'block';
         } else {
