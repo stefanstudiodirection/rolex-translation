@@ -248,7 +248,7 @@ function createPaginationForProducts(itemsPerPage, reset) {
         document.getElementsByClassName('prev-page')[0].style.display = 'block';
     }
     
-    if (((paginationData.productItems.length - 1) / paginationData.itemsPerPage + 1) > parseInt(paginationData.currentPage)) {
+    if (((paginationData.productItems.length - 1) / paginationData.itemsPerPage + 1) === parseInt(paginationData.currentPage)) {
         document.getElementsByClassName('next-page')[0].style.display = 'none';
     } else {
         document.getElementsByClassName('next-page')[0].style.display = 'block';
