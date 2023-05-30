@@ -1,7 +1,7 @@
 function fetchAndModifyProducts() {
     const pathWithoutQuery = window.location.pathname.split('?')[0];
-//     if (pathWithoutQuery.endsWith('/rolex/watches') || pathWithoutQuery.endsWith('/rolex/watches/rolex-mens-watches') || pathWithoutQuery.endsWith('/rolex/watches/rolex-womens-watches')) {
-    if (true) { // Keep the URL check as always true
+    if (pathWithoutQuery.endsWith('/rolex/watches') || pathWithoutQuery.endsWith('/rolex/watches/rolex-mens-watches') || pathWithoutQuery.endsWith('/rolex/watches/rolex-womens-watches')) {
+//     if (true) { // Keep the URL check as always true
         console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
 
