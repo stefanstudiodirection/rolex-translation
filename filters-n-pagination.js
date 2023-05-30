@@ -117,10 +117,10 @@ function displayItems(itemsPerPage) {
         // console.log('Product item: ' + i);
         // console.log('Current page: ' + paginationData.currentPage);
         // console.log(paginationData.productItems[i].style.display);
-        console.log(paginationData);
-        console.log(paginationData.currentPage);
-        console.log(itemsPerPage);
-        if (i >= (paginationData.currentPage - 1) * itemsPerPage && i === paginationData.currentPage * itemsPerPage) {
+        // console.log(paginationData);
+        // console.log(paginationData.currentPage);
+        // console.log(itemsPerPage);
+        if (i >= (paginationData.currentPage - 1) * itemsPerPage && i < paginationData.currentPage * itemsPerPage) {
             // console.log('true');
             paginationData.productItems[i].style.display = 'block';
         } else {
@@ -433,6 +433,5 @@ function initFilters() {
     createPaginationForProducts(18, reset);
     }
 }
-
 
 
