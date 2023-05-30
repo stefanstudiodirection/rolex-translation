@@ -224,7 +224,7 @@ function createPaginationForProducts(itemsPerPage, reset) {
       // Handle the case when the parameter doesn't exist or its value is not a number
       console.log('The page parameter is missing or its value is not a number.');
       paginationData.currentPage = 1;
-      updatePageUrl(1);
+//       updatePageUrl(1);
     }
 
     
