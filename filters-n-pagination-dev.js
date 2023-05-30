@@ -339,6 +339,10 @@ function initFilters() {
               filterNames.push('Men');
           }
             
+          if (pathWithoutQuery.endsWith('/rolex-gold-watches')) {
+              filterNames.push('Gold');
+          }
+            
           filterParentElements.forEach((parentElement) => {
               const label = parentElement.querySelector('.rolex-form-text');
               const filterValue = label.textContent;
