@@ -71,12 +71,12 @@ const paginationData = {
 
 function updatePageUrl(val) {
   const url = new URL(window.location.href);
-  const pageParam = url.searchParams.get('f4984b32_page');
+  const pageParam = url.searchParams.get('page');
 
   if (pageParam) {
-    url.searchParams.set('f4984b32_page', val);
+    url.searchParams.set('page', val);
   } else {
-    url.searchParams.append('f4984b32_page', val);
+    url.searchParams.append('page', val);
   }
 
   window.history.replaceState({}, '', url);
@@ -193,12 +193,12 @@ function createPaginationForProducts(itemsPerPage, reset) {
     const url = new URL(window.location.href);
 
     // Get the value of the f4984b32_page query parameter
-    const pageParam = url.searchParams.get('f4984b32_page');
+    const pageParam = url.searchParams.get('page');
 
     // Check if the parameter exists and its value is a number
     if (pageParam && !isNaN(pageParam) && !reset) {
       // Perform your desired action here
-      console.log('The value of f4984b32_page is a number:', pageParam);
+      console.log('The value of page is a number:', pageParam);
       paginationData.currentPage = pageParam;
       
     } else {
