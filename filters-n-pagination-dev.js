@@ -329,6 +329,10 @@ function initFilters() {
             
           const filterNames = parseFilterQuery();
             
+          if (pathWithoutQuery.endsWith('/rolex-womens-watches')) {
+              filterNames.push('Women');
+          }
+            
           filterParentElements.forEach((parentElement) => {
               const label = parentElement.querySelector('.rolex-form-text');
               const filterValue = label.textContent;
