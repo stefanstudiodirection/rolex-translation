@@ -380,7 +380,9 @@ function initFilters() {
       
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
-      const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+      let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+        
+      filterValues = filterValues[0].split(';');
         
 //       console.log('Filter Values: ');
 //       console.log(filterValues);
@@ -409,7 +411,7 @@ function initFilters() {
 //           console.log('Processing filter with name: ' + filterName);
 //           console.log('Is Checked: ' + isChecked);
             
-          return isChecked && filterValues.includes(filterName);
+          return isChecked && filterValues.some(value => value.toLowerCase() === filterName.toLowerCase());
         });
 
       });
