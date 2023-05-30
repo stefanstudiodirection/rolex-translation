@@ -381,8 +381,14 @@ function initFilters() {
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
       let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
-        
-      filterValues = filterValues[0].split(';');
+        const parsedFilterValues = [];
+        filterValues = filterValues.map(value => {
+          if (value.includes(';')) {
+            parsedFilterValues.push(value.split(';'));
+          } else {
+            parsedFilterValues.push(value);
+          }
+        });
         
 //       console.log('Filter Values: ');
 //       console.log(filterValues);
