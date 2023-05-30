@@ -1,6 +1,7 @@
 function fetchAndModifyProducts() {
     const pathWithoutQuery = window.location.pathname.split('?')[0];
-    if (pathWithoutQuery.endsWith('/rolex/watches')) {
+//     if (pathWithoutQuery.endsWith('/rolex/watches') || pathWithoutQuery.endsWith('/rolex/watches/rolex-mens-watches') || pathWithoutQuery.endsWith('/rolex/watches/rolex-womens-watches')) {
+       if (pathWithoutQuery.endsWith('/rolex/watches')) {
 //     if (true) { // Keep the URL check as always true
         console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
@@ -16,7 +17,7 @@ function fetchAndModifyProducts() {
             var appendPromise = new Promise((resolve, reject) => {
                 var checkAppendInterval = setInterval(() => {
                     // console.log('Parsed products length: ' + parsedProducts.children().length)
-                    if (parsedProducts.children().length >= 100) {
+                    if (parsedProducts.children().length >= 0) {
                         clearInterval(checkAppendInterval);
                         $('#products-container').append(parsedProducts);
                         // console.log('Products appended successfully.');
@@ -140,35 +141,64 @@ function updatePageNumbers(itemsPerPage) {
 function handlePrevButtonClick() {
     if (paginationData.currentPage > 1) {
         setTimeout(() => {
-            window.scrollTo({
+            if(typeof document.getElementsByClassName('rolex-grid-wrap')[0]){
+                var sectionOffset = $('.rolex-grid-wrap').offset().top;
+                var scrollToPosition = sectionOffset - 200;
+                $(window).scrollTop(scrollToPosition);
+            } else {
+                window.scrollTo({
                 top: 100,
                 behavior: 'smooth'
-            });
+                });
+            }
+            
         });
         paginationData.currentPage--;
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        document.getElementsByClassName('next-page')[0].style.display = 'block';
+        
+        if (parseInt(paginationData.currentPage) === 1) {
+            document.getElementsByClassName('prev-page')[0].style.display = 'none';
+        } 
+        
+        
     }
 }
 
 function handleNextButtonClick() {
     if (paginationData.currentPage < paginationData.totalPages) {
         setTimeout(() => {
-            window.scrollTo({
+            if(typeof document.getElementsByClassName('rolex-grid-wrap')[0]){
+                var sectionOffset = $('.rolex-grid-wrap').offset().top;
+                var scrollToPosition = sectionOffset - 200;
+                $(window).scrollTop(scrollToPosition);
+            } else {
+                window.scrollTo({
                 top: 100,
                 behavior: 'smooth'
-            });
+                });
+            }
         });
         paginationData.currentPage++;
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
+        
+        if (paginationData.currentPage + 1 === paginationData.totalPages) {
+            document.getElementsByClassName('next-page')[0].style.display = 'none';
+        } 
     }
 }
 
 function createPaginationForProducts(itemsPerPage, reset) {
     document.getElementsByClassName('rolex-pagination-box')[0].style.display = 'none';
+    
+    document.getElementsByClassName('prev-page')[0].style.cursor = 'pointer';
 
     const productsContainer = document.getElementById('products-container');
     const productItems = Array.from(productsContainer.getElementsByClassName('rolex-grid-item')).filter(item => item.style.display !== 'none');
@@ -212,6 +242,25 @@ function createPaginationForProducts(itemsPerPage, reset) {
     // Add event listeners
     prevButton.addEventListener('click', handlePrevButtonClick);
     nextButton.addEventListener('click', handleNextButtonClick);
+    
+    if (parseInt(paginationData.currentPage) === 1) {
+        document.getElementsByClassName('prev-page')[0].style.display = 'none';
+    } else {
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
+    }
+    
+    if (((paginationData.productItems.length - 1) / paginationData.itemsPerPage + 1) === parseInt(paginationData.currentPage)) {
+        document.getElementsByClassName('next-page')[0].style.display = 'none';
+    } else {
+        document.getElementsByClassName('next-page')[0].style.display = 'block';
+    }
+    
+//     if (paginationData.currentPage + 1 === paginationData.totalPages) {
+//         document.getElementsByClassName('next-page')[0].style.display = 'none';
+//     } 
+
+    
+    
 }
 
 function initFilters() {
@@ -267,6 +316,7 @@ function initFilters() {
               const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
               checkboxDiv.classList.remove('w--redirected-checked');
+              applyFilters();
             });
 
             // Trigger filter change event to apply changes
@@ -384,3 +434,4 @@ function initFilters() {
     createPaginationForProducts(18, reset);
     }
 }
+
