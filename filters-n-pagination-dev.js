@@ -417,7 +417,7 @@ function initFilters() {
 //           console.log('Processing filter with name: ' + filterName);
 //           console.log('Is Checked: ' + isChecked);
             
-          return isChecked && filterValues.some(value => value.toLowerCase() === filterName.toLowerCase());
+          return isChecked && parsedFilterValues.some(value => value.toLowerCase() === filterName.toLowerCase());
         });
 
       });
