@@ -188,7 +188,7 @@ function handleNextButtonClick() {
         
         document.getElementsByClassName('prev-page')[0].style.display = 'block';
         
-        if (paginationData.currentPage + 1 === paginationData.totalPages) {
+        if (paginationData.currentPage === paginationData.totalPages) {
             document.getElementsByClassName('next-page')[0].style.display = 'none';
         } 
     }
