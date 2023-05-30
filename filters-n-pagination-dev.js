@@ -6,7 +6,7 @@ function fetchAndModifyProducts() {
         $('.w-pagination-next').hide();
 
         return $.ajax({
-            url: '/rolex/watches?f4984b32_page=2',
+            url: '/rs-en/rolex/watches?f4984b32_page=2',
             type: 'GET'
         }).then(secondPageResponse => {
             // console.log('Second page response received:', secondPageResponse);
