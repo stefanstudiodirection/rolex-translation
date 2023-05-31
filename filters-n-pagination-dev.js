@@ -246,9 +246,13 @@ function createPaginationForProducts(itemsPerPage, reset) {
 
     // Get the value of the f4984b32_page query parameter
     const pageParam = url.searchParams.get('page');
+    
+    if (reset) {
+        paginationData.currentPage = 1;
+    }
 
     // Check if the parameter exists and its value is a number
-    if (pageParam && !isNaN(pageParam) && !reset) {
+    if (pageParam && !isNaN(pageParam)) {
       // Perform your desired action here
       console.log('The value of age is a number:', pageParam);
       paginationData.currentPage = pageParam;
