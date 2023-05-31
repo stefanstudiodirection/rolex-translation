@@ -334,17 +334,17 @@ function initFilters() {
             
           const pathWithoutQuery = window.location.pathname.split('?')[0];
             
-          if (pathWithoutQuery.endsWith('/rolex-womens-watches')) {
-              filterNames.push('Women');
-          }
+//           if (pathWithoutQuery.endsWith('/rolex-womens-watches')) {
+//               filterNames.push('Women');
+//           }
             
-          if (pathWithoutQuery.endsWith('/rolex-mens-watches')) {
-              filterNames.push('Men');
-          }
+//           if (pathWithoutQuery.endsWith('/rolex-mens-watches')) {
+//               filterNames.push('Men');
+//           }
             
-          if (pathWithoutQuery.endsWith('/rolex-gold-watches')) {
-              filterNames.push('Gold');
-          }
+//           if (pathWithoutQuery.endsWith('/rolex-gold-watches')) {
+//               filterNames.push('Gold');
+//           }
             
           filterParentElements.forEach((parentElement) => {
               const label = parentElement.querySelector('.rolex-form-text');
