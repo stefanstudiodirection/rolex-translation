@@ -1,12 +1,15 @@
 function fetchAndModifyProducts() {
     const pathWithoutQuery = window.location.pathname.split('?')[0];
-    if (pathWithoutQuery.endsWith('/rolex/watches')) {
+    if (pathWithoutQuery.endsWith('/rolex/watches') || 
+        pathWithoutQuery.endsWith('/rolex/watches/rolex-mens-watches') || 
+        pathWithoutQuery.endsWith('/rolex/watches/rolex-womens-watches') || 
+        pathWithoutQuery.endsWith('/rolex/watches/rolex-gold-watches')) {
 //     if (true) { // Keep the URL check as always true
         console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
 
         return $.ajax({
-            url: '?f4984b32_page=2',
+            url: '/rs-en/rolex/watches?f4984b32_page=2',
             type: 'GET'
         }).then(secondPageResponse => {
             // console.log('Second page response received:', secondPageResponse);
@@ -18,20 +21,10 @@ function fetchAndModifyProducts() {
                     // console.log('Parsed products length: ' + parsedProducts.children().length)
                     if (parsedProducts.children().length >= 100) {
                         clearInterval(checkAppendInterval);
-                        
                         $('#products-container').append(parsedProducts);
                         // console.log('Products appended successfully.');
-                        
-                        var scriptElement = document.createElement('script');
-                        scriptElement.src = 'https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsnest@1/cmsnest.js';
-                        scriptElement.defer = true;
-                        document.body.appendChild(scriptElement);
-                        
-                        setTimeout(() => {
-                            createPaginationForProducts(18);
-                            resolve();
-                        }, 100);
-                        
+                        createPaginationForProducts(18);
+                        resolve();
                     }
                 }, 100);
             });
@@ -150,35 +143,64 @@ function updatePageNumbers(itemsPerPage) {
 function handlePrevButtonClick() {
     if (paginationData.currentPage > 1) {
         setTimeout(() => {
-            window.scrollTo({
+            if(typeof document.getElementsByClassName('rolex-grid-wrap')[0]){
+                var sectionOffset = $('.rolex-grid-wrap').offset().top;
+                var scrollToPosition = sectionOffset - 200;
+                $(window).scrollTop(scrollToPosition);
+            } else {
+                window.scrollTo({
                 top: 100,
                 behavior: 'smooth'
-            });
+                });
+            }
+            
         });
         paginationData.currentPage--;
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        document.getElementsByClassName('next-page')[0].style.display = 'block';
+        
+        if (parseInt(paginationData.currentPage) === 1) {
+            document.getElementsByClassName('prev-page')[0].style.display = 'none';
+        } 
+        
+        
     }
 }
 
 function handleNextButtonClick() {
     if (paginationData.currentPage < paginationData.totalPages) {
         setTimeout(() => {
-            window.scrollTo({
+            if(typeof document.getElementsByClassName('rolex-grid-wrap')[0]){
+                var sectionOffset = $('.rolex-grid-wrap').offset().top;
+                var scrollToPosition = sectionOffset - 200;
+                $(window).scrollTop(scrollToPosition);
+            } else {
+                window.scrollTo({
                 top: 100,
                 behavior: 'smooth'
-            });
+                });
+            }
         });
         paginationData.currentPage++;
         updatePageUrl(paginationData.currentPage);
         updatePageNumbers(paginationData.itemsPerPage);
         displayItems(paginationData.itemsPerPage);
+        
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
+        
+        if (paginationData.currentPage === paginationData.totalPages) {
+            document.getElementsByClassName('next-page')[0].style.display = 'none';
+        } 
     }
 }
 
 function createPaginationForProducts(itemsPerPage, reset) {
     document.getElementsByClassName('rolex-pagination-box')[0].style.display = 'none';
+    
+    document.getElementsByClassName('prev-page')[0].style.cursor = 'pointer';
 
     const productsContainer = document.getElementById('products-container');
     const productItems = Array.from(productsContainer.getElementsByClassName('rolex-grid-item')).filter(item => item.style.display !== 'none');
@@ -198,14 +220,14 @@ function createPaginationForProducts(itemsPerPage, reset) {
     // Check if the parameter exists and its value is a number
     if (pageParam && !isNaN(pageParam) && !reset) {
       // Perform your desired action here
-      console.log('The value of page is a number:', pageParam);
+      console.log('The value of age is a number:', pageParam);
       paginationData.currentPage = pageParam;
       
     } else {
       // Handle the case when the parameter doesn't exist or its value is not a number
-      console.log('The f4984b32_page parameter is missing or its value is not a number.');
+      console.log('The page parameter is missing or its value is not a number.');
       paginationData.currentPage = 1;
-      updatePageUrl(1);
+//       updatePageUrl(1);
     }
 
     
@@ -222,6 +244,29 @@ function createPaginationForProducts(itemsPerPage, reset) {
     // Add event listeners
     prevButton.addEventListener('click', handlePrevButtonClick);
     nextButton.addEventListener('click', handleNextButtonClick);
+    
+    if (parseInt(paginationData.currentPage) === 1) {
+        document.getElementsByClassName('prev-page')[0].style.display = 'none';
+    } else {
+        document.getElementsByClassName('prev-page')[0].style.display = 'block';
+    }
+    
+    console.log('product items length: ' + paginationData.productItems.length);
+    console.log('itemws per page: ' + paginationData.itemsPerPage);
+    console.log('current page: ' + paginationData.currentPage);
+    
+    if ((paginationData.productItems.length  / paginationData.itemsPerPage) + 1 === parseInt(paginationData.currentPage)) {
+        document.getElementsByClassName('next-page')[0].style.display = 'none';
+    } else {
+        document.getElementsByClassName('next-page')[0].style.display = 'block';
+    }
+   
+//     if (paginationData.currentPage + 1 === paginationData.totalPages) {
+//         document.getElementsByClassName('next-page')[0].style.display = 'none';
+//     } 
+
+    
+    
 }
 
 function initFilters() {
@@ -277,6 +322,7 @@ function initFilters() {
               const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
               checkboxDiv.classList.remove('w--redirected-checked');
+              applyFilters();
             });
 
             // Trigger filter change event to apply changes
@@ -285,6 +331,20 @@ function initFilters() {
           });
             
           const filterNames = parseFilterQuery();
+            
+          const pathWithoutQuery = window.location.pathname.split('?')[0];
+            
+          if (pathWithoutQuery.endsWith('/rolex-womens-watches')) {
+              filterNames.push('Women');
+          }
+            
+          if (pathWithoutQuery.endsWith('/rolex-mens-watches')) {
+              filterNames.push('Men');
+          }
+            
+          if (pathWithoutQuery.endsWith('/rolex-gold-watches')) {
+              filterNames.push('Gold');
+          }
             
           filterParentElements.forEach((parentElement) => {
               const label = parentElement.querySelector('.rolex-form-text');
@@ -337,10 +397,21 @@ function initFilters() {
       
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
-      const filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+      let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+        const parsedFilterValues = [];
+        filterValues = filterValues.map(value => {
+          if (value.includes(';')) {
+            parsedFilterValues.push(...value.split(';'));
+          } else {
+            parsedFilterValues.push(value);
+          }
+        });
         
-//       console.log('Filter Values: ');
-//       console.log(filterValues);
+      console.log('Filter Values: ');
+      console.log(filterValues);
+        
+      console.log('Parsed Filter Values: ');
+      console.log(parsedFilterValues);
         
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
@@ -366,7 +437,7 @@ function initFilters() {
 //           console.log('Processing filter with name: ' + filterName);
 //           console.log('Is Checked: ' + isChecked);
             
-          return isChecked && filterValues.includes(filterName);
+          return isChecked && parsedFilterValues.some(value => value.toLowerCase() === filterName.toLowerCase());
         });
 
       });
@@ -394,3 +465,4 @@ function initFilters() {
     createPaginationForProducts(18, reset);
     }
 }
+
