@@ -75,6 +75,28 @@ function updatePageUrl(val) {
   window.history.replaceState({}, '', url);
 }
 
+function removeFilterUrlParam(filterName) {
+  const url = new URL(window.location.href);
+  const filters = url.searchParams.get('filters');
+  
+  if (filters) {
+    const updatedFilters = filters.split(',').filter(name => name !== filterName);
+    if (updatedFilters.length > 0) {
+      url.searchParams.set('filters', updatedFilters.join(','));
+    } else {
+      url.searchParams.delete('filters');
+    }
+    window.history.replaceState({}, '', url);
+  }
+}
+
+function removeAllFilterParams() {
+  const url = new URL(window.location.href);
+  url.searchParams.delete('filters');
+  window.history.replaceState({}, '', url);
+}
+
+
 function handleFilterURL(filterName, addFlag) {
   const url = new URL(window.location.href);
   const filters = url.searchParams.get('filters');
@@ -112,6 +134,14 @@ function parseFilterQuery() {
 
   return [];
 }
+
+function removeSkeletonClass() {
+  const element = document.querySelector('.rolex-grid-listwrap');
+  if (element) {
+    element.classList.remove('skeleton');
+  }
+}
+
 
 function displayItems(itemsPerPage) {
 
@@ -218,7 +248,7 @@ function createPaginationForProducts(itemsPerPage, reset) {
     const pageParam = url.searchParams.get('page');
 
     // Check if the parameter exists and its value is a number
-    if (pageParam && !isNaN(pageParam) && !reset) {
+    if (pageParam && !isNaN(pageParam)) {
       // Perform your desired action here
       console.log('The value of age is a number:', pageParam);
       paginationData.currentPage = pageParam;
@@ -229,7 +259,17 @@ function createPaginationForProducts(itemsPerPage, reset) {
       paginationData.currentPage = 1;
 //       updatePageUrl(1);
     }
-
+    
+    if (reset) {
+        console.log('Resetting the page...');
+        paginationData.currentPage = 1;
+        updatePageUrl(paginationData.currentPage);
+    } else if (paginationData.currentPage === 1) {
+        // do nothing
+    } else {
+        updatePageUrl(paginationData.currentPage);    
+    }
+    
     
     updatePageNumbers(itemsPerPage);
     displayItems(itemsPerPage);
@@ -322,8 +362,16 @@ function initFilters() {
               const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
               checkboxDiv.classList.remove('w--redirected-checked');
-              applyFilters();
+              
             });
+              
+              
+            removeAllFilterParams();
+//             createPaginationForProducts(18, true);
+              
+            setTimeout(() => {
+                applyFilters(true);
+            }, 100);
 
             // Trigger filter change event to apply changes
             const filterChangeEvent = new Event('change');
@@ -362,6 +410,7 @@ function initFilters() {
               
             });
             
+            removeSkeletonClass();
             applyFilters();
 
           resolve(); // Resolve the promise
@@ -407,11 +456,11 @@ function initFilters() {
           }
         });
         
-      console.log('Filter Values: ');
-      console.log(filterValues);
+//       console.log('Filter Values: ');
+//       console.log(filterValues);
         
-      console.log('Parsed Filter Values: ');
-      console.log(parsedFilterValues);
+//       console.log('Parsed Filter Values: ');
+//       console.log(parsedFilterValues);
         
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
