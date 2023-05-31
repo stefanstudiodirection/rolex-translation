@@ -75,6 +75,28 @@ function updatePageUrl(val) {
   window.history.replaceState({}, '', url);
 }
 
+function removeFilterUrlParam(filterName) {
+  const url = new URL(window.location.href);
+  const filters = url.searchParams.get('filters');
+  
+  if (filters) {
+    const updatedFilters = filters.split(',').filter(name => name !== filterName);
+    if (updatedFilters.length > 0) {
+      url.searchParams.set('filters', updatedFilters.join(','));
+    } else {
+      url.searchParams.delete('filters');
+    }
+    window.history.replaceState({}, '', url);
+  }
+}
+
+function removeAllFilterParams() {
+  const url = new URL(window.location.href);
+  url.searchParams.delete('filters');
+  window.history.replaceState({}, '', url);
+}
+
+
 function handleFilterURL(filterName, addFlag) {
   const url = new URL(window.location.href);
   const filters = url.searchParams.get('filters');
@@ -324,6 +346,8 @@ function initFilters() {
               checkboxDiv.classList.remove('w--redirected-checked');
               applyFilters();
             });
+              
+            removeAllFilterParams();
 
             // Trigger filter change event to apply changes
             const filterChangeEvent = new Event('change');
