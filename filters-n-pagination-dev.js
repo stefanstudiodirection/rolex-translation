@@ -248,6 +248,7 @@ function createPaginationForProducts(itemsPerPage, reset) {
     const pageParam = url.searchParams.get('page');
     
     if (reset) {
+        console.log('Resetting the page...');
         paginationData.currentPage = 1;
     }
 
@@ -360,7 +361,7 @@ function initFilters() {
             });
               
             removeAllFilterParams();
-            createPaginationForProducts(18, reset);
+            createPaginationForProducts(18, true);
 
             // Trigger filter change event to apply changes
             const filterChangeEvent = new Event('change');
