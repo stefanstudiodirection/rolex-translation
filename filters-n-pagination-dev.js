@@ -246,11 +246,6 @@ function createPaginationForProducts(itemsPerPage, reset) {
 
     // Get the value of the f4984b32_page query parameter
     const pageParam = url.searchParams.get('page');
-    
-    if (reset) {
-        console.log('Resetting the page...');
-        paginationData.currentPage = 1;
-    }
 
     // Check if the parameter exists and its value is a number
     if (pageParam && !isNaN(pageParam)) {
@@ -264,7 +259,11 @@ function createPaginationForProducts(itemsPerPage, reset) {
       paginationData.currentPage = 1;
 //       updatePageUrl(1);
     }
-
+    
+    if (reset) {
+        console.log('Resetting the page...');
+        paginationData.currentPage = 1;
+    }
     
     updatePageNumbers(itemsPerPage);
     displayItems(itemsPerPage);
