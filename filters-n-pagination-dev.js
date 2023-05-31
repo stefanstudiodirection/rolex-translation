@@ -446,11 +446,11 @@ function initFilters() {
           }
         });
         
-      console.log('Filter Values: ');
-      console.log(filterValues);
+//       console.log('Filter Values: ');
+//       console.log(filterValues);
         
-      console.log('Parsed Filter Values: ');
-      console.log(parsedFilterValues);
+//       console.log('Parsed Filter Values: ');
+//       console.log(parsedFilterValues);
         
       // Check if the watch should be displayed or hidden based on the selected filters
       const shouldDisplay = Object.entries(selectedFilters).every(([filterGroup, filterValue]) => {
