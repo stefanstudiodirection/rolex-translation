@@ -265,6 +265,7 @@ function createPaginationForProducts(itemsPerPage, reset) {
         paginationData.currentPage = 1;
     }
     
+    updatePageUrl(paginationData.currentPage);
     updatePageNumbers(itemsPerPage);
     displayItems(itemsPerPage);
 
