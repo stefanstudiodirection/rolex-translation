@@ -263,9 +263,14 @@ function createPaginationForProducts(itemsPerPage, reset) {
     if (reset) {
         console.log('Resetting the page...');
         paginationData.currentPage = 1;
+        updatePageUrl(paginationData.currentPage);
+    } else if (paginationData.currentPage === 1) {
+        // do nothing
+    } else {
+        updatePageUrl(paginationData.currentPage);    
     }
     
-    updatePageUrl(paginationData.currentPage);
+    
     updatePageNumbers(itemsPerPage);
     displayItems(itemsPerPage);
 
