@@ -135,6 +135,14 @@ function parseFilterQuery() {
   return [];
 }
 
+function removeSkeletonClass() {
+  const element = document.querySelector('.rolex-grid-listwrap');
+  if (element) {
+    element.classList.remove('skeleton');
+  }
+}
+
+
 function displayItems(itemsPerPage) {
 
     // console.log('Total items in display items: ' + paginationData.productItems.length);
@@ -348,6 +356,7 @@ function initFilters() {
             });
               
             removeAllFilterParams();
+            createPaginationForProducts(18, reset);
 
             // Trigger filter change event to apply changes
             const filterChangeEvent = new Event('change');
@@ -386,6 +395,7 @@ function initFilters() {
               
             });
             
+            removeSkeletonClass();
             applyFilters();
 
           resolve(); // Resolve the promise
