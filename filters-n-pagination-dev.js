@@ -357,11 +357,16 @@ function initFilters() {
               const checkboxDiv = parentElement.querySelector('.w-checkbox-input');
               checkbox.checked = false;
               checkboxDiv.classList.remove('w--redirected-checked');
-              applyFilters();
+              
             });
               
+              
             removeAllFilterParams();
-            createPaginationForProducts(18, true);
+//             createPaginationForProducts(18, true);
+              
+            setTimeout(() => {
+                applyFilters(true);
+            }, 100);
 
             // Trigger filter change event to apply changes
             const filterChangeEvent = new Event('change');
