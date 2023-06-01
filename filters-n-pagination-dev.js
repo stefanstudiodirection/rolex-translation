@@ -20,7 +20,7 @@ function fetchAndModifyProducts() {
 
 
         return $.ajax({
-            url: '/rs-en/rolex/watches?f4984b32_page=2',
+            url: 'secondPageUrl',
             type: 'GET'
         }).then(secondPageResponse => {
             // console.log('Second page response received:', secondPageResponse);
