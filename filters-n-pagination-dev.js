@@ -7,6 +7,17 @@ function fetchAndModifyProducts() {
 //     if (true) { // Keep the URL check as always true
         console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
+        
+        const secondPageUrl = '/rs-en/rolex/watches?f4984b32_page=2';
+        
+        if (localStorage.getItem('reg') && localStorage.getItem('lang')) {
+          // Get the values of 'reg' and 'lang' from local storage
+          const regValue = localStorage.getItem('reg');
+          const langValue = localStorage.getItem('lang');
+
+          secondPageUrl = secondPageUrl.replace('rs-en', `${regValue}-${langValue}`);
+        }
+
 
         return $.ajax({
             url: '/rs-en/rolex/watches?f4984b32_page=2',
