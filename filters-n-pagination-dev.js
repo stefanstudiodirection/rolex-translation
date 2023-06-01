@@ -20,7 +20,7 @@ function fetchAndModifyProducts() {
 
 
         return $.ajax({
-            url: 'secondPageUrl',
+            url: secondPageUrl,
             type: 'GET'
         }).then(secondPageResponse => {
             // console.log('Second page response received:', secondPageResponse);
