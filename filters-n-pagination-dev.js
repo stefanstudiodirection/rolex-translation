@@ -8,7 +8,7 @@ function fetchAndModifyProducts() {
         console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
         
-        const secondPageUrl = '/rs-en/rolex/watches?f4984b32_page=2';
+        let secondPageUrl = '/rs-en/rolex/watches?f4984b32_page=2';
         
         if (localStorage.getItem('reg') && localStorage.getItem('lang')) {
           // Get the values of 'reg' and 'lang' from local storage
