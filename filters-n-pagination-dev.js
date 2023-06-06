@@ -11,6 +11,14 @@ function updateHreflang() {
     href.search = queryString;
     tag.href = href.href;
   });
+  
+  // Update the canonical link with the query string
+  const canonicalTag = document.querySelector('link[rel="canonical"]');
+  if (canonicalTag) {
+    const canonicalHref = new URL(canonicalTag.href);
+    canonicalHref.search = queryString;
+    canonicalTag.href = canonicalHref.href;
+  }
 }
 
 function smallLetterHack(translations) {
