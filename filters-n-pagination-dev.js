@@ -1,3 +1,33 @@
+function updateHreflang() {
+  // Access the query string from the browser URL
+  const queryString = window.location.search;
+
+  // Get all hreflang tags in the DOM
+  const hreflangTags = document.querySelectorAll('link[rel="alternate"][hreflang]');
+
+  // Update hreflang tags with the query string
+  hreflangTags.forEach((tag) => {
+    const href = new URL(tag.href);
+    href.search = queryString;
+    tag.href = href.href;
+  });
+}
+
+function smallLetterHack(translations) {
+  Object.entries(translations).forEach(([lang, translation]) => {
+        Object.entries(translation).forEach(([key, value]) => {
+            const parts = key.split(";");
+            const duplicatedKey = parts.map(part => part.trim().toLowerCase()).join(", ");
+            translation[duplicatedKey] = value;
+            
+            const lowerKey = key.charAt(0).toLowerCase() + key.slice(1);
+            translation[lowerKey] = value;
+        });
+    });
+  
+  return translations;
+}
+
 function fetchAndModifyProducts() {
     const pathWithoutQuery = window.location.pathname.split('?')[0];
     if (pathWithoutQuery.endsWith('/rolex/watches') || 
@@ -7,20 +37,9 @@ function fetchAndModifyProducts() {
 //     if (true) { // Keep the URL check as always true
         console.log('Fetching and modifying products...');
         $('.w-pagination-next').hide();
-        
-        let secondPageUrl = '/rs-en/rolex/watches?f4984b32_page=2';
-        
-        if (localStorage.getItem('reg') && localStorage.getItem('lang')) {
-          // Get the values of 'reg' and 'lang' from local storage
-          const regValue = localStorage.getItem('reg');
-          const langValue = localStorage.getItem('lang');
-
-          secondPageUrl = secondPageUrl.replace('rs-en', `${regValue}-${langValue}`);
-        }
-
 
         return $.ajax({
-            url: secondPageUrl,
+            url: '/rs-en/rolex/watches?f4984b32_page=2',
             type: 'GET'
         }).then(secondPageResponse => {
             // console.log('Second page response received:', secondPageResponse);
@@ -173,6 +192,8 @@ function displayItems(itemsPerPage) {
             // console.log('false');
         }
     }
+  
+    updateHreflang();
 }
 
 function updatePageNumbers(itemsPerPage) {
@@ -443,6 +464,7 @@ function initFilters() {
         const filterGroup = checkbox.getAttribute('filter-group');
         const label = parentElement.querySelector('.rolex-form-text');
         const filterValue = label.textContent;
+        //const filterValue = label.getAttribute('data-i18n');
         filters[filterGroup] = filterValue;
       }
       return filters;
@@ -457,7 +479,8 @@ function initFilters() {
       
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
-      let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+        let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+        //let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.getAttribute('data-i18n'));
         const parsedFilterValues = [];
         filterValues = filterValues.map(value => {
           if (value.includes(';')) {
@@ -520,10 +543,8 @@ function initFilters() {
       document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'flex';
       document.getElementById('empty-state').style.display = 'none';
     }
-
+    
     // Call your pagination function here
     createPaginationForProducts(18, reset);
     }
 }
-
-
