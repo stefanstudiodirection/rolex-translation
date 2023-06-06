@@ -177,6 +177,8 @@ function displayItems(itemsPerPage) {
             // console.log('false');
         }
     }
+  
+    updateHreflang();
 }
 
 function updatePageNumbers(itemsPerPage) {
@@ -524,7 +526,7 @@ function initFilters() {
       document.getElementsByClassName('rolex-pagination__container')[0].style.display = 'flex';
       document.getElementById('empty-state').style.display = 'none';
     }
-
+    
     // Call your pagination function here
     createPaginationForProducts(18, reset);
     }
