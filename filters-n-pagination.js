@@ -13,6 +13,21 @@ function updateHreflang() {
   });
 }
 
+function smallLetterHack(translations) {
+  Object.entries(translations).forEach(([lang, translation]) => {
+        Object.entries(translation).forEach(([key, value]) => {
+            const parts = key.split(",");
+            const duplicatedKey = parts.map(part => part.trim().toLowerCase()).join(", ");
+            translation[duplicatedKey] = value;
+            
+            const lowerKey = key.charAt(0).toLowerCase() + key.slice(1);
+            translation[lowerKey] = value;
+        });
+    });
+  
+  return translations;
+}
+
 function fetchAndModifyProducts() {
     const pathWithoutQuery = window.location.pathname.split('?')[0];
     if (pathWithoutQuery.endsWith('/rolex/watches') || 
