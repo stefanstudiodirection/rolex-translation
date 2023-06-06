@@ -16,7 +16,7 @@ function updateHreflang() {
 function smallLetterHack(translations) {
   Object.entries(translations).forEach(([lang, translation]) => {
         Object.entries(translation).forEach(([key, value]) => {
-            const parts = key.split(",");
+            const parts = key.split(";");
             const duplicatedKey = parts.map(part => part.trim().toLowerCase()).join(", ");
             translation[duplicatedKey] = value;
             
