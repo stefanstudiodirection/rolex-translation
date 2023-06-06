@@ -1,3 +1,18 @@
+function updateHreflang() {
+  // Access the query string from the browser URL
+  const queryString = window.location.search;
+
+  // Get all hreflang tags in the DOM
+  const hreflangTags = document.querySelectorAll('link[rel="alternate"][hreflang]');
+
+  // Update hreflang tags with the query string
+  hreflangTags.forEach((tag) => {
+    const href = new URL(tag.href);
+    href.search = queryString;
+    tag.href = href.href;
+  });
+}
+
 function fetchAndModifyProducts() {
     const pathWithoutQuery = window.location.pathname.split('?')[0];
     if (pathWithoutQuery.endsWith('/rolex/watches') || 
