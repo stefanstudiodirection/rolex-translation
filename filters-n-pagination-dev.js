@@ -463,8 +463,8 @@ function initFilters() {
       if (checkbox.checked) {
         const filterGroup = checkbox.getAttribute('filter-group');
         const label = parentElement.querySelector('.rolex-form-text');
-        const filterValue = label.textContent;
-        //const filterValue = label.getAttribute('data-i18n');
+        //const filterValue = label.textContent;
+        const filterValue = label.getAttribute('data-i18n');
         filters[filterGroup] = filterValue;
       }
       return filters;
@@ -479,8 +479,8 @@ function initFilters() {
       
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
-        let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
-        //let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.getAttribute('data-i18n'));
+        //let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+        let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.getAttribute('data-i18n'));
         const parsedFilterValues = [];
         filterValues = filterValues.map(value => {
           if (value.includes(';')) {
