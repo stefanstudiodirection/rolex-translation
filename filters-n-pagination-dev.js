@@ -516,7 +516,7 @@ function initFilters() {
 //           console.log('Checkbox input: ');
 //           console.log(checkbox);
           const label = parentElement.querySelector('.rolex-form-text');
-          const filterName = label.textContent;
+          const filterName = label.getAttribute('data-i18n');
 //           console.log('Processing filter with name: ' + filterName);
 //           console.log('Is Checked: ' + isChecked);
             
