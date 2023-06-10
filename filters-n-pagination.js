@@ -37,43 +37,69 @@ function smallLetterHack(translations) {
 }
 
 function fetchAndModifyProducts() {
-    const pathWithoutQuery = window.location.pathname.split('?')[0];
-    if (pathWithoutQuery.endsWith('/rolex/watches') || 
-        pathWithoutQuery.endsWith('/rolex/watches/rolex-mens-watches') || 
-        pathWithoutQuery.endsWith('/rolex/watches/rolex-womens-watches') || 
-        pathWithoutQuery.endsWith('/rolex/watches/rolex-gold-watches')) {
-//     if (true) { // Keep the URL check as always true
-        console.log('Fetching and modifying products...');
-        $('.w-pagination-next').hide();
-
-        return $.ajax({
-            url: '/rs-en/rolex/watches?f4984b32_page=2',
-            type: 'GET'
-        }).then(secondPageResponse => {
-            // console.log('Second page response received:', secondPageResponse);
-            var parsedProducts = $(secondPageResponse).find('.rolex-grid-item');
-            // console.log('Parsed products:', parsedProducts);
-
-            var appendPromise = new Promise((resolve, reject) => {
-                var checkAppendInterval = setInterval(() => {
-                    // console.log('Parsed products length: ' + parsedProducts.children().length)
-                    if (parsedProducts.children().length >= 100) {
-                        clearInterval(checkAppendInterval);
-                        $('#products-container').append(parsedProducts);
-                        // console.log('Products appended successfully.');
-                        createPaginationForProducts(18);
-                        resolve();
-                    }
-                }, 100);
-            });
-
-            return appendPromise;
-        });
-    } else {
-        // console.log('URL does not match. Skipping AJAX call.');
-        return Promise.resolve(); // Skip the AJAX call if the URL doesn't match
+  const pathWithoutQuery = window.location.pathname.split('?')[0];
+  if (
+    pathWithoutQuery.endsWith('/rolex/watches') ||
+    pathWithoutQuery.endsWith('/rolex/watches/rolex-mens-watches') ||
+    pathWithoutQuery.endsWith('/rolex/watches/rolex-womens-watches') ||
+    pathWithoutQuery.endsWith('/rolex/watches/rolex-gold-watches')
+  ) {
+    // Check if parsedProducts is already cached in localStorage
+    const cachedProducts = localStorage.getItem('parsedProducts');
+    if (cachedProducts) {
+      // If cached products exist, append them directly and return a resolved promise
+      const cachedProductsArray = JSON.parse(cachedProducts);
+      for (let i = 0; i < cachedProductsArray.length; i++) {
+        $('#products-container').append(cachedProductsArray[i]);
+      }
+      createPaginationForProducts(18);
+      return Promise.resolve();
     }
+
+    console.log('Fetching and modifying products...');
+    $('.w-pagination-next').hide();
+
+    return $.ajax({
+      url: '/rs-en/rolex/watches?f4984b32_page=2',
+      type: 'GET',
+    })
+      .then((secondPageResponse) => {
+        const parsedProducts = $(secondPageResponse).find('.rolex-grid-item');
+
+        const appendPromise = new Promise((resolve, reject) => {
+          const checkAppendInterval = setInterval(() => {
+            if (parsedProducts.children().length >= 100) {
+              clearInterval(checkAppendInterval);
+              $('#products-container').append(parsedProducts);
+
+              // Cache parsedProducts in localStorage for future use
+              const parsedProductsArray = [];
+              parsedProducts.each(function () {
+                parsedProductsArray.push(this.outerHTML);
+              });
+              localStorage.setItem('parsedProducts', JSON.stringify(parsedProductsArray));
+
+              createPaginationForProducts(18);
+              resolve();
+            }
+          }, 100);
+        });
+
+        return appendPromise;
+      })
+      .catch((error) => {
+        console.log('Error fetching products:', error);
+
+        // If an error occurs during the AJAX request, remove the cached products
+        localStorage.removeItem('parsedProducts');
+        return Promise.reject(error);
+      });
+  } else {
+    return Promise.resolve();
+  }
 }
+
+
 
 function waitForElm(selector) {
     return new Promise(resolve => {
@@ -471,8 +497,8 @@ function initFilters() {
       if (checkbox.checked) {
         const filterGroup = checkbox.getAttribute('filter-group');
         const label = parentElement.querySelector('.rolex-form-text');
-        const filterValue = label.textContent;
-        //const filterValue = label.getAttribute('data-i18n');
+        //const filterValue = label.textContent;
+        const filterValue = label.getAttribute('data-i18n');
         filters[filterGroup] = filterValue;
       }
       return filters;
@@ -487,8 +513,8 @@ function initFilters() {
       
     watchElements.forEach((watchElement) => {
       // Get the filter values from the watch element
-        let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
-        //let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.getAttribute('data-i18n'));
+        //let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.innerHTML);
+        let filterValues = Array.from(watchElement.querySelectorAll('[fs-cmsfilter-field]')).map((filter) => filter.getAttribute('data-i18n'));
         const parsedFilterValues = [];
         filterValues = filterValues.map(value => {
           if (value.includes(';')) {
@@ -524,7 +550,7 @@ function initFilters() {
 //           console.log('Checkbox input: ');
 //           console.log(checkbox);
           const label = parentElement.querySelector('.rolex-form-text');
-          const filterName = label.textContent;
+          const filterName = label.getAttribute('data-i18n');
 //           console.log('Processing filter with name: ' + filterName);
 //           console.log('Is Checked: ' + isChecked);
             
