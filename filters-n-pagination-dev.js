@@ -48,7 +48,10 @@ function fetchAndModifyProducts() {
     const cachedProducts = localStorage.getItem('parsedProducts');
     if (cachedProducts) {
       // If cached products exist, append them directly and return a resolved promise
-      $('#products-container').append(cachedProducts);
+      const cachedProductsArray = JSON.parse(cachedProducts);
+      for (let i = 0; i < cachedProductsArray.length; i++) {
+        $('#products-container').append(cachedProductsArray[i]);
+      }
       createPaginationForProducts(18);
       return Promise.resolve();
     }
@@ -59,37 +62,43 @@ function fetchAndModifyProducts() {
     return $.ajax({
       url: '/rs-en/rolex/watches?f4984b32_page=2',
       type: 'GET',
-    }).then((secondPageResponse) => {
-      var parsedProducts = $(secondPageResponse).find('.rolex-grid-item');
+    })
+      .then((secondPageResponse) => {
+        const parsedProducts = $(secondPageResponse).find('.rolex-grid-item');
 
-      var appendPromise = new Promise((resolve, reject) => {
-        var checkAppendInterval = setInterval(() => {
-          if (parsedProducts.children().length >= 100) {
-            clearInterval(checkAppendInterval);
-            $('#products-container').append(parsedProducts);
+        const appendPromise = new Promise((resolve, reject) => {
+          const checkAppendInterval = setInterval(() => {
+            if (parsedProducts.children().length >= 100) {
+              clearInterval(checkAppendInterval);
+              $('#products-container').append(parsedProducts);
 
-            // Cache parsedProducts in localStorage for future use
-            localStorage.setItem('parsedProducts', parsedProducts[0].outerHTML);
+              // Cache parsedProducts in localStorage for future use
+              const parsedProductsArray = [];
+              parsedProducts.each(function () {
+                parsedProductsArray.push(this.outerHTML);
+              });
+              localStorage.setItem('parsedProducts', JSON.stringify(parsedProductsArray));
 
+              createPaginationForProducts(18);
+              resolve();
+            }
+          }, 100);
+        });
 
-            createPaginationForProducts(18);
-            resolve();
-          }
-        }, 100);
+        return appendPromise;
+      })
+      .catch((error) => {
+        console.log('Error fetching products:', error);
+
+        // If an error occurs during the AJAX request, remove the cached products
+        localStorage.removeItem('parsedProducts');
+        return Promise.reject(error);
       });
-
-      return appendPromise;
-    }).catch((error) => {
-      console.log('Error fetching products:', error);
-
-      // If an error occurs during the AJAX request, remove the cached products
-      localStorage.removeItem('parsedProducts');
-      return Promise.reject(error);
-    });
   } else {
     return Promise.resolve();
   }
 }
+
 
 
 function waitForElm(selector) {
