@@ -69,7 +69,8 @@ function fetchAndModifyProducts() {
             $('#products-container').append(parsedProducts);
 
             // Cache parsedProducts in localStorage for future use
-            localStorage.setItem('parsedProducts', parsedProducts.html());
+            localStorage.setItem('parsedProducts', parsedProducts[0].outerHTML);
+
 
             createPaginationForProducts(18);
             resolve();
