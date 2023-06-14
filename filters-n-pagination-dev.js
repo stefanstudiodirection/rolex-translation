@@ -231,10 +231,12 @@ function displayItems(itemsPerPage) {
 }
 
 function updatePageNumbers(itemsPerPage) {
-    const pageContainer = document.getElementById('page-container');
-    pageContainer.textContent = 'Page ' + paginationData.currentPage;
-    paginationData.totalPages = Math.ceil(paginationData.totalItems / itemsPerPage);
+  const pageContainer = document.getElementById('page-container');
+  pageContainer.textContent = 'Page ' + paginationData.currentPage;
+  pageContainer.setAttribute('data-i18n', 'Page ' + paginationData.currentPage);
+  paginationData.totalPages = Math.ceil(paginationData.totalItems / itemsPerPage);
 }
+
 
 function handlePrevButtonClick() {
     if (paginationData.currentPage > 1) {
