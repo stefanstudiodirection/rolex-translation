@@ -235,7 +235,7 @@ function updatePageNumbers(itemsPerPage) {
   pageContainer.textContent = 'Page ' + paginationData.currentPage;
   pageContainer.setAttribute('data-i18n', 'Page ' + paginationData.currentPage);
   paginationData.totalPages = Math.ceil(paginationData.totalItems / itemsPerPage);
-  translateContent();
+  // translateContent();
 }
 
 
