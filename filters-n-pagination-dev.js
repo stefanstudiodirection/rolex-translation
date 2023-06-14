@@ -52,7 +52,7 @@ function fetchAndModifyProducts() {
       for (let i = 0; i < cachedProductsArray.length; i++) {
         $('#products-container').append(cachedProductsArray[i]);
       }
-      translateContent();
+      generateI18nTags();
       createPaginationForProducts(18);
       return Promise.resolve();
     }
@@ -80,7 +80,7 @@ function fetchAndModifyProducts() {
               });
               localStorage.setItem('parsedProducts', JSON.stringify(parsedProductsArray));
 
-              translateContent();
+              generateI18nTags();
               createPaginationForProducts(18);
               resolve();
             }
