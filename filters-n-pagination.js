@@ -462,7 +462,7 @@ function initFilters() {
             
           filterParentElements.forEach((parentElement) => {
               const label = parentElement.querySelector('.rolex-form-text');
-              const filterValue = label.textContent;
+              const filterValue = label.getAttribute('data-i18n');
               
               if (filterNames.includes(filterValue)) {
                   console.log('setting filter: ' + filterValue);
