@@ -53,6 +53,7 @@ function fetchAndModifyProducts() {
       for (let i = 0; i < cachedProductsArray.length; i++) {
         $('#products-container').append(cachedProductsArray[i]);
       }
+      rewriteRelativeURLs();
       generateI18nTags();
       createPaginationForProducts(18);
       return Promise.resolve();
