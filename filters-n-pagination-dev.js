@@ -1,3 +1,4 @@
+
 function updateHreflang() {
   // Access the query string from the browser URL
   const queryString = window.location.search;
@@ -80,6 +81,7 @@ function fetchAndModifyProducts() {
               });
               localStorage.setItem('parsedProducts', JSON.stringify(parsedProductsArray));
 
+              rewriteRelativeURLs();
               generateI18nTags();
               createPaginationForProducts(18);
               resolve();
