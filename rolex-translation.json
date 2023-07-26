@@ -426,5 +426,40 @@
 
 
 
+  },
+  "sr": {
+    "rolex collection": "rolex kolekcija",
+    "new watches 2023": "novi časovnici 2023",
+    "Rolex collection": "Rolex kolekcija",
+    "New watches 2023": "Novi časovnici 2023",
+    "FILTER YOUR SEARCH": "FILTRIRAJTE PRETRAGU",
+    "Reset filters": "Resetujte filtere",
+    "STYLE": "STIL",
+    "Men": "Muški",
+    "Women": "Ženski",
+    "SIZE": "DIMENZIJE",
+    "Small size": "Male dimenzije",
+    "Mid-size": "Srednje dimenzije",
+    "Large size": "Velike dimenzije",
+    "MATERIAL": "MATERIJAL",
+    "Oystersteel": "Čelik Oystersteel",
+    "Oystersteel and gold": "Čelik Oystersteel i zlato",
+    "Gold": "Zlato",
+    "Platinum": "Platina",
+    "RLX titanium": "Titanijum RLX",
+    "DIAL": "BROJČANIK",
+    "dial": "BROJČANIK",
+    "Light dial": "Svetli brojčanik",
+    "Coloured dial": "Brojčanik u boji",
+    "Dark dial": "Tamni brojčanik",
+    "Gem-set dial": "Brojčanik ukrašen draguljima",
+    "Diamond-paved dial": "Brojčanik optočen dijamantima",
+    "VIEW COLLECTIONS": "ISTRAŽITE KOLEKCIJE",
+    "View collections": "Istrazite kolekciju"
+
+
+
+
   }
+
 }
