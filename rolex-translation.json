@@ -389,5 +389,42 @@
     "Explore all": "Explore all",
     "Cookies": "Cookies",
     "Privacy policy": "Privacy policy"
+
+  },
+
+  "me": {
+    "Contact us": "Kontaktirajte nas",
+    "FILTER YOUR SEARCH": "FILTRIRAJTE PRETRAGU",
+    "Reset filters": "Resetujte filtere",
+    "STYLE": "STIL",
+    "Men": "Muški",
+    "Women": "Ženski",
+    "SIZE": "DIMENZIJE",
+    "Small size": "Male dimenzije",
+    "Mid-size": "Srednje dimenzije",
+    "Large size": "Velike dimenzije",
+    "MATERIAL": "MATERIJAL",
+    "Oystersteel": "Čelik Oystersteel",
+    "Oystersteel and gold": "Čelik Oystersteel i zlato",
+    "Gold": "Zlato",
+    "Platinum": "Platina",
+    "RLX titanium": "Titanijum RLX",
+    "DIAL": "BROJČANIK",
+    "Light dial": "Svijetli brojčanik",
+    "Coloured dial": "Brojčanik u boji",
+    "Dark dial": "Tamni brojčanik",
+    "Gem-set dial": "Brojčanik ukrašen draguljima",
+    "Diamond-paved dial": "Brojčanik optočen dijamantima",
+    "VIEW COLLECTIONS": "ISTRAŽITE KOLEKCIJE",
+    "Take to the skies.": "Avantura na novim visinama",
+    "ROLEX AIR-KING": "ROLEX AIR-KING"
+
+
+
+
+
+
+
+
   }
 }
