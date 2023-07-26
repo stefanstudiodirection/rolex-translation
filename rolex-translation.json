@@ -9,8 +9,7 @@
     "International": "Nemzetk\u00f6zi",
     "Back": "Vvissza",
     "Rolex at Petite Gen\u00e8ve Petrovi\u0107": "Rolex \u00e9s a Petite Gen\u00e8ve Petrovi\u0107",
-    "Rolex collection": "Rolex gy\u00fcjtem\u00e9ny",
-    "New watches 2023": "\u00daj, 2023-es kar\u00f3r\u00e1k",
+
     "Servicing your Rolex": "Rolex kar\u00f3r\u00e1j\u00e1nak jav\u00edt\u00e1sa",
     "Contact us": "L\u00e9pjen kapcsolatba vel\u00fcnk",
     "Our stories": "T\u00f6rt\u00e9neteink",
@@ -197,7 +196,9 @@
     "Privacy policy": "Adatv\u00e9delmi ir\u00e1nyelvek",
     "Rolex Watchmaking":"Rolex Óragyártás",
     "ROLEX WATCHES IN BELGRADE - PETITE GENÈVE PETROVIĆ":"ROLEX ÓRÁK BUDAPESTE - PETITE GENEVE PETROVIC",
-    "Home":"Főoldal"
+    "Home":"Főoldal",
+    "Rolex collection": "Rolex gyüjtemény",
+    "New watches 2023": "Új, 2023-es karórák"
 
 
 
@@ -395,6 +396,7 @@
   "me": {
     "Contact us": "Kontaktirajte nas",
     "FILTER YOUR SEARCH": "FILTRIRAJTE PRETRAGU",
+    "filter your search": "FILTRIRAJTE PRETRAGU",
     "Reset filters": "Resetujte filtere",
     "STYLE": "STIL",
     "Men": "Muški",
@@ -417,7 +419,12 @@
     "Diamond-paved dial": "Brojčanik optočen dijamantima",
     "VIEW COLLECTIONS": "ISTRAŽITE KOLEKCIJE",
     "Take to the skies.": "Avantura na novim visinama",
-    "ROLEX AIR-KING": "ROLEX AIR-KING"
+    "ROLEX AIR-KING": "ROLEX AIR-KING",
+    "The Rolex watches featured below are from the official catalogue and do not represent stock availability. If you would like to enquire about a particular timepiece, please contact us.": "Časovnici kompanije Rolex predstavljeni u nastavku su iz zvaničnog kataloga i ne predstavljaju raspoloživost zaliha. Ukoliko želite da se raspitate o konkretnom modelu, slobodno nam se obratite.",
+    "Performance and prestige": "Performanse i prestiž",
+    "ROLEX WATCHES IN BELGRADE - PETITE GENÈVE PETROVIĆ": "ČASOVNICI ROLEX U PORTO MONTENEGRU – PETITE GENEVE PETROVIĆ"
+
+    
 
 
 
@@ -433,7 +440,7 @@
     "Rolex collection": "Rolex kolekcija",
     "New watches 2023": "Novi časovnici 2023",
     "FILTER YOUR SEARCH": "FILTRIRAJTE PRETRAGU",
-    "filter your search":"FILTRIRAJTE PRETRAGU",
+    "filter your search": "FILTRIRAJTE PRETRAGU",
     "Reset filters": "Resetujte filtere",
     "STYLE": "STIL",
     "Men": "Muški",
@@ -456,7 +463,8 @@
     "Gem-set dial": "Brojčanik ukrašen draguljima",
     "Diamond-paved dial": "Brojčanik optočen dijamantima",
     "VIEW COLLECTIONS": "ISTRAŽITE KOLEKCIJE",
-    "View collections": "Istrazite kolekciju"
+    "View collections": "Istrazite kolekciju",
+    "Servicing your Rolex": "Servisanje Rolex casovnika"
 
 
 
