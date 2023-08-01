@@ -460,7 +460,8 @@
     "size":"VELIČINA",
     "material": "MATERIJAL",
     "Dial":"BROJČANIK",
-    "view collections":"POGLEDAJTE KOLEKCIJE"
+    "view collections":"POGLEDAJTE KOLEKCIJE",
+    "Home":"Početna"
     
     
 
@@ -509,7 +510,8 @@
     "size":"VELIČINA",
     "material": "MATERIJAL",
     "Dial":"BROJČANIK",
-    "view collections":"POGLEDAJTE KOLEKCIJE"
+    "view collections":"POGLEDAJTE KOLEKCIJE",
+    "Home":"Početna"
 
 
 
