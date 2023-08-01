@@ -439,6 +439,7 @@
     "Last name": "Vaše prezime",
     "Please enter your message here": "Unesite svoju poruku ovde",
     "Country": "Država",
+    "country": "Država",
     "Your message": "Vaša poruka",
     "Your email": "Vaša email adresa",
     "Phone code": "Pozivni broj",
@@ -454,7 +455,12 @@
     "New watches 2023":"Novi časovnici 2023",
     "new watches 2023":"Novi časovnici 2023",
     "Servicing your Rolex":"Servisanje Rolex casovnika",
-    "Servicing your rolex":"Servisanje Rolex casovnika"
+    "Servicing your rolex":"Servisanje Rolex casovnika",
+    "Style":"STIL",
+    "size":"VELIČINA",
+    "material": "MATERIJAL",
+    "Dial":"BROJČANIK",
+    "view collections":"POGLEDAJTE KOLEKCIJE"
     
     
 
@@ -498,7 +504,12 @@
     "Diamond-paved dial": "Brojčanik optočen dijamantima",
     "VIEW COLLECTIONS": "ISTRAŽITE KOLEKCIJE",
     "View collections": "Istrazite kolekciju",
-    "Servicing your Rolex": "Servisanje Rolex casovnika"
+    "Servicing your Rolex": "Servisanje Rolex casovnika",
+    "Style":"STIL",
+    "size":"VELIČINA",
+    "material": "MATERIJAL",
+    "Dial":"BROJČANIK",
+    "view collections":"POGLEDAJTE KOLEKCIJE"
 
 
 
