@@ -461,7 +461,15 @@
     "material": "MATERIJAL",
     "Dial":"BROJČANIK",
     "view collections":"POGLEDAJTE KOLEKCIJE",
-    "Home":"Početna"
+    "Home":"Početna",
+    "* Country":"* Država",
+    "* Phone code" : "* Pozivni broj",
+    "* I agree to the": "* Slažem se sa",
+    "Terms and Conditions":" Uslovima korišćenja",
+    "Send message": "Pošaljite poruku",
+    "* I agree to the": "* Slažem se sa",
+    "Terms and Conditions":" Uslovima korišćenja",
+    "Send us a message": "Pošaljite nam poruku"
     
     
 
@@ -520,7 +528,15 @@
     "Page 6":"Stranica 6",
     "Page 7":"Stranica 7",
     "Page 8":"Stranica 8",
-    "Page 9":"Stranica 9"
+    "Page 9":"Stranica 9",
+    "* Country":"* Država",
+    "* Phone code" : "* Pozivni broj",
+    "* I agree to the": "* Slažem se sa",
+    "Terms and Conditions":" Uslovima korišćenja",
+    "Send message": "Pošaljite poruku",
+    "* I agree to the": "* Slažem se sa",
+    "Terms and Conditions":" Uslovima korišćenja",
+    "Send us a message": "Pošaljite nam poruku"
 
 
 
