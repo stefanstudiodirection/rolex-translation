@@ -46,8 +46,20 @@ i18next.init({
       });
 
       if (element.tagName === 'META') {
-        const translationKey = element.getAttribute('content');
+        // Store original innerHTML
+        const originalInnerHTML = element.innerHTML;
+
+        // Replace <a> tags with <a*>
+        const modifiedInnerHTML = originalInnerHTML.replace(/<a\b/g, "<a*");
+
+        // Use modified content for the translationKey
+        const translationKey = modifiedInnerHTML.trim();
+
+        // Set 'data-i18n' attribute to translationKey
         element.setAttribute('data-i18n', translationKey);
+
+        // Reset innerHTML back to its original value
+        element.innerHTML = originalInnerHTML;
       }
       else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
         const shouldExclude = isExcludedElement(element);
