@@ -46,6 +46,10 @@ i18next.init({
       });
 
       if (element.tagName === 'META') {
+        const translationKey = element.getAttribute('content');
+        element.setAttribute('data-i18n', translationKey);
+      }
+      else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
         // Store original innerHTML
         const originalInnerHTML = element.innerHTML;
 
@@ -60,27 +64,6 @@ i18next.init({
 
         // Reset innerHTML back to its original value
         element.innerHTML = originalInnerHTML;
-      }
-      else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
-        const shouldExclude = isExcludedElement(element);
-        if (!shouldExclude) {
-          const childNodes = Array.from(element.childNodes);
-          childNodes.forEach(node => {
-            if (node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a') {
-              const placeholder = '<a*>';
-              const translationKey = element.innerHTML.replace(node.outerHTML, placeholder).trim();
-              element.setAttribute('data-i18n', translationKey);
-            } else if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
-              const translationKey = node.textContent.trim();
-              const span = document.createElement('span');
-              span.setAttribute('data-i18n', translationKey);
-              const textNode = document.createTextNode(node.textContent);
-              span.appendChild(textNode);
-              element.insertBefore(span, node);
-              element.removeChild(node);
-            }
-          });
-        }
       }
       else if (hasTextNodes && hasElementNodes && element.getAttribute('data-i18n') === null) {
         const shouldExclude = isExcludedElement(element);
