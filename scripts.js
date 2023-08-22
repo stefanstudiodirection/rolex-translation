@@ -50,26 +50,17 @@ i18next.init({
         element.setAttribute('data-i18n', translationKey);
       }
       else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
-          // Clone the element so we don't modify the original
-          const clone = element.cloneNode(true);
+      // Store original innerHTML
+        const originalInnerHTML = element.innerHTML;
 
-          // Get all <a> tags in the cloned element
-          const aTags = clone.querySelectorAll('a');
+        // Use regular expression to replace entire <a ...>...</a> tags with <a*>
+        const modifiedInnerHTML = originalInnerHTML.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, "<a*>");
 
-          // Replace each <a> tag with <a*>
-          aTags.forEach(aTag => {
-              const replacement = document.createElement('a*');
-              replacement.innerHTML = aTag.innerHTML;
+        // Use modified content for the translationKey
+        const translationKey = modifiedInnerHTML.trim();
 
-              // Replace the <a> tag with <a*>
-              aTag.parentNode.replaceChild(replacement, aTag);
-          });
-
-          // Now, the clone's innerHTML is what you want for the translationKey
-          const translationKey = clone.innerHTML.trim();
-
-          // Set 'data-i18n' attribute
-          element.setAttribute('data-i18n', translationKey);
+        // Set 'data-i18n' attribute to translationKey
+        element.setAttribute('data-i18n', translationKey);
       }
 
       else if (hasTextNodes && hasElementNodes && element.getAttribute('data-i18n') === null) {
