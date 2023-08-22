@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   Promise.all([rewriteRelativeURLs(), generateI18nTags(), fetchPromise])
   .then(() => {
-    // i18next.addResourceBundle('en', 'translation', translationData.en, true, true);
+    i18next.addResourceBundle('en', 'translation', translationData.en, true, true);
     i18next.addResourceBundle('hu', 'translation', translationData.hu, true, true);
     i18next.addResourceBundle('sr', 'translation', translationData.sr, true, true);
     i18next.addResourceBundle('me', 'translation', translationData.me, true, true);
