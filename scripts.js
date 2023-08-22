@@ -60,7 +60,7 @@ i18next.init({
         const translationKey = modifiedCopy.trim();
 
         // Set 'data-i18n' attribute to translationKey
-        // element.setAttribute('data-i18n', translationKey);
+        element.setAttribute('data-i18n', translationKey);
       }
 
       else if (hasTextNodes && hasElementNodes && element.getAttribute('data-i18n') === null) {
