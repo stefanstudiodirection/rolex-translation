@@ -50,21 +50,28 @@ i18next.init({
         element.setAttribute('data-i18n', translationKey);
       }
       else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
-        // Store original innerHTML
-        const originalInnerHTML = element.innerHTML;
+          // Clone the element so we don't modify the original
+          const clone = element.cloneNode(true);
 
-        // Replace <a> tags with <a*>
-        const modifiedInnerHTML = originalInnerHTML.replace(/<a\b/g, "<a*");
+          // Get all <a> tags in the cloned element
+          const aTags = clone.querySelectorAll('a');
 
-        // Use modified content for the translationKey
-        const translationKey = modifiedInnerHTML.trim();
+          // Replace each <a> tag with <a*>
+          aTags.forEach(aTag => {
+              const replacement = document.createElement('a*');
+              replacement.innerHTML = aTag.innerHTML;
 
-        // Set 'data-i18n' attribute to translationKey
-        element.setAttribute('data-i18n', translationKey);
+              // Replace the <a> tag with <a*>
+              aTag.parentNode.replaceChild(replacement, aTag);
+          });
 
-        // Reset innerHTML back to its original value
-        element.innerHTML = originalInnerHTML;
+          // Now, the clone's innerHTML is what you want for the translationKey
+          const translationKey = clone.innerHTML.trim();
+
+          // Set 'data-i18n' attribute
+          element.setAttribute('data-i18n', translationKey);
       }
+
       else if (hasTextNodes && hasElementNodes && element.getAttribute('data-i18n') === null) {
         const shouldExclude = isExcludedElement(element);
         if (!shouldExclude) {
