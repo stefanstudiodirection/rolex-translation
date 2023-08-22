@@ -50,8 +50,8 @@ i18next.init({
         element.setAttribute('data-i18n', translationKey);
       }
       else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
-      // Store original innerHTML
-        const originalInnerHTML = element.innerHTML;
+        // Explicitly create a copy of the original innerHTML
+        const originalInnerHTML = element.innerHTML.slice();
 
         // Use regular expression to replace entire <a ...>...</a> tags with <a*>
         const modifiedInnerHTML = originalInnerHTML.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, "<a*>");
