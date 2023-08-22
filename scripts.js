@@ -50,14 +50,14 @@ i18next.init({
         element.setAttribute('data-i18n', translationKey);
       }
       else if (hasTextNodes && hasElementNodes && hasLinks && element.getAttribute('data-i18n') === null) {
-        // Explicitly create a copy of the original innerHTML
-        const originalInnerHTML = element.innerHTML.slice();
+        // Create a new string to store the copy of the original innerHTML
+        let copyOfInnerHTML = "" + element.innerHTML;
 
         // Use regular expression to replace entire <a ...>...</a> tags with <a*>
-        const modifiedInnerHTML = originalInnerHTML.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, "<a*>");
+        const modifiedCopy = copyOfInnerHTML.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, "<a*>");
 
         // Use modified content for the translationKey
-        const translationKey = modifiedInnerHTML.trim();
+        const translationKey = modifiedCopy.trim();
 
         // Set 'data-i18n' attribute to translationKey
         element.setAttribute('data-i18n', translationKey);
