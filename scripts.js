@@ -1,7 +1,7 @@
   let translationData;
   const translationFile = window.location.pathname.split('?')[0].endsWith('/rolex/watches')
     ? 'https://stefanstudiodirection.github.io/rolex-translation/rolex-translation.json'
-    : 'https://stefanstudiodirection.github.io/rolex-translation/translation.json';
+    : 'https://stefanstudiodirection.github.io/rolex-translation/translation-staging.json';
 
   const fetchPromise = fetch(translationFile)
   .then(response => response.json())
