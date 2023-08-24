@@ -1,16 +1,3 @@
-
-    let translationData;
-  const translationFile = window.location.pathname.split('?')[0].endsWith('/rolex/watches')
-    ? 'https://stefanstudiodirection.github.io/rolex-translation/rolex-translation.json'
-    : 'https://stefanstudiodirection.github.io/rolex-translation/translation-staging.json';
-
-
-
-
-
-
-
-
   let translationData;
   const translationFile = window.location.pathname.split('?')[0].endsWith('/rolex/watches')
     ? 'https://stefanstudiodirection.github.io/rolex-translation/rolex-translation.json'
