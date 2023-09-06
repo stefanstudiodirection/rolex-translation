@@ -34,6 +34,7 @@ async function translateQuery(query, sourceLanguage, targetLanguage) {
       // Replace specific words in the translated text
       translatedText = translatedText.replace(/\bclocks\b/gi, 'watches');
       translatedText = translatedText.replace(/\bhour\b/gi, 'watch');
+      translatedText = translatedText.replace(/\on hands.\b/gi, 'Jewlerry');
 
       return translatedText;
     } catch (error) {
