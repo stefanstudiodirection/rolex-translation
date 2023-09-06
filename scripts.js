@@ -23,6 +23,54 @@ i18next.init({
 });
 
 
+async function translateQuery(query, sourceLanguage, targetLanguage) {
+    try {
+      const translationResponse = await fetch(
+        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(query)}&langpair=${sourceLanguage}|${targetLanguage}`
+      );
+      const translationData = await translationResponse.json();
+      let translatedText = translationData.responseData.translatedText;
+
+      // Replace specific words in the translated text
+      translatedText = translatedText.replace(/\bclocks\b/gi, 'watches');
+      translatedText = translatedText.replace(/\bhour\b/gi, 'watch');
+
+      return translatedText;
+    } catch (error) {
+      console.error('Error translating query:', error);
+      return query; // Return the original query in case of an error
+    }
+  }
+
+  // Function to handle form submission (including Enter key)
+  async function handleFormSubmission(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    console.log('Handling form submission...'); // Debugging
+
+    const searchForm = event.target; // Get the form that triggered the submission
+    console.log('target form: ');
+    console.log(event.target);
+    const searchInput = searchForm.querySelector('input[type="search"]');
+    console.log('Search input:', searchInput.value); // Debugging
+    const userQuery = searchInput.value.trim();
+    console.log('User query:', userQuery); // Debugging
+
+    const userLanguage = localStorage.getItem('lang');
+    console.log('User language:', userLanguage); // Debugging
+
+    // Translate the user query to English
+    const translatedQuery = await translateQuery(userQuery, userLanguage, 'en');
+    console.log('Translated Query:', translatedQuery); // Debugging
+
+    // Replace the text in the input field
+    searchInput.value = translatedQuery;
+
+    // Submit the form with the translated query
+    searchForm.submit();
+  }
+
+
 
 
   function generateI18nTags() {
@@ -243,6 +291,29 @@ document.addEventListener('DOMContentLoaded', function() {
         translateContent();  
       });   
       }, 1);
+    });
+  });
+
+
+
+
+  // Find all forms by their action attribute
+  const searchForms = document.querySelectorAll('form[action="/search"]');
+  console.log('Search forms:', searchForms); // Debugging
+  // Loop through each form and add event listeners
+  searchForms.forEach((searchForm) => {
+    // Event listener for form submission for each search form
+    searchForm.addEventListener('submit', function (event) {
+      handleFormSubmission(event, searchForm);
+    });
+
+    // Event listener for keypress event (Enter key) for each search form
+    searchForm.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the default behavior of Enter key
+        const submitEvent = new Event('submit', { bubbles: true });
+        searchForm.dispatchEvent(submitEvent); // Dispatch the submit event on the form
+      }
     });
   });
 
