@@ -297,25 +297,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  // Find all forms by their action attribute
-  const searchForms = document.querySelectorAll('form[action="/search"]');
-  console.log('Search forms:', searchForms); // Debugging
-  // Loop through each form and add event listeners
-  searchForms.forEach((searchForm) => {
-    // Event listener for form submission for each search form
-    searchForm.addEventListener('submit', function (event) {
-      handleFormSubmission(event, searchForm);
-    });
+  // // Find all forms by their action attribute
+  // const searchForms = document.querySelectorAll('form[action="/search"]');
+  // console.log('Search forms:', searchForms); // Debugging
+  // // Loop through each form and add event listeners
+  // searchForms.forEach((searchForm) => {
+  //   // Event listener for form submission for each search form
+  //   searchForm.addEventListener('submit', function (event) {
+  //     handleFormSubmission(event, searchForm);
+  //   });
 
-    // Event listener for keypress event (Enter key) for each search form
-    searchForm.addEventListener('keypress', function (event) {
-      if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent the default behavior of Enter key
-        const submitEvent = new Event('submit', { bubbles: true });
-        searchForm.dispatchEvent(submitEvent); // Dispatch the submit event on the form
-      }
-    });
-  });
+  //   // Event listener for keypress event (Enter key) for each search form
+  //   searchForm.addEventListener('keypress', function (event) {
+  //     if (event.key === 'Enter') {
+  //       event.preventDefault(); // Prevent the default behavior of Enter key
+  //       const submitEvent = new Event('submit', { bubbles: true });
+  //       searchForm.dispatchEvent(submitEvent); // Dispatch the submit event on the form
+  //     }
+  //   });
+  // });
 
   waitForElm('.CookieDeclaration').then((elm) => {
     document.getElementsByClassName('CookieDeclaration')[0].style.display = 'none';
