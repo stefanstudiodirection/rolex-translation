@@ -101,7 +101,7 @@ async function translateQuery(query, sourceLanguage, targetLanguage) {
         console.log("Original innerHTML:", copyOfInnerHTML);
 
         // Use regular expression to replace entire <a ...>...</a> tags with <a*>
-        const modifiedCopy = copyOfInnerHTML.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, "<a*>");
+        const modifiedCopy = copyOfInnerHTML.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, "{{LINK}}");
 
         // Log the modified innerHTML to console for debugging
         console.log("Modified innerHTML:", modifiedCopy);
