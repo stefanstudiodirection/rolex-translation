@@ -432,7 +432,8 @@ var fCrown = document.getElementById('f-crown');
 var sectionLadies = document.getElementById('section-ladies');
 var sectionGentleman = document.getElementById('section-gentlemen');
 var sectionLatestNews = document.getElementById('section-latest');
-var sectionLatestNewsRolex = document.getElementById('section-latest-rolex');
+var sectionLatestNewsRolexHU = document.getElementById('section-latest-rolex');
+var sectionLatestNewsRolexME = document.getElementById('section-latest-rolex-me');
 var menuCareers = document.getElementById('menu-careers');
 var currentUrl = window.location.href;
 var socialIg = document.getElementById('social-ig');
@@ -454,8 +455,8 @@ if (currentUrl.includes('/eu-hu/')) {
  if(sectionLatestNews != null || sectionLatestNews != undefined) {
   sectionLatestNews.style.display = 'none';
  };
- if(sectionLatestNewsRolex != null || sectionLatestNewsRolex != undefined) {
-  sectionLatestNewsRolex.style.display = 'block';
+ if(sectionLatestNewsRolexHU != null || sectionLatestNewsRolexHU != undefined) {
+  sectionLatestNewsRolexHU.style.display = 'block';
  };
  fTudor.style.display = 'none';
  fSwiss.style.display = 'none';
@@ -489,8 +490,8 @@ if (currentUrl.includes('/eu-en/')) {
  if(sectionLatestNews != null || sectionLatestNews != undefined) {
  sectionLatestNews.style.display = 'none';
  };
- if(sectionLatestNewsRolex != null || sectionLatestNewsRolex != undefined) {
-  sectionLatestNewsRolex.style.display = 'block';
+ if(sectionLatestNewsRolexHU != null || sectionLatestNewsRolexHU != undefined) {
+  sectionLatestNewsRolexHU.style.display = 'block';
  };
  fTudor.style.display = 'none';
  fSwiss.style.display = 'none';
@@ -515,11 +516,11 @@ if (currentUrl.includes('/me-en/') || currentUrl.includes('/me-me/')) {
  if(sectionGentleman != null || sectionLadies != undefined) {
   sectionGentleman.style.display = 'none';
  };
- if(sectionLatestNews != null || sectionLatestNews != undefined) {
+ if(sectionLatestNewsRolexME != null || sectionLatestNewsRolexME != undefined) {
   sectionLatestNews.style.display = 'none';
  };
- if(sectionLatestNewsRolex != null || sectionLatestNewsRolex != undefined) {
-  sectionLatestNewsRolex.style.display = 'block';
+ if(sectionLatestNewsRolexME != null || sectionLatestNewsRolexME != undefined) {
+  sectionLatestNewsRolexME.style.display = 'block';
  };
  menuCareers.style.display = 'none';
  fTudor.style.display = 'none';
