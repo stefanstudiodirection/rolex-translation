@@ -510,6 +510,7 @@ if (currentUrl.includes('/me-en/') || currentUrl.includes('/me-me/')) {
  tpElM.style.display = 'none';
  jewelleryElement.style.display = 'none';
  jewelleryElementMobile.style.display = 'none';
+ socialIg.href = "https://www.instagram.com/petitegeneve_portomontenegro";
  if(sectionLadies != null || sectionLadies != undefined) {
   sectionLadies.style.display = 'none';
   };
