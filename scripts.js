@@ -369,15 +369,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 setTimeout(() => {
- var rdp = new RolexRetailerClock();
- var rdpConfig = {
-  dealerAPIKey: 'e2189e9a1f4814911bceb20bbac82bdc',
-  lang: 'en_GB',
-  colour: 'gold'
- }
-try {
- rdp.getRetailerClock(rdpConfig);
-} catch (err) {}
+  var rdp = new RolexRetailerClock();
+  var rdpConfig = {
+    dealerAPIKey: 'e2189e9a1f4814911bceb20bbac82bdc',
+    lang: 'en_GB',
+    colour: 'gold'
+  }
+  var currentUrl = window.location.href;
+  if (currentUrl.includes("rs-sr") || currentUrl.includes("me-me")) {
+    rdpConfig.lang = 'sr';
+  } else if (currentUrl.includes("en-hu")) {
+    rdpConfig.lang = 'hu';
+  }
+  try {
+    rdp.getRetailerClock(rdpConfig);
+  } catch (err) {}
 }, 10);
 
 
