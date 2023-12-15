@@ -372,7 +372,7 @@ setTimeout(() => {
  var rdp = new RolexRetailerClock();
  var rdpConfig = {
   dealerAPIKey: 'e2189e9a1f4814911bceb20bbac82bdc',
-  lang: 'en_us',
+  lang: 'en_GB',
   colour: 'gold'
  }
 try {
