@@ -378,7 +378,7 @@ setTimeout(() => {
   var currentUrl = window.location.href;
   if (currentUrl.includes("rs-sr") || currentUrl.includes("me-me")) {
     rdpConfig.lang = 'sr';
-  } else if (currentUrl.includes("en-hu")) {
+  } else if (currentUrl.includes("eu-hu")) {
     rdpConfig.lang = 'hu';
   }
   try {
