@@ -418,8 +418,29 @@ subtree: true
 document.addEventListener('DOMContentLoaded', function() {
   updateHreflang();
 
-  document.getElementById("wf-form-Contact-form").onsubmit = submitForm;
-  document.getElementById("wf-form-Rolex-Contact-form").onsubmit = submitFormRolexContact;
+  // Attempt to find the "wf-form-Contact-form" element by ID
+  const contactForm = document.getElementById("wf-form-Contact-form");
+
+  // Check if the "wf-form-Contact-form" element exists
+  if (contactForm) {
+    // If it exists, attach the onsubmit handler
+    contactForm.onsubmit = submitForm;
+  } else {
+    // If it doesn't exist, you can handle it here (e.g., log a message)
+    console.log("Form element with ID 'wf-form-Contact-form' not found.");
+  }
+
+  // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
+  const rolexContactForm = document.getElementById("wf-form-Rolex-Contact-form");
+
+  // Check if the "wf-form-Rolex-Contact-form" element exists
+  if (rolexContactForm) {
+    // If it exists, attach the onsubmit handler
+    rolexContactForm.onsubmit = submitFormRolexContact;
+  } else {
+    // If it doesn't exist, you can handle it here (e.g., log a message)
+    console.log("Form element with ID 'wf-form-Rolex-Contact-form' not found.");
+  }
   
 
 
