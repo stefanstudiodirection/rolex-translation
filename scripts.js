@@ -81,6 +81,68 @@ function submitForm() {
     });
 }
 
+function submitFormRolexContact() {
+    // Get language from the URL
+    const url = window.location.href;
+    const urlParts = url.split('/');
+    let lang = "rs-sr"; // Default language if not found
+
+    for (const part of urlParts) {
+        if (part.length === 5 && part.includes('-')) {
+            lang = part;
+            break;
+        }
+    }
+
+    // Get email from the input field
+    const emailTo = document.getElementById("Email-2").value;
+
+    // Get other form values
+    const title = document.getElementById("Title").value;
+    const firstName = document.getElementById("First-name").value;
+    const lastName = document.getElementById("Last-name").value;
+    const countryCode = document.getElementById("country__code").value;
+    const phoneNumber = document.getElementById("Phone-number").value;
+    const country = document.getElementById("country").value;
+    const message = document.getElementById("Message").value;
+
+    // Create JSON object
+    const formData = {
+        lang,
+        emailTo,
+        title,
+        firstName,
+        lastName,
+        countryCode,
+        phoneNumber,
+        country,
+        message,
+    };
+
+    console.log('body');
+    console.log(formData);
+
+    // Make a POST request
+    fetch("https://www.petitegeneve.com/send-mail/rolex-contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Form submitted successfully!");
+        } else {
+            alert("Form submission failed. Please try again later.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Form submission failed. Please try again later.");
+    });
+}
+
 
 
 var regionLanguage;
@@ -357,6 +419,9 @@ document.addEventListener('DOMContentLoaded', function() {
   updateHreflang();
 
   document.getElementById("wf-form-Contact-form").onsubmit = submitForm;
+  document.getElementById("wf-form-Rolex-Contact-form").onsubmit = submitFormRolexContact;
+  
+
 
 
   setInterval(function(){document.querySelectorAll("[data-limit]").forEach(function(e){var t=parseInt(e.getAttribute("data-limit")),n=e.children;n.length>t&&Array.from(n).slice(t).forEach(function(e){e.remove()})})},500);
