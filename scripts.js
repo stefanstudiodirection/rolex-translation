@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
-  const jewelryProductsForm = document.getElementById("wf-form-Jewelry-contact-form");
+  const jewelryProductsForm = document.getElementById("wf-form-Jewellery-contact-form");
 
   // Check if the "wf-form-Rolex-Contact-form" element exists
   if (jewelryProductsForm) {
@@ -739,7 +739,7 @@ document.addEventListener('DOMContentLoaded', function() {
     jewelryProductsForm.onsubmit = submitFormJewelryProducts;
   } else {
     // If it doesn't exist, you can handle it here (e.g., log a message)
-    console.log("Form element with ID 'wf-form-Jewelry-contact-form' not found.");
+    console.log("Form element with ID 'wf-form-Jewellery-contact-form' not found.");
   }
 
   // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
