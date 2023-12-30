@@ -177,7 +177,7 @@ function submitFormRolexProducts() {
     // Get the current link
     const currentLink = window.location.href;
 
-    const ref = document.getElementsByClassName('rolex-text white mobile-dark uppercase')[0];
+    const ref = document.getElementsByClassName('rolex-text white mobile-dark uppercase')[0].textContent;
 
     // Create JSON object
     const formData = {
@@ -248,7 +248,7 @@ function submitFormJewelryProducts() {
     // Get the current link
     const currentLink = window.location.href;
 
-    const ref = document.getElementsByClassName('tudor-single__heading mbm')[0];
+    // const ref = document.getElementsByClassName('tudor-single__heading mbm')[0].textContent;
 
     // Create JSON object
     const formData = {
@@ -262,7 +262,7 @@ function submitFormJewelryProducts() {
         country,
         message,
         currentLink,
-        ref,
+        // ref,
     };
     console.log('body');
     console.log(formData);
@@ -318,6 +318,8 @@ function submitFormTudorProducts() {
     // Get the current link
     const currentLink = window.location.href;
 
+    const ref = document.getElementsByClassName('tudor-single__heading mbm')[0].textContent;
+
     // Create JSON object
     const formData = {
         lang,
@@ -330,6 +332,7 @@ function submitFormTudorProducts() {
         country,
         message,
         currentLink,
+        ref,
     };
 
     console.log('body');
@@ -386,7 +389,7 @@ function submitFormSwissKubik() {
     // Get the current link
     const currentLink = window.location.href;
 
-    const ref = document.getElementsByClassName('s-single__name mbm')[0];
+    const ref = document.getElementsByClassName('s-single__name mbm')[0].textContent;
 
     // Create JSON object
     const formData = {
