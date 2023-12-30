@@ -21,7 +21,7 @@ menuObserver.observe(menuButton, { attributes: true });
 
 function submitForm() {
     event.preventDefault(); // Prevent the default form submission
-    
+
     // Get language from the URL
     const url = window.location.href;
     const urlParts = url.split('/');
@@ -128,6 +128,278 @@ function submitFormRolexContact() {
 
     // Make a POST request
     fetch("https://www.petitegeneve.com/send-mail/rolex-contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Form submitted successfully!");
+        } else {
+            alert("Form submission failed. Please try again later.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Form submission failed. Please try again later.");
+    });
+}
+
+function submitFormRolexProducts() {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Get language from the URL
+    const url = window.location.href;
+    const urlParts = url.split('/');
+    let lang = "rs-en"; // Default language if not found
+
+    for (const part of urlParts) {
+        if (part.length === 5 && part.includes('-')) {
+            lang = part;
+            break;
+        }
+    }
+
+    // Get email from the input field
+    const emailTo = document.getElementById("Email-2").value;
+
+    // Get other form values
+    const title = document.getElementById("Title").value;
+    const firstName = document.getElementById("First-name").value;
+    const lastName = document.getElementById("Last-name").value;
+    const countryCode = document.getElementById("country__code").value;
+    const phoneNumber = document.getElementById("Phone-number").value;
+    const country = document.getElementById("country").value;
+    const message = document.getElementById("Message").value;
+
+    // Get the current link
+    const currentLink = window.location.href;
+
+    // Create JSON object
+    const formData = {
+        lang,
+        emailTo,
+        title,
+        firstName,
+        lastName,
+        countryCode,
+        phoneNumber,
+        country,
+        message,
+        currentLink,
+    };
+
+    console.log('body');
+    console.log(formData);
+
+    // Make a POST request
+    fetch("https://www.petitegeneve.com/send-mail/rolex-products", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Form submitted successfully!");
+        } else {
+            alert("Form submission failed. Please try again later.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Form submission failed. Please try again later.");
+    });
+}
+
+function submitFormJewelryProducts() {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Get language from the URL
+    const url = window.location.href;
+    const urlParts = url.split('/');
+    let lang = "rs-en"; // Default language if not found
+
+    for (const part of urlParts) {
+        if (part.length === 5 && part.includes('-')) {
+            lang = part;
+            break;
+        }
+    }
+
+    // Get email from the input field
+    const emailTo = document.getElementById("Email-2").value;
+
+    // Get other form values
+    const title = document.getElementById("Title").value;
+    const firstName = document.getElementById("First-name").value;
+    const lastName = document.getElementById("Last-name").value;
+    const countryCode = document.getElementById("country__code").value;
+    const phoneNumber = document.getElementById("Phone-number").value;
+    const country = document.getElementById("country").value;
+    const message = document.getElementById("Message").value;
+
+    // Get the current link
+    const currentLink = window.location.href;
+
+    // Create JSON object
+    const formData = {
+        lang,
+        emailTo,
+        title,
+        firstName,
+        lastName,
+        countryCode,
+        phoneNumber,
+        country,
+        message,
+        currentLink,
+    };
+
+    console.log('body');
+    console.log(formData);
+
+    // Make a POST request
+    fetch("https://www.petitegeneve.com/send-mail/jewelry-products", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Form submitted successfully!");
+        } else {
+            alert("Form submission failed. Please try again later.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Form submission failed. Please try again later.");
+    });
+}
+
+function submitFormTudorProducts() {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Get language from the URL
+    const url = window.location.href;
+    const urlParts = url.split('/');
+    let lang = "rs-en"; // Default language if not found
+
+    for (const part of urlParts) {
+        if (part.length === 5 && part.includes('-')) {
+            lang = part;
+            break;
+        }
+    }
+
+    // Get email from the input field
+    const emailTo = document.getElementById("Email-2").value;
+
+    // Get other form values
+    const title = document.getElementById("Title").value;
+    const firstName = document.getElementById("First-name").value;
+    const lastName = document.getElementById("Last-name").value;
+    const countryCode = document.getElementById("country__code").value;
+    const phoneNumber = document.getElementById("Phone-number").value;
+    const country = document.getElementById("country").value;
+    const message = document.getElementById("Message").value;
+
+    // Get the current link
+    const currentLink = window.location.href;
+
+    // Create JSON object
+    const formData = {
+        lang,
+        emailTo,
+        title,
+        firstName,
+        lastName,
+        countryCode,
+        phoneNumber,
+        country,
+        message,
+        currentLink,
+    };
+
+    console.log('body');
+    console.log(formData);
+
+    // Make a POST request
+    fetch("https://www.petitegeneve.com/send-mail/tudor-products", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Form submitted successfully!");
+        } else {
+            alert("Form submission failed. Please try again later.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Form submission failed. Please try again later.");
+    });
+}
+
+function submitFormSwissKubik() {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Get language from the URL
+    const url = window.location.href;
+    const urlParts = url.split('/');
+    let lang = "rs-en"; // Default language if not found
+
+    for (const part of urlParts) {
+        if (part.length === 5 && part.includes('-')) {
+            lang = part;
+            break;
+        }
+    }
+
+    // Get email from the input field
+    const emailTo = document.getElementById("Email-2").value;
+
+    // Get other form values
+    const title = document.getElementById("Title").value;
+    const firstName = document.getElementById("First-name").value;
+    const lastName = document.getElementById("Last-name").value;
+    const countryCode = document.getElementById("country__code").value;
+    const phoneNumber = document.getElementById("Phone-number").value;
+    const country = document.getElementById("country").value;
+    const message = document.getElementById("Message").value;
+
+    // Get the current link
+    const currentLink = window.location.href;
+
+    // Create JSON object
+    const formData = {
+        lang,
+        emailTo,
+        title,
+        firstName,
+        lastName,
+        countryCode,
+        phoneNumber,
+        country,
+        message,
+        currentLink,
+    };
+
+    console.log('body');
+    console.log(formData);
+
+    // Make a POST request
+    fetch("https://www.petitegeneve.com/send-mail/swiss-kubik", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -444,6 +716,54 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     // If it doesn't exist, you can handle it here (e.g., log a message)
     console.log("Form element with ID 'wf-form-Rolex-Contact-form' not found.");
+  }
+
+  // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
+  const rolexProductsForm = document.getElementById("wf-form-Rolex-product-contact-form");
+
+  // Check if the "wf-form-Rolex-Contact-form" element exists
+  if (rolexProductsForm) {
+    // If it exists, attach the onsubmit handler
+    rolexProductsForm.onsubmit = submitFormRolexProducts;
+  } else {
+    // If it doesn't exist, you can handle it here (e.g., log a message)
+    console.log("Form element with ID 'wf-form-Rolex-product-contact-form' not found.");
+  }
+
+  // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
+  const jewelryProductsForm = document.getElementById("wf-form-Jewelry-contact-form");
+
+  // Check if the "wf-form-Rolex-Contact-form" element exists
+  if (jewelryProductsForm) {
+    // If it exists, attach the onsubmit handler
+    jewelryProductsForm.onsubmit = submitFormJewelryProducts;
+  } else {
+    // If it doesn't exist, you can handle it here (e.g., log a message)
+    console.log("Form element with ID 'wf-form-Jewelry-contact-form' not found.");
+  }
+
+  // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
+  const tudorProductsForm = document.getElementById("wf-form-Tudor-product-contact-form");
+
+  // Check if the "wf-form-Rolex-Contact-form" element exists
+  if (tudorProductsForm) {
+    // If it exists, attach the onsubmit handler
+    tudorProductsForm.onsubmit = submitFormTudorProducts;
+  } else {
+    // If it doesn't exist, you can handle it here (e.g., log a message)
+    console.log("Form element with ID 'wf-form-Tudor-product-contact-form' not found.");
+  }
+
+  // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
+  const swissKubikProductsForm = document.getElementById("wf-form-Swiss-Kubik-contact-form");
+
+  // Check if the "wf-form-Rolex-Contact-form" element exists
+  if (swissKubikProductsForm) {
+    // If it exists, attach the onsubmit handler
+    swissKubikProductsForm.onsubmit = submitFormSwissKubik;
+  } else {
+    // If it doesn't exist, you can handle it here (e.g., log a message)
+    console.log("Form element with ID 'wf-form-Swiss-Kubik-contact-form' not found.");
   }
   
 
