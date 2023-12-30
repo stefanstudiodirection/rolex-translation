@@ -23,7 +23,7 @@ function submitForm() {
     // Get language from the URL
     const url = window.location.href;
     const urlParts = url.split('/');
-    let lang = "rs-sr"; // Default language if not found
+    let lang = "rs-en"; // Default language if not found
 
     for (const part of urlParts) {
         if (part.length === 5 && part.includes('-')) {
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Check if the "wf-form-Contact-form" element exists
   if (contactForm) {
     // If it exists, attach the onsubmit handler
-    contactForm.onsubmit = submitForm;
+    // contactForm.onsubmit = submitForm;
   } else {
     // If it doesn't exist, you can handle it here (e.g., log a message)
     console.log("Form element with ID 'wf-form-Contact-form' not found.");
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Check if the "wf-form-Rolex-Contact-form" element exists
   if (rolexContactForm) {
     // If it exists, attach the onsubmit handler
-    rolexContactForm.onsubmit = submitFormRolexContact;
+    // rolexContactForm.onsubmit = submitFormRolexContact;
   } else {
     // If it doesn't exist, you can handle it here (e.g., log a message)
     console.log("Form element with ID 'wf-form-Rolex-Contact-form' not found.");
