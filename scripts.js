@@ -37,8 +37,26 @@ function submitForm() {
     // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
 
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+      if (titleValue == 'Sir') {
+        title = 'Poštovani';
+      } else {
+        title = 'Poštovana';
+      }
+    }
+
+    if (lang == 'eu-hu') {
+      if (titleValue == 'Sir') {
+        title = 'Uram';
+      } else {
+        title = 'Hölgyem';
+      }
+    }
+
     // Get other form values
-    const title = document.getElementById("Title").value;
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
@@ -101,8 +119,26 @@ function submitFormRolexContact() {
     // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
 
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+      if (titleValue == 'Sir') {
+        title = 'Poštovani';
+      } else {
+        title = 'Poštovana';
+      }
+    }
+
+    if (lang == 'eu-hu') {
+      if (titleValue == 'Sir') {
+        title = 'Uram';
+      } else {
+        title = 'Hölgyem';
+      }
+    }
+
     // Get other form values
-    const title = document.getElementById("Title").value;
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
@@ -165,8 +201,26 @@ function submitFormRolexProducts() {
     // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
 
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+      if (titleValue == 'Sir') {
+        title = 'Poštovani';
+      } else {
+        title = 'Poštovana';
+      }
+    }
+
+    if (lang == 'eu-hu') {
+      if (titleValue == 'Sir') {
+        title = 'Uram';
+      } else {
+        title = 'Hölgyem';
+      }
+    }
+
     // Get other form values
-    const title = document.getElementById("Title").value;
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
@@ -236,8 +290,26 @@ function submitFormJewelryProducts() {
     // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
 
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+      if (titleValue == 'Sir') {
+        title = 'Poštovani';
+      } else {
+        title = 'Poštovana';
+      }
+    }
+
+    if (lang == 'eu-hu') {
+      if (titleValue == 'Sir') {
+        title = 'Uram';
+      } else {
+        title = 'Hölgyem';
+      }
+    }
+
     // Get other form values
-    const title = document.getElementById("Title").value;
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
@@ -306,8 +378,26 @@ function submitFormTudorProducts() {
     // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
 
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+      if (titleValue == 'Sir') {
+        title = 'Poštovani';
+      } else {
+        title = 'Poštovana';
+      }
+    }
+
+    if (lang == 'eu-hu') {
+      if (titleValue == 'Sir') {
+        title = 'Uram';
+      } else {
+        title = 'Hölgyem';
+      }
+    }
+
     // Get other form values
-    const title = document.getElementById("Title").value;
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
@@ -377,8 +467,26 @@ function submitFormSwissKubik() {
     // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
 
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+      if (titleValue == 'Sir') {
+        title = 'Poštovani';
+      } else {
+        title = 'Poštovana';
+      }
+    }
+
+    if (lang == 'eu-hu') {
+      if (titleValue == 'Sir') {
+        title = 'Uram';
+      } else {
+        title = 'Hölgyem';
+      }
+    }
+
     // Get other form values
-    const title = document.getElementById("Title").value;
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
