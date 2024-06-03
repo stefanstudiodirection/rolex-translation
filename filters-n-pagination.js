@@ -71,7 +71,7 @@ function fetchAndModifyProducts() {
 
         const appendPromise = new Promise((resolve, reject) => {
           const checkAppendInterval = setInterval(() => {
-            if (parsedProducts.children().length >= 100) {
+            if (parsedProducts.children().length >= 4) {
               clearInterval(checkAppendInterval);
               $('#products-container').append(parsedProducts);
 
