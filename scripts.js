@@ -1136,7 +1136,7 @@ if (currentUrl.includes('/me-me/')) {regionLanguage.innerHTML = ' Montenegro | M
 if (currentUrl.includes('/ww-en/')) {
  regionLanguage.innerHTML = ' International | EN';
  regionLanguageMobile.innerHTML = ' International | EN';
- menuCareers.style.display = 'none';
+ //menuCareers.style.display = 'none';
 }
 }
 window.addEventListener('DOMContentLoaded', function() {
