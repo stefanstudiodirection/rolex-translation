@@ -217,7 +217,7 @@
     "our showrooms": "BEMUTATÓTERMEINK",
     "Rolex watches at Petite Genève Petrović in Belgrade": "Rolex órák Budapesten - Petite Genève Petrović",
     "Rolex watches at Petite Genève Petrović in Belgrade": "Rolex órák Budapesten - Petite Genève Petrović",
-    "The Rolex watches featured below are from the official catalogue and do not represent stock availability.": "Az alább bemutatott Rolex órák a hivatalos katalógusban szerepelnek, ám nem minden esetben vannak raktáron.",
+    "The Rolex watches featured below are from the official catalogue and do not represent stock availability.<br>": "Az alább bemutatott Rolex órák a hivatalos katalógusban szerepelnek, ám nem minden esetben vannak raktáron.",
     "If you would like to enquire about a particular timepiece, please contact us.": "Ha érdeklődni szeretne egy adott óra iránt, kérjük, lépjen kapcsolatba velünk.",
     "New watches 2024": "2024 Óraújdonságai",
     "New watches 2024": "2024 Óraújdonságai",
@@ -255,7 +255,10 @@
     "Learn more": "További információk",
     "Extreme divers' watches": "Extrém búvárórák",
     "Learn more": "További információk",
-    "Back to top":"Vissza az elejére"
+    "Back to top":"Vissza az elejére",
+    "Rolex watches": "Rolex órák",
+    "Discover Rolex":"Fedezze fel Rolex",
+    "Watchmaking":"Óragyártás"
 
 
 
@@ -763,7 +766,7 @@
     "Our history": "Naša istorija",
     "our history": "Naša istorija",
     "Rolex watches at Petite Genève Petrović in Belgrade": "Časovnici Rolex u Porto Montenegru – Petite Genève Petrović",
-    "The Rolex watches featured below are from the official catalogue and do not represent stock availability.": "Časovnici kompanije Rolex predstavljeni u nastavku su iz zvaničnog kataloga i ne predstavljaju raspoloživost zaliha.",
+    "The Rolex watches featured below are from the official catalogue and do not represent stock availability.<br>": "Časovnici kompanije Rolex predstavljeni u nastavku su iz zvaničnog kataloga i ne predstavljaju raspoloživost zaliha.",
     "If you would like to enquire about a particular timepiece, please contact us.": "Ukoliko želite da se raspitate o konkretnom modelu, slobodno nam se obratite.",
     "New watches 2024": "Novi časovnici za 2024.",
     "New watches 2024": "Novi časovnici za 2024.",
@@ -802,7 +805,9 @@
     "Extreme divers' watches": "Časovnik za ekstremno ronjenje",
     "Learn more": "Saznajte više",
     "Back to top":"Povratak na vrh",
-    "Watchmaking": "Časovničarstvo"
+    "Watchmaking": "Časovničarstvo",
+    "Rolex watches": "Rolex časovnici",
+    "Discover Rolex": "Istražite Rolex"
         
 
    
@@ -1018,7 +1023,7 @@
     "Our history": "Naša istorija",
     "our history": "Naša istorija",
     "Rolex watches at Petite Genève Petrović in Belgrade": "Časovnici Rolex u Beogradu – Petite Genève Petrović",
-    "The Rolex watches featured below are from the official catalogue and do not represent stock availability.": "Časovnici kompanije Rolex predstavljeni u nastavku su iz zvaničnog kataloga i ne predstavljaju raspoloživost zaliha.",
+    "The Rolex watches featured below are from the official catalogue and do not represent stock availability.<br>": "Časovnici kompanije Rolex predstavljeni u nastavku su iz zvaničnog kataloga i ne predstavljaju raspoloživost zaliha.",
     "If you would like to enquire about a particular timepiece, please contact us.": "Ukoliko želite da se raspitate o konkretnom modelu, slobodno nam se obratite.",
     "New watches 2024": "Novi časovnici za 2024.",
     "New watches 2024": "Novi časovnici za 2024.",
@@ -1057,7 +1062,9 @@
     "Extreme divers' watches": "Časovnik za ekstremno ronjenje",
     "Learn more": "Saznajte više",
     "Back to top":"Povratak na vrh",
-    "Watchmaking": "Časovničarstvo"
+    "Watchmaking": "Časovničarstvo",
+    "Rolex watches": "Rolex časovnici",
+    "Discover Rolex": "Istražite Rolex"
 
 
 
