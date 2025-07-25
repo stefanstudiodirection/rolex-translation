@@ -19,37 +19,44 @@ const menuObserver = new MutationObserver((mutations) => {
 });
 menuObserver.observe(menuButton, {attributes: true});
 
-function submitForm(event) {
-    // VAŽNO: ne koristimo event.preventDefault();
-
+function submitForm() {
+    event.preventDefault(); // Prevent the default form submission
+    // Get language from the URL
     const url = window.location.href;
     const urlParts = url.split('/');
-    let lang = "rs-en";
-
+    let lang = "rs-en"; // Default language if not found
     for (const part of urlParts) {
         if (part.length === 5 && part.includes('-')) {
             lang = part;
             break;
         }
     }
-
+    // Get email from the input field
     const emailTo = document.getElementById("Email-2").value;
     const titleValue = document.getElementById("Title").value;
     let title = titleValue;
-
-    if (lang === 'rs-sr' || lang === 'me-me') {
-        title = titleValue === 'Sir' ? 'Poštovani' : 'Poštovana';
-    } else if (lang === 'eu-hu') {
-        title = titleValue === 'Sir' ? 'Uram' : 'Hölgyem';
+    if (lang == 'rs-sr' || lang == 'me-me') {
+        if (titleValue == 'Sir') {
+            title = 'Poštovani';
+        } else {
+            title = 'Poštovana';
+        }
     }
-
+    if (lang == 'eu-hu') {
+        if (titleValue == 'Sir') {
+            title = 'Uram';
+        } else {
+            title = 'Hölgyem';
+        }
+    }
+    // Get other form values
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
     const phoneNumber = document.getElementById("Phone-number").value;
     const country = document.getElementById("country").value;
     const message = document.getElementById("Message").value;
-
+    // Create JSON object
     const formData = {
         lang,
         emailTo,
@@ -61,16 +68,27 @@ function submitForm(event) {
         country,
         message,
     };
-
+    console.log('body');
+    console.log(formData);
+    // Make a POST request
     fetch("https://www.petitegeneve.com/send-mail/general-inquiry", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-    }).catch(error => {
-        console.error("Custom mail send failed:", error);
-    });
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("Form submitted successfully!");
+            } else {
+                alert("Form submission failed. Please try again later.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Form submission failed. Please try again later.");
+        });
 }
 
 function submitFormRolexContact() {
