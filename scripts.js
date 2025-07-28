@@ -19,77 +19,74 @@ const menuObserver = new MutationObserver((mutations) => {
 });
 menuObserver.observe(menuButton, {attributes: true});
 
-function submitForm() {
-    event.preventDefault(); // Prevent the default form submission
-    // Get language from the URL
+function submitForm(event) {
+    event.preventDefault(); // Spreči default submit dok ne pošaljemo ka backendu
+
+    const form = event.target;
+
+    // Get language from URL
     const url = window.location.href;
     const urlParts = url.split('/');
-    let lang = "rs-en"; // Default language if not found
+    let lang = "rs-en";
     for (const part of urlParts) {
-        if (part.length === 5 && part.includes('-')) {
-            lang = part;
-            break;
-        }
+      if (part.length === 5 && part.includes('-')) {
+        lang = part;
+        break;
+      }
     }
-    // Get email from the input field
+
+    // Get form values
     const emailTo = document.getElementById("Email-2").value;
     const titleValue = document.getElementById("Title").value;
     let title = titleValue;
-    if (lang == 'rs-sr' || lang == 'me-me') {
-        if (titleValue == 'Sir') {
-            title = 'Poštovani';
-        } else {
-            title = 'Poštovana';
-        }
+
+    if (lang === 'rs-sr' || lang === 'me-me') {
+      title = (titleValue === 'Sir') ? 'Poštovani' : 'Poštovana';
     }
-    if (lang == 'eu-hu') {
-        if (titleValue == 'Sir') {
-            title = 'Uram';
-        } else {
-            title = 'Hölgyem';
-        }
+    if (lang === 'eu-hu') {
+      title = (titleValue === 'Sir') ? 'Uram' : 'Hölgyem';
     }
-    // Get other form values
+
     const firstName = document.getElementById("First-name").value;
     const lastName = document.getElementById("Last-name").value;
     const countryCode = document.getElementById("country__code").value;
     const phoneNumber = document.getElementById("Phone-number").value;
     const country = document.getElementById("country").value;
     const message = document.getElementById("Message").value;
-    // Create JSON object
-    const formData = {
-        lang,
-        emailTo,
-        title,
-        firstName,
-        lastName,
-        countryCode,
-        phoneNumber,
-        country,
-        message,
+
+    const jsonData = {
+      lang,
+      emailTo,
+      title,
+      firstName,
+      lastName,
+      countryCode,
+      phoneNumber,
+      country,
+      message,
     };
-    console.log('body');
-    console.log(formData);
-    // Make a POST request
+
+    // Pošalji na tvoj backend
     fetch("https://www.petitegeneve.com/send-mail/general-inquiry", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
     })
-        .then(response => {
-            if (response.ok) {
-                alert("Form submitted successfully!");
-            } else {
-                alert("Form submission failed. Please try again later.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Form submission failed. Please try again later.");
-        });
-}
+      .then(response => {
+        if (response.ok) {
+          // ✅ Kada uspešno završi slanje na tvoj server, pokreni native submit (da Webflow i Zapier uhvate)
+          form.submit(); // ovo zaobilazi event.preventDefault
+        } else {
+          alert("Form submission failed. Please try again later.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Form submission failed. Please try again later.");
+      });
+  }
 
 function submitFormRolexContact() {
     event.preventDefault(); // Prevent the default form submission
