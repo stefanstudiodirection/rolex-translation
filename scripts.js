@@ -19,8 +19,14 @@ const menuObserver = new MutationObserver((mutations) => {
 });
 menuObserver.observe(menuButton, {attributes: true});
 
+let isSubmitting = false;
 function submitForm(event) {
+    if (isSubmitting) {
+        return; // Izađi ako je već u procesu
+    }
+
     event.preventDefault(); // Spreči default submit dok ne pošaljemo ka backendu
+    isSubmitting = true; // Postavi flag
 
     const form = event.target;
 
@@ -78,6 +84,9 @@ function submitForm(event) {
         if (response.ok) {
           // ✅ Kada uspešno završi slanje na tvoj server, pokreni native submit (da Webflow i Zapier uhvate)
         //   form.submit(); // ovo zaobilazi event.preventDefault
+
+        // Reset flag pre finalnog submit-a
+        isSubmitting = false;
         form.removeEventListener('submit', submitForm);
           
           // Pokreni prirodan submit event
@@ -87,10 +96,12 @@ function submitForm(event) {
           });
           form.dispatchEvent(submitEvent);
         } else {
+            isSubmitting = false; // Reset flag na grešku
           alert("Form submission failed. Please try again later.");
         }
       })
       .catch(error => {
+        isSubmitting = false; // Reset flag na grešku
         console.error("Error:", error);
         alert("Form submission failed. Please try again later.");
       });
