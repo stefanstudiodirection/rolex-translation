@@ -77,7 +77,15 @@ function submitForm(event) {
       .then(response => {
         if (response.ok) {
           // ✅ Kada uspešno završi slanje na tvoj server, pokreni native submit (da Webflow i Zapier uhvate)
-          form.submit(); // ovo zaobilazi event.preventDefault
+        //   form.submit(); // ovo zaobilazi event.preventDefault
+        form.removeEventListener('submit', submitForm);
+          
+          // Pokreni prirodan submit event
+          const submitEvent = new Event('submit', {
+            bubbles: true,
+            cancelable: true
+          });
+          form.dispatchEvent(submitEvent);
         } else {
           alert("Form submission failed. Please try again later.");
         }
@@ -86,7 +94,7 @@ function submitForm(event) {
         console.error("Error:", error);
         alert("Form submission failed. Please try again later.");
       });
-  }
+}
 
 function submitFormRolexContact() {
     event.preventDefault(); // Prevent the default form submission
