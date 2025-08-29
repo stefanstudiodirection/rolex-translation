@@ -1277,38 +1277,87 @@ window.addEventListener('CookiebotOnDecline', function (e) {
 
 
 (function () {
-    setTimeout(() => {
-      // Price hide inside search results
-      function hidePrices(root = document) {
-        const nodes = root.querySelectorAll('.search-result .price');
-        if (!nodes || nodes.length === 0) return false;
-        nodes.forEach(n => {
-          n.style.setProperty('display', 'none', 'important');
-          n.style.setProperty('visibility', 'hidden', 'important');
-        });
-        return true;
-      }
-  
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => hidePrices());
-      } else {
-        hidePrices();
-      }
-  
-      const observer = new MutationObserver(mutations => {
-        mutations.forEach(m => {
-          m.addedNodes && m.addedNodes.forEach(node => {
-            if (!(node instanceof Element)) return;
-            if (node.matches && node.matches('.search-result, .search-result *')) {
-              hidePrices(node);
-            }
-          });
-        });
+  // Debounce helper
+  function debounce(fn, delay = 150) {
+    let t; 
+    return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+  }
+
+  // Skrivanje cena (.price) unutar .search-result
+  function hidePrices(root = document) {
+    const nodes = root.querySelectorAll('.search-result .price');
+    if (!nodes || nodes.length === 0) return false;
+    nodes.forEach(n => {
+      n.style.setProperty('display', 'none', 'important');
+      n.style.setProperty('visibility', 'hidden', 'important');
+      // (opciono) n.style.setProperty('opacity', '0', 'important');
+    });
+    return true;
+  }
+
+  // Veži event listenere na Algolia input polje (ili više njih)
+  function bindSearchInputHandlers(root = document) {
+    const inputs = root.querySelectorAll('.ais-SearchBox-input');
+    if (!inputs.length) return;
+
+    const rehide = debounce(() => {
+      // rezultati se često re-renderuju sa zakašnjenjem, pa uradimo par pokušaja
+      hidePrices();
+      setTimeout(hidePrices, 50);
+      setTimeout(hidePrices, 150);
+    }, 120);
+
+    inputs.forEach(inp => {
+      // pokrivamo većinu slučajeva unosa
+      inp.addEventListener('input', rehide, { passive: true });
+      inp.addEventListener('change', rehide, { passive: true });
+      inp.addEventListener('compositionend', rehide, { passive: true });
+      inp.addEventListener('keyup', rehide, { passive: true });
+    });
+  }
+
+  // MutationObserver: kada Algolia (ili app) ubaci nove rezultate ili input
+  const observer = new MutationObserver(mutations => {
+    let shouldRehide = false, shouldRebindInput = false;
+
+    for (const m of mutations) {
+      if (!m.addedNodes) continue;
+      m.addedNodes.forEach(node => {
+        if (!(node instanceof Element)) return;
+
+        // Ako se dodaju novi rezultati, sakrij cene u njima
+        if (node.matches('.search-result, .search-result *')) {
+          hidePrices(node);
+          shouldRehide = true;
+        }
+
+        // Ako se pojavi/ponovo renderuje input, veži handlere
+        if (node.matches('.ais-SearchBox-input, .ais-SearchBox-input *') || node.querySelector?.('.ais-SearchBox-input')) {
+          shouldRebindInput = true;
+        }
       });
-  
-      observer.observe(document.documentElement, { childList: true, subtree: true });
-    }, 500);
-  })();
+    }
+
+    if (shouldRebindInput) bindSearchInputHandlers(document);
+    if (shouldRehide) {
+      // još par “retry” poziva, jer UI često renderuje u talasima
+      setTimeout(hidePrices, 30);
+      setTimeout(hidePrices, 120);
+    }
+  });
+
+  function init() {
+    hidePrices();                 // inicijalno sakrij
+    bindSearchInputHandlers();    // veži na input polje
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+})();
 
 
 
