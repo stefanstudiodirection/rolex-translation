@@ -1275,44 +1275,20 @@ window.addEventListener('CookiebotOnDecline', function (e) {
     }
 }, false);
 
-
 (function () {
-  setTimeout(() => {
-    // Funkcija za skrivanje cena
-    function hidePrices(root = document) {
-      const nodes = root.querySelectorAll('.search-result .price');
-      if (!nodes || nodes.length === 0) return false;
-      nodes.forEach(n => {
-        n.style.setProperty('visibility', 'hidden', 'important');
-      });
-      return true;
+    // Proveri da li je URL "search-results" stranica
+    if (window.location.href.includes("search-results")) {
+      // Kreiraj <style> element
+      const style = document.createElement("style");
+      style.textContent = `
+        .search-result .price {
+          visibility: hidden !important;
+        }
+      `;
+      // Ubaci CSS u <head>
+      document.head.appendChild(style);
     }
-
-    // Inicijalno sakrij
-    hidePrices();
-
-    // Observer prati nove rezultate
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(m => {
-        m.addedNodes && m.addedNodes.forEach(node => {
-          if (!(node instanceof Element)) return;
-          if (node.matches && node.matches('.search-result, .search-result *')) {
-            hidePrices(node);
-          }
-        });
-      });
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-
-    // Poveži i na input polje (svaka promena → ponovo sakrij)
-    const input = document.querySelector('.ais-SearchBox-input');
-    if (input) {
-      input.addEventListener('input', () => {
-        setTimeout(() => hidePrices(), 100); // mali delay da se renderuju rezultati
-      });
-    }
-  }, 500);
-})();
+  })();
 
 
 
