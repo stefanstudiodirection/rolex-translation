@@ -1278,32 +1278,35 @@ window.addEventListener('CookiebotOnDecline', function (e) {
 
 (function () {
     setTimeout(() => {
-        
-        // Price hide inside search results
-        function hidePrices(root = document) {
-            const nodes = root.querySelectorAll('.search-result .price');
-            if (!nodes || nodes.length === 0) return false;
-            nodes.forEach(n => { n.style.display = 'none'; });
-            return true;
-        }
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => hidePrices());
-        } else {
-            hidePrices();
-        }
-        
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach(m => {
-                m.addedNodes && m.addedNodes.forEach(node => {
-                    if (!(node instanceof Element)) return;
-                    if (node.matches && node.matches('.search-result, .search-result *')) {
-                        hidePrices(node);
-                    }
-                });
-            });
+      // Price hide inside search results
+      function hidePrices(root = document) {
+        const nodes = root.querySelectorAll('.search-result .price');
+        if (!nodes || nodes.length === 0) return false;
+        nodes.forEach(n => {
+          n.style.setProperty('display', 'none', 'important');
+          n.style.setProperty('visibility', 'hidden', 'important');
         });
-        
-        observer.observe(document.documentElement, { childList: true, subtree: true });
+        return true;
+      }
+  
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => hidePrices());
+      } else {
+        hidePrices();
+      }
+  
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(m => {
+          m.addedNodes && m.addedNodes.forEach(node => {
+            if (!(node instanceof Element)) return;
+            if (node.matches && node.matches('.search-result, .search-result *')) {
+              hidePrices(node);
+            }
+          });
+        });
+      });
+  
+      observer.observe(document.documentElement, { childList: true, subtree: true });
     }, 500);
   })();
 
