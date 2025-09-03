@@ -132,7 +132,7 @@ let isSubmittingRolex = false;
 		}
 
 		// Get form values
-		const emailTo = document.getElementById("Email").value;
+		const emailTo = document.getElementById("Email-2").value;
 		const titleValue = document.getElementById("Title").value;
 		let title = titleValue;
 
@@ -922,6 +922,34 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 1);
         });
     });
+
+    //whait combine and nest on our stories page
+    const targetElement = document.querySelector('[data-w-tab="All"]');
+
+    if (targetElement) {
+        const observer = new MutationObserver((mutations) => {
+            // Proveri da li su se desile relevantne promene
+            const hasRelevantChanges = mutations.some(mutation => 
+                mutation.type === 'childList' && 
+                (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0)
+            );
+            
+            if (hasRelevantChanges) {
+                setTimeout(() => {
+                    rewriteRelativeURLs();
+                    generateI18nTags().then(() => {
+                        translateContent();
+                    });
+                }, 1);
+            }
+        });
+    
+        // Pokreni observer
+        observer.observe(targetElement, {
+            childList: true,     // prati dodavanje/uklanjanje child elemenata
+            subtree: true        // prati i promene u podstablu (elementi dublje u hijerarhiji)
+        });
+    }
 
 
     // Find all forms by their action attribute
