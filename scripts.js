@@ -933,8 +933,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 mutation.type === 'childList' && 
                 (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0)
             );
-            
+
             if (hasRelevantChanges) {
+                console.log("Desila se promena u okviru storija")
                 setTimeout(() => {
                     rewriteRelativeURLs();
                     generateI18nTags().then(() => {
@@ -943,7 +944,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 1);
             }
         });
-    
+
         // Pokreni observer
         observer.observe(targetElement, {
             childList: true,     // prati dodavanje/uklanjanje child elemenata
