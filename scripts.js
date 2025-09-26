@@ -937,6 +937,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (hasRelevantChanges) {
                 console.log("Desila se promena u okviru storija")
                 setTimeout(() => {
+                    console.log("Prevodim opet")
                     rewriteRelativeURLs();
                     generateI18nTags().then(() => {
                         translateContent();
