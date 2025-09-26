@@ -941,7 +941,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     generateI18nTags().then(() => {
                         translateContent();
                     });
-                }, 1);
+                }, 100);
             }
         });
 
