@@ -935,15 +935,23 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
             if (hasRelevantChanges) {
-                console.log("Desila se promena u okviru storija")
-                setTimeout(() => {
-                    console.log("Prevodim opet")
-                    rewriteRelativeURLs();
-                    generateI18nTags().then(() => {
-                        translateContent();
-                    });
-                }, 1000);
-            }
+				console.log("Desila se promena u okviru storija");
+				setTimeout(() => {
+					console.log("Prevodim opet");
+					rewriteRelativeURLs();
+					generateI18nTags().then(() => {
+						translateContent();
+					});
+
+					// Pozovi funkciju za konverziju datuma SAMO AKO POSTOJI
+					if (typeof convertDatesToSerbianFormat === "function") {
+						console.log("Pozivam funkciju za konverziju datuma...");
+						convertDatesToSerbianFormat();
+					} else {
+						console.log("Funkcija convertDatesToSerbianFormat nije dostupna");
+					}
+				}, 1000);
+			}
         });
 
         // Pokreni observer
