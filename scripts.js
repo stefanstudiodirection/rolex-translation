@@ -273,13 +273,16 @@ function submitFormRolexProducts() {
     })
         .then(response => {
             if (response.ok) {
+                _satellite.track("contactForm");
                 alert("Form submitted successfully!");
             } else {
+                _satellite.track("contactForm");
                 alert("Form submission failed. Please try again later.");
             }
         })
         .catch(error => {
             console.error("Error:", error);
+            _satellite.track("contactForm");
             alert("Form submission failed. Please try again later.");
         });
 }
