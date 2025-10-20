@@ -1300,6 +1300,7 @@ function e(c) {
 
 e('header__link-list-track');
 
+document.cookie = 'rlx-consent=false; path=/';
 
 window.addEventListener('CookiebotOnAccept', function (e) {
     if (Cookiebot.consent.necessary) {
