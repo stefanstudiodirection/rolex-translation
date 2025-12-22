@@ -132,7 +132,7 @@ let isSubmittingRolex = false;
 		}
 
 		// Get form values
-		const emailTo = document.getElementById("Email-2").value;
+		const emailTo = document.getElementById("Email").value;
 		const titleValue = document.getElementById("Title").value;
 		let title = titleValue;
 
@@ -260,9 +260,6 @@ function submitFormRolexProducts() {
         ref,
     };
 
-    console.log('body');
-    console.log(formData);
-
     // Make a POST request
     fetch("https://www.petitegeneve.com/send-mail/rolex-products", {
         method: "POST",
@@ -274,10 +271,10 @@ function submitFormRolexProducts() {
         .then(response => {
             if (response.ok) {
                 _satellite.track("contactForm");
-                alert("Form submitted successfully!");
+                // alert("Form submitted successfully!");
             } else {
                 _satellite.track("contactForm");
-                alert("Form submission failed. Please try again later.");
+                // alert("Form submission failed. Please try again later.");
             }
         })
         .catch(error => {
