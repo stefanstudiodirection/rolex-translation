@@ -243,7 +243,7 @@ function submitFormRolexProducts() {
     // Get the current link
     const currentLink = window.location.href;
 
-    const ref = document.getElementsByClassName('rolex-text white mobile-dark uppercase')[0].textContent;
+    const ref = document.getElementById('rmc').textContent;
 
     // Create JSON object
     const formData = {
