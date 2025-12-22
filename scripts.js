@@ -211,7 +211,7 @@ function submitFormRolexProducts() {
     }
 
     // Get email from the input field
-    const emailTo = document.getElementById("Email-2").value;
+    const emailTo = document.getElementById("Email").value;
 
     const titleValue = document.getElementById("Title").value;
     let title = titleValue;
