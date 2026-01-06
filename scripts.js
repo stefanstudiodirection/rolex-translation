@@ -837,7 +837,7 @@ document.addEventListener('DOMContentLoaded', function () {
         contactForm.onsubmit = submitForm;
     } else {
         // If it doesn't exist, you can handle it here (e.g., log a message)
-        console.log("Form element with ID 'wf-form-Contact-form' not found.");
+        // console.log("Form element with ID 'wf-form-Contact-form' not found.");
     }
 
     // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
@@ -849,7 +849,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rolexContactForm.onsubmit = submitFormRolexContact;
     } else {
         // If it doesn't exist, you can handle it here (e.g., log a message)
-        console.log("Form element with ID 'wf-form-Rolex-Contact-form' not found.");
+        // console.log("Form element with ID 'wf-form-Rolex-Contact-form' not found.");
     }
 
     // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
@@ -861,7 +861,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rolexProductsForm.onsubmit = submitFormRolexProducts;
     } else {
         // If it doesn't exist, you can handle it here (e.g., log a message)
-        console.log("Form element with ID 'wf-form-Rolex-product-contact-form' not found.");
+        // console.log("Form element with ID 'wf-form-Rolex-product-contact-form' not found.");
     }
 
     // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
@@ -873,7 +873,7 @@ document.addEventListener('DOMContentLoaded', function () {
         jewelryProductsForm.onsubmit = submitFormJewelryProducts;
     } else {
         // If it doesn't exist, you can handle it here (e.g., log a message)
-        console.log("Form element with ID 'wf-form-Jewellery-contact-form' not found.");
+        // console.log("Form element with ID 'wf-form-Jewellery-contact-form' not found.");
     }
 
     // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
@@ -885,7 +885,7 @@ document.addEventListener('DOMContentLoaded', function () {
         tudorProductsForm.onsubmit = submitFormTudorProducts;
     } else {
         // If it doesn't exist, you can handle it here (e.g., log a message)
-        console.log("Form element with ID 'wf-form-Tudor-product-contact-form' not found.");
+        // console.log("Form element with ID 'wf-form-Tudor-product-contact-form' not found.");
     }
 
     // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
@@ -897,7 +897,7 @@ document.addEventListener('DOMContentLoaded', function () {
         swissKubikProductsForm.onsubmit = submitFormSwissKubik;
     } else {
         // If it doesn't exist, you can handle it here (e.g., log a message)
-        console.log("Form element with ID 'wf-form-Swiss-Kubik-contact-form' not found.");
+        // console.log("Form element with ID 'wf-form-Swiss-Kubik-contact-form' not found.");
     }
 
 
@@ -935,9 +935,9 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
             if (hasRelevantChanges) {
-				console.log("Desila se promena u okviru storija");
+				// console.log("Desila se promena u okviru storija");
 				setTimeout(() => {
-					console.log("Prevodim opet");
+					// console.log("Prevodim opet");
 					rewriteRelativeURLs();
 					generateI18nTags().then(() => {
 						translateContent();
@@ -945,10 +945,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 					// Pozovi funkciju za konverziju datuma SAMO AKO POSTOJI
 					if (typeof convertDatesToSerbianFormat === "function") {
-						console.log("Pozivam funkciju za konverziju datuma...");
+						// console.log("Pozivam funkciju za konverziju datuma...");
 						convertDatesToSerbianFormat();
 					} else {
-						console.log("Funkcija convertDatesToSerbianFormat nije dostupna");
+						// console.log("Funkcija convertDatesToSerbianFormat nije dostupna");
 					}
 				}, 1000);
 			}
