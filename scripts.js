@@ -361,9 +361,9 @@ function submitFormJewelryProducts() {
     })
         .then(response => {
             if (response.ok) {
-                alert("Form submitted successfully!");
+                // alert("Form submitted successfully!");
             } else {
-                alert("Form submission failed. Please try again later.");
+                // alert("Form submission failed. Please try again later.");
             }
         })
         .catch(error => {
@@ -450,9 +450,9 @@ function submitFormTudorProducts() {
     })
         .then(response => {
             if (response.ok) {
-                alert("Form submitted successfully!");
+              //  alert("Form submitted successfully!");
             } else {
-                alert("Form submission failed. Please try again later.");
+              //  alert("Form submission failed. Please try again later.");
             }
         })
         .catch(error => {
@@ -539,9 +539,9 @@ function submitFormSwissKubik() {
     })
         .then(response => {
             if (response.ok) {
-                alert("Form submitted successfully!");
+              //  alert("Form submitted successfully!");
             } else {
-                alert("Form submission failed. Please try again later.");
+              //  alert("Form submission failed. Please try again later.");
             }
         })
         .catch(error => {
