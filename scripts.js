@@ -966,7 +966,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Find all forms by their action attribute
     const searchForms = document.querySelectorAll('form[action="/search"]');
-    console.log('Search forms:', searchForms); // Debugging
     // Loop through each form and add event listeners
     searchForms.forEach((searchForm) => {
         // Event listener for form submission for each search form
