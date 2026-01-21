@@ -5,19 +5,21 @@ const fetchPromise = fetch(translationFile)
 
 
 const menuButton = document.querySelector('.header__menu-button.w-nav-button');
-const menuObserver = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-            const classes = mutation.target.classList;
-            if (classes.contains('w--open')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
+if (menuButton) {
+    const menuObserver = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const classes = mutation.target.classList;
+                if (classes.contains('w--open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
             }
         }
-    }
-});
-menuObserver.observe(menuButton, {attributes: true});
+    });
+    menuObserver.observe(menuButton, {attributes: true});
+}
 
 let isSubmitting = false;
 
