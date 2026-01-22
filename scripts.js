@@ -947,10 +947,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 					// Pozovi funkciju za konverziju datuma SAMO AKO POSTOJI
 					if (typeof convertDatesToSerbianFormat === "function") {
-						// console.log("Pozivam funkciju za konverziju datuma...");
 						convertDatesToSerbianFormat();
-					} else {
-						// console.log("Funkcija convertDatesToSerbianFormat nije dostupna");
 					}
 				}, 1000);
 			}
