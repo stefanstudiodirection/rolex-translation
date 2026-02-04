@@ -1105,7 +1105,7 @@ function handleLanguage() {
     var menuCrown = document.getElementById('menu-crown');
     var fCrown = document.getElementById('f-crown');
     var sectionLadies = document.getElementById('section-ladies');
-    var sectionGentleman = document.getElementById('section-gentlemen');
+    // var sectionGentleman = document.getElementById('section-gentlemen');
     var sectionLatestNews = document.getElementById('section-latest');
     var sectionLatestNewsRolexHU = document.getElementById('section-latest-rolex');
     var sectionLatestNewsRolexME = document.getElementById('section-latest-rolex-me');
@@ -1125,9 +1125,9 @@ function handleLanguage() {
             sectionLadies.style.display = 'none';
         }
         ;
-        if (sectionGentleman != null || sectionLadies != undefined) {
-            sectionGentleman.style.display = 'none';
-        }
+        // if (sectionGentleman != null || sectionLadies != undefined) {
+        //     sectionGentleman.style.display = 'none';
+        // }
         ;
         if (sectionLatestNews != null || sectionLatestNews != undefined) {
             sectionLatestNews.style.display = 'none';
@@ -1164,9 +1164,9 @@ function handleLanguage() {
             sectionLadies.style.display = 'none';
         }
         ;
-        if (sectionGentleman != null || sectionLadies != undefined) {
-            sectionGentleman.style.display = 'none';
-        }
+        // if (sectionGentleman != null || sectionLadies != undefined) {
+        //     sectionGentleman.style.display = 'none';
+        // }
         ;
         if (sectionLatestNews != null || sectionLatestNews != undefined) {
             sectionLatestNews.style.display = 'none';
@@ -1198,9 +1198,9 @@ function handleLanguage() {
             sectionLadies.style.display = 'none';
         }
         ;
-        if (sectionGentleman != null || sectionLadies != undefined) {
-            sectionGentleman.style.display = 'none';
-        }
+        // if (sectionGentleman != null || sectionLadies != undefined) {
+        //     sectionGentleman.style.display = 'none';
+        // }
         ;
         if (sectionLatestNewsRolexME != null || sectionLatestNewsRolexME != undefined) {
             sectionLatestNews.style.display = 'none';
