@@ -730,6 +730,7 @@ function rewriteRelativeURLs() {
     return new Promise((resolve) => {
         const urlPath = window.location.pathname;
         let languageRegion = urlPath.split('/')[1];
+        
         const queryParams = new URLSearchParams(window.location.search);
         const regParam = queryParams.get('reg');
         const langParam = queryParams.get('lang');
@@ -739,19 +740,36 @@ function rewriteRelativeURLs() {
         if (langParam) {
             localStorage.setItem('lang', langParam);
         }
-        // if (localStorage.getItem('reg') && localStorage.getItem('lang')) {
+        
         if (getLangFromURL() && getRegFromURL()) {
-            // const regValue = localStorage.getItem('reg');
-            // const langValue = localStorage.getItem('lang');
             const langValue = getLangFromURL();
             const regValue = getRegFromURL();
             languageRegion = regValue + '-' + langValue;
-            if (window.location.href.endsWith('/') && !window.location.href.endsWith('#/')) {
+            
+            // ISPRAVLJENO: Redirect SAMO za root URL-ove, ne za sve stranice
+            // Normalizujemo pathname (uklanjamo trailing slash za poređenje)
+            const normalizedPath = urlPath.replace(/\/+$/, '') || '/';
+            
+            // Lista putanja koje trebaju redirect na home
+            const rootPaths = [
+                '/',
+                '/' + languageRegion,
+                '/rs-en',
+                '/rs-sr', 
+                '/me-en',
+                '/me-me',
+                '/eu-en',
+                '/eu-hu',
+                '/ww-en'
+            ];
+            
+            if (rootPaths.includes(normalizedPath)) {
                 setTimeout(() => {
                     window.location.href = '/' + languageRegion + '/home';
                 }, 1);
             }
         }
+        
         const relativeLinks = document.querySelectorAll('a[href^="/"]');
         relativeLinks.forEach(link => {
             const siblingLinks = link.parentNode.querySelectorAll('a[id^="geo-"]');
