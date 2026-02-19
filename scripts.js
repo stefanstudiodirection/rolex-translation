@@ -746,7 +746,7 @@ function rewriteRelativeURLs() {
             const langValue = getLangFromURL();
             const regValue = getRegFromURL();
             languageRegion = regValue + '-' + langValue;
-            if (window.location.href.endsWith('/') && !window.location.href.includes('#/')) {
+            if (window.location.href.endsWith('/') && !window.location.href.endsWith('#/')) {
                 setTimeout(() => {
                     window.location.href = '/' + languageRegion + '/home';
                 }, 1);
