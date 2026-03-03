@@ -63,6 +63,10 @@ function submitForm(event) {
    const country = document.getElementById("country").value;
    const message = document.getElementById("Message").value;
 
+   const boutique = document.getElementById("Choose-the-boutique");
+   const boutiqueText = boutique.selectedOptions[0].text;
+
+
    const jsonData = {
      lang,
      emailTo,
@@ -87,6 +91,19 @@ function submitForm(event) {
        if (response.ok) {
          // Ukloni event listener
          form.removeEventListener('submit', submitForm);
+
+         //GTM generate lead
+         dataLayer.push({
+            event: 'gtm_generate_lead',
+            user_email: emailTo,
+            user_phone: phoneNumber,
+            user_phone_prefix: countryCode,
+            selected_country: country,
+            selected_boutique: boutiqueText,
+            product_brand: '',
+            product_collection: '',
+            product_id: ''
+        });
          
          // Pokreni Webflow success ponašanje direktno
          const successDiv = form.querySelector('.w-form-done');
