@@ -168,6 +168,17 @@ let isSubmittingRolex = false;
 		const country = document.getElementById("country").value;
 		const message = document.getElementById("Message").value;
 
+        const boutique = document.getElementById("Choose-the-boutique");
+        const boutiqueValue = boutique.selectedOptions[0].value;
+        let boutiqueTextInput = "";
+        if (boutiqueValue === "budapest@petitegeneve.com") {
+            boutiqueTextInput = "Rolex boutique Budapest";
+        } else if (boutiqueValue === "belgrade@petitegeneve.com") {
+            boutiqueTextInput = "Rolex boutique Belgrade";
+        } else if (boutiqueValue === "portomontenegro@petitegeneve.com") {
+            boutiqueTextInput = "Rolex boutique Porto Montenegro";
+        }
+
 		const jsonData = {
 			lang,
 			emailTo,
@@ -192,6 +203,19 @@ let isSubmittingRolex = false;
 				if (response.ok) {
 					// Ukloni event listener
 					form.removeEventListener("submit", submitFormRolexContact);
+
+                    //GTM generate lead
+                    dataLayer.push({
+                        event: 'gtm_generate_lead',
+                        user_email: emailTo,
+                        user_phone: phoneNumber,
+                        user_phone_prefix: countryCode,
+                        selected_country: country,
+                        selected_boutique: boutiqueTextInput,
+                        product_brand: 'Rolex',
+                        product_collection: '',
+                        product_id: ''
+                    });
 
 					// Pokreni Webflow success ponašanje direktno
 					const successDiv = form.querySelector(".w-form-done");
@@ -259,6 +283,18 @@ function submitFormRolexProducts() {
     const country = document.getElementById("country").value;
     const message = document.getElementById("Message").value;
 
+    const productCollection = document.getElementById("collection").value;
+    const boutique = document.getElementById("Choose-the-boutique");
+    const boutiqueValue = boutique.selectedOptions[0].value;
+    let boutiqueTextInput = "";
+    if (boutiqueValue === "budapest@petitegeneve.com") {
+        boutiqueTextInput = "Rolex boutique Budapest";
+    } else if (boutiqueValue === "belgrade@petitegeneve.com") {
+        boutiqueTextInput = "Rolex boutique Belgrade";
+    } else if (boutiqueValue === "portomontenegro@petitegeneve.com") {
+        boutiqueTextInput = "Rolex boutique Porto Montenegro";
+    }
+
     // Get the current link
     const currentLink = window.location.href;
 
@@ -290,7 +326,20 @@ function submitFormRolexProducts() {
         .then(response => {
             if (response.ok) {
                 _satellite.track("contactForm");
-                // alert("Form submitted successfully!");
+                
+                //GTM generate lead
+                dataLayer.push({
+                    event: 'gtm_generate_lead',
+                    user_email: emailTo,
+                    user_phone: phoneNumber,
+                    user_phone_prefix: countryCode,
+                    selected_country: country,
+                    selected_boutique: boutiqueTextInput,
+                    product_brand: 'Rolex',
+                    product_collection: productCollection,
+                    product_id: ref
+                });
+
             } else {
                 _satellite.track("contactForm");
                 // alert("Form submission failed. Please try again later.");
@@ -347,6 +396,11 @@ function submitFormJewelryProducts() {
     const phoneNumber = document.getElementById("Phone-number").value;
     const country = document.getElementById("country").value;
     const message = document.getElementById("Message").value;
+    
+    const brand = document.getElementById("brand").value;
+    const ref = document.getElementById("input-field-ref").value;
+    const productCollection = document.getElementById("collection").value;
+
 
     // Get the current link
     const currentLink = window.location.href;
@@ -367,8 +421,8 @@ function submitFormJewelryProducts() {
         currentLink,
         // ref,
     };
-    console.log('body');
-    console.log(formData);
+    // console.log('body');
+    // console.log(formData);
 
     // Make a POST request
     fetch("https://www.petitegeneve.com/send-mail/jewelry-products", {
@@ -380,7 +434,18 @@ function submitFormJewelryProducts() {
     })
         .then(response => {
             if (response.ok) {
-                // alert("Form submitted successfully!");
+                //GTM generate lead
+                dataLayer.push({
+                    event: 'gtm_generate_lead',
+                    user_email: emailTo,
+                    user_phone: phoneNumber,
+                    user_phone_prefix: countryCode,
+                    selected_country: country,
+                    selected_boutique: 'Multibrand boutique Belgrade',
+                    product_brand: brand,
+                    product_collection: productCollection,
+                    product_id: ref
+                });
             } else {
                 // alert("Form submission failed. Please try again later.");
             }
@@ -436,6 +501,10 @@ function submitFormTudorProducts() {
     const country = document.getElementById("country").value;
     const message = document.getElementById("Message").value;
 
+    const boutique = document.getElementById("Choose-the-boutique");
+    const boutiqueText = boutique.selectedOptions[0].text;
+    const productCollection = document.getElementById("collection").value;
+
     // Get the current link
     const currentLink = window.location.href;
 
@@ -469,7 +538,18 @@ function submitFormTudorProducts() {
     })
         .then(response => {
             if (response.ok) {
-              //  alert("Form submitted successfully!");
+                //GTM generate lead
+                dataLayer.push({
+                    event: 'gtm_generate_lead',
+                    user_email: emailTo,
+                    user_phone: phoneNumber,
+                    user_phone_prefix: countryCode,
+                    selected_country: country,
+                    selected_boutique: boutiqueText,
+                    product_brand: 'Tudor',
+                    product_collection: productCollection,
+                    product_id: ref
+                });
             } else {
               //  alert("Form submission failed. Please try again later.");
             }
@@ -525,6 +605,8 @@ function submitFormSwissKubik() {
     const country = document.getElementById("country").value;
     const message = document.getElementById("Message").value;
 
+    const productCollection = document.getElementById("collection").value;
+
     // Get the current link
     const currentLink = window.location.href;
 
@@ -558,7 +640,18 @@ function submitFormSwissKubik() {
     })
         .then(response => {
             if (response.ok) {
-              //  alert("Form submitted successfully!");
+                //GTM generate lead
+                dataLayer.push({
+                    event: 'gtm_generate_lead',
+                    user_email: emailTo,
+                    user_phone: phoneNumber,
+                    user_phone_prefix: countryCode,
+                    selected_country: country,
+                    selected_boutique: 'Multibrand boutique Belgrade',
+                    product_brand: 'Swiss Kubik',
+                    product_collection: productCollection,
+                    product_id: ref
+                });
             } else {
               //  alert("Form submission failed. Please try again later.");
             }
