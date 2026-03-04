@@ -399,7 +399,7 @@ function submitFormJewelryProducts() {
     
     const brand = document.getElementById("brand").value;
     const ref = document.getElementById("input-field-ref").value;
-    const productCollection = document.getElementById("collection").value;
+    const productCollection = document.getElementById("product-collection").value;
 
 
     // Get the current link
