@@ -560,6 +560,110 @@ function submitFormTudorProducts() {
         });
 }
 
+function submitFormCartierProducts() {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get language from the URL
+    const url = window.location.href;
+    const urlParts = url.split('/');
+    let lang = "rs-en"; // Default language if not found
+
+    for (const part of urlParts) {
+        if (part.length === 5 && part.includes('-')) {
+            lang = part;
+            break;
+        }
+    }
+
+    // Get email from the input field
+    const emailTo = document.getElementById("Email-2").value;
+
+    const titleValue = document.getElementById("Title").value;
+    let title = titleValue;
+
+    if (lang == 'rs-sr' || lang == 'me-me') {
+        if (titleValue == 'Sir') {
+            title = 'Poštovani';
+        } else {
+            title = 'Poštovana';
+        }
+    }
+
+    if (lang == 'eu-hu') {
+        if (titleValue == 'Sir') {
+            title = 'Uram';
+        } else {
+            title = 'Hölgyem';
+        }
+    }
+
+    // Get other form values
+    const firstName = document.getElementById("First-name").value;
+    const lastName = document.getElementById("Last-name").value;
+    const countryCode = document.getElementById("country__code").value;
+    const phoneNumber = document.getElementById("Phone-number").value;
+    const country = document.getElementById("country").value;
+    const message = document.getElementById("Message").value;
+
+    const boutique = document.getElementById("Choose-the-boutique");
+    const boutiqueText = boutique.selectedOptions[0].text;
+    const productCollection = document.getElementById("product_collection").value;
+    const ref = document.getElementById("product_id").value;
+
+    // Get the current link
+    const currentLink = window.location.href;
+
+
+    // Create JSON object
+    const formData = {
+        lang,
+        emailTo,
+        title,
+        firstName,
+        lastName,
+        countryCode,
+        phoneNumber,
+        country,
+        message,
+        currentLink,
+        ref,
+    };
+
+    console.log('body');
+    console.log(formData);
+
+    // Make a POST request
+    fetch("https://www.petitegeneve.com/send-mail/tudor-products", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+        .then(response => {
+            if (response.ok) {
+                //GTM generate lead
+                dataLayer.push({
+                    event: 'gtm_generate_lead',
+                    user_email: emailTo,
+                    user_phone: phoneNumber,
+                    user_phone_prefix: countryCode,
+                    selected_country: country,
+                    selected_boutique: boutiqueText,
+                    product_brand: 'Cartier',
+                    product_collection: productCollection,
+                    product_id: ref
+                });
+            } else {
+              //  alert("Form submission failed. Please try again later.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Form submission failed. Please try again later.");
+        });
+}
+
 function submitFormSwissKubik() {
     event.preventDefault(); // Prevent the default form submission
 
@@ -1017,6 +1121,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // If it doesn't exist, you can handle it here (e.g., log a message)
         // console.log("Form element with ID 'wf-form-Tudor-product-contact-form' not found.");
     }
+
+    const cartierProductsForm = document.getElementById("wf-form-Cartier-form");
+
+    if (cartierProductsForm) {
+        cartierProductsForm.onsubmit = submitFormCartierProducts;
+    };
 
     // Attempt to find the "wf-form-Rolex-Contact-form" element by ID
     const swissKubikProductsForm = document.getElementById("wf-form-Swiss-Kubik-contact-form");
