@@ -1378,6 +1378,7 @@ function handleLanguage() {
 
     if (currentUrl.includes('/ww-en/')) {
         setText('region-language-m', ' International | EN');
+        show('section-latest-int');
     }
 
     if (currentUrl.includes('/rs-en/') || (!currentUrl.includes('/eu-') && !currentUrl.includes('/me-') && !currentUrl.includes('/ww-'))) {
