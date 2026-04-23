@@ -1310,144 +1310,78 @@ function changeLanguage(language) {
 }
 
 function handleLanguage() {
-    // regionLanguage = document.getElementById('region-language');
-    // const regValue = localStorage.getItem('reg');
-    // const langValue = localStorage.getItem('lang');
     const langValue = getLangFromURL();
     const regValue = getRegFromURL();
     document.documentElement.lang = langValue;
+
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-        const newHref = canonicalLink.href.replace('/rs-en/', `/${regValue}-${langValue}/`);
-        canonicalLink.href = newHref;
+        canonicalLink.href = canonicalLink.href.replace('/rs-en/', `/${regValue}-${langValue}/`);
     }
 
-    regionLanguageMobile = document.getElementById('region-language-m');
-    var tpEl = document.getElementById('menu-timepieces');
-    var tpElM = document.getElementById('timepieces-m');
-    var jewelleryElement = document.getElementById('menu-jewellery');
-    var jewelleryElementMobile = document.getElementById('jewellery-m');
-    var fTudor = document.getElementById('fTudor');
-    var fSwiss = document.getElementById('fSwiss');
-    var fMessika = document.getElementById('fMessika');
-    var fRc = document.getElementById('fRc');
-    var fPd = document.getElementById('fPd');
-    var geoEuHu = document.getElementById('geo-eu-hu');
-    var geoEuEn = document.getElementById('geo-eu-en');
-    var geoRsEn = document.getElementById('geo-rs-en');
-    var geoMeEn = document.getElementById('geo-me-en');
-    var geoIntEn = document.getElementById('geo-int-en');
-    var mMenuCrown = document.getElementById('m-menu-crown');
-    var menuCrown = document.getElementById('menu-crown');
-    var fCrown = document.getElementById('f-crown');
-    var sectionLadies = document.getElementById('section-ladies');
-    // var sectionGentleman = document.getElementById('section-gentlemen');
-    var sectionLatestNews = document.getElementById('section-latest');
-    var sectionLatestNewsRolexHU = document.getElementById('section-latest-rolex');
-    var sectionLatestNewsRolexME = document.getElementById('section-latest-rolex-me');
-    var menuCareers = document.getElementById('menu-careers');
-    var currentUrl = window.location.href;
-    var socialIg = document.getElementById('social-ig');
+    // Helper funkcije
+    const el = (id) => document.getElementById(id);
+    const hide = (id) => { const e = el(id); if (e) e.style.display = 'none'; };
+    const show = (id, display = 'block') => { const e = el(id); if (e) e.style.display = display; };
+    const addCurrent = (id) => { const e = el(id); if (e) e.classList.add('current'); };
+    const setHref = (id, href) => { const e = el(id); if (e) e.href = href; };
+    const setText = (id, text) => { const e = el(id); if (e) e.innerHTML = text; };
+
+    const currentUrl = window.location.href;
+
+    // Zajednički elementi za skrivanje (važe za sve regione osim ww-en)
+    const hideForAllRegions = () => {
+        hide('menu-timepieces');
+        hide('timepieces-m');
+        hide('menu-jewellery');
+        hide('jewellery-m');
+        hide('section-ladies');
+        hide('fTudor');
+        hide('fSwiss');
+        hide('fMessika');
+        hide('fRc');
+        hide('fPd');
+    };
 
     if (currentUrl.includes('/eu-hu/')) {
-        regionLanguageMobile.innerHTML = ' Magyarország és az EU országai | HU';
-        tpEl.style.display = 'none';
-        tpElM.style.display = 'none';
-        jewelleryElement.style.display = 'none';
-        jewelleryElementMobile.style.display = 'none';
-        socialIg.href = "https://www.instagram.com/petitegeneve_budapest";
-        if (sectionLadies != null || sectionLadies != undefined) {
-            sectionLadies.style.display = 'none';
-        }
-        ;
-        // if (sectionGentleman != null || sectionLadies != undefined) {
-        //     sectionGentleman.style.display = 'none';
-        // }
-        ;
-        if (sectionLatestNews != null || sectionLatestNews != undefined) {
-            sectionLatestNews.style.display = 'none';
-        }
-        ;
-        if (sectionLatestNewsRolexHU != null || sectionLatestNewsRolexHU != undefined) {
-            sectionLatestNewsRolexHU.style.display = 'block';
-        }
-        ;
-        fTudor.style.display = 'none';
-        fSwiss.style.display = 'none';
-        fMessika.style.display = 'none';
-        fRc.style.display = 'none';
-        fPd.style.display = 'none';
-        geoEuHu.classList.add("current");
-        mMenuCrown.style.display = 'none';
-        menuCrown.style.display = 'none';
+        setText('region-language-m', ' Magyarország és az EU országai | HU');
+        setHref('social-ig', 'https://www.instagram.com/petitegeneve_budapest');
+        hideForAllRegions();
+        hide('section-latest');
+        hide('m-menu-crown');
+        hide('menu-crown');
+        show('section-latest-rolex');
+        addCurrent('geo-eu-hu');
     }
+
     if (currentUrl.includes('/eu-en/')) {
-        regionLanguageMobile.innerHTML = ' Hungary and EU countries | EN';
-        tpEl.style.display = 'none';
-        tpElM.style.display = 'none';
-        jewelleryElement.style.display = 'none';
-        jewelleryElementMobile.style.display = 'none';
-        socialIg.href = "https://www.instagram.com/petitegeneve_budapest";
-        if (sectionLadies != null || sectionLadies != undefined) {
-            sectionLadies.style.display = 'none';
-        }
-        ;
-        // if (sectionGentleman != null || sectionLadies != undefined) {
-        //     sectionGentleman.style.display = 'none';
-        // }
-        ;
-        if (sectionLatestNews != null || sectionLatestNews != undefined) {
-            sectionLatestNews.style.display = 'none';
-        }
-        ;
-        if (sectionLatestNewsRolexHU != null || sectionLatestNewsRolexHU != undefined) {
-            sectionLatestNewsRolexHU.style.display = 'block';
-        }
-        ;
-        fTudor.style.display = 'none';
-        fSwiss.style.display = 'none';
-        fMessika.style.display = 'none';
-        fRc.style.display = 'none';
-        fPd.style.display = 'none';
-        geoEuEn.classList.add("current");
-        mMenuCrown.style.display = 'none';
-        menuCrown.style.display = 'none';
-        fCrown.style.display = 'none';
+        setText('region-language-m', ' Hungary and EU countries | EN');
+        setHref('social-ig', 'https://www.instagram.com/petitegeneve_budapest');
+        hideForAllRegions();
+        hide('section-latest');
+        hide('m-menu-crown');
+        hide('menu-crown');
+        hide('f-crown');
+        show('section-latest-rolex');
+        addCurrent('geo-eu-en');
     }
+
     if (currentUrl.includes('/me-en/') || currentUrl.includes('/me-me/')) {
-        regionLanguageMobile.innerHTML = ' Montenegro | EN';
-        tpEl.style.display = 'none';
-        tpElM.style.display = 'none';
-        jewelleryElement.style.display = 'none';
-        jewelleryElementMobile.style.display = 'none';
-        socialIg.href = "https://www.instagram.com/petitegeneve_portomontenegro";
-        if (sectionLadies != null || sectionLadies != undefined) {
-            sectionLadies.style.display = 'none';
-        }
-        ;
-        // if (sectionGentleman != null || sectionLadies != undefined) {
-        //     sectionGentleman.style.display = 'none';
-        // }
-        ;
-        if (sectionLatestNewsRolexME != null || sectionLatestNewsRolexME != undefined) {
-            sectionLatestNews.style.display = 'none';
-        }
-        ;
-        if (sectionLatestNewsRolexME != null || sectionLatestNewsRolexME != undefined) {
-            sectionLatestNewsRolexME.style.display = 'block';
-        }
-        ;
-        menuCareers.style.display = 'none';
-        fTudor.style.display = 'none';
-        fSwiss.style.display = 'none';
-        fMessika.style.display = 'none';
-        fRc.style.display = 'none';
-        fPd.style.display = 'none';
-        menuCareers.style.display = 'none';
+        setText('region-language-m', ' Montenegro | EN');
+        setHref('social-ig', 'https://www.instagram.com/petitegeneve_portomontenegro');
+        hideForAllRegions();
+        hide('section-latest');
+        hide('menu-careers');
+        show('section-latest-rolex-me');
+        addCurrent('geo-me-en');
     }
+
     if (currentUrl.includes('/ww-en/')) {
-        regionLanguageMobile.innerHTML = ' International | EN';
-        //menuCareers.style.display = 'none';
+        setText('region-language-m', ' International | EN');
+    }
+
+    if (currentUrl.includes('/rs-en/') || (!currentUrl.includes('/eu-') && !currentUrl.includes('/me-') && !currentUrl.includes('/ww-'))) {
+        addCurrent('geo-rs-en');
     }
 }
 
