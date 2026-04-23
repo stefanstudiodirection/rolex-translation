@@ -767,7 +767,6 @@ function submitFormSwissKubik() {
 }
 
 
-var regionLanguage;
 const urlPath = window.location.pathname;
 const langRegion = urlPath.split('/')[1];
 const [reg, lang] = langRegion.split('-');
@@ -1311,7 +1310,7 @@ function changeLanguage(language) {
 }
 
 function handleLanguage() {
-    regionLanguage = document.getElementById('region-language');
+    // regionLanguage = document.getElementById('region-language');
     // const regValue = localStorage.getItem('reg');
     // const langValue = localStorage.getItem('lang');
     const langValue = getLangFromURL();
@@ -1323,7 +1322,6 @@ function handleLanguage() {
         canonicalLink.href = newHref;
     }
 
-    regionLanguage = document.getElementById('region-language');
     regionLanguageMobile = document.getElementById('region-language-m');
     var tpEl = document.getElementById('menu-timepieces');
     var tpElM = document.getElementById('timepieces-m');
@@ -1352,7 +1350,6 @@ function handleLanguage() {
     var socialIg = document.getElementById('social-ig');
 
     if (currentUrl.includes('/eu-hu/')) {
-        regionLanguage.innerHTML = ' Magyarország és az EU országai | HU';
         regionLanguageMobile.innerHTML = ' Magyarország és az EU országai | HU';
         tpEl.style.display = 'none';
         tpElM.style.display = 'none';
@@ -1384,14 +1381,7 @@ function handleLanguage() {
         mMenuCrown.style.display = 'none';
         menuCrown.style.display = 'none';
     }
-    if (currentUrl.includes('/rs-en/')) {
-        regionLanguage.innerHTML = ' Serbia | EN';
-    }
-    if (currentUrl.includes('/rs-sr/')) {
-        regionLanguage.innerHTML = ' Serbia | SR';
-    }
     if (currentUrl.includes('/eu-en/')) {
-        regionLanguage.innerHTML = ' Hungary and EU countries | EN';
         regionLanguageMobile.innerHTML = ' Hungary and EU countries | EN';
         tpEl.style.display = 'none';
         tpElM.style.display = 'none';
@@ -1425,7 +1415,6 @@ function handleLanguage() {
         fCrown.style.display = 'none';
     }
     if (currentUrl.includes('/me-en/') || currentUrl.includes('/me-me/')) {
-        regionLanguage.innerHTML = ' Montenegro | EN';
         regionLanguageMobile.innerHTML = ' Montenegro | EN';
         tpEl.style.display = 'none';
         tpElM.style.display = 'none';
@@ -1456,11 +1445,7 @@ function handleLanguage() {
         fPd.style.display = 'none';
         menuCareers.style.display = 'none';
     }
-    if (currentUrl.includes('/me-me/')) {
-        regionLanguage.innerHTML = ' Montenegro | ME';
-    }
     if (currentUrl.includes('/ww-en/')) {
-        regionLanguage.innerHTML = ' International | EN';
         regionLanguageMobile.innerHTML = ' International | EN';
         //menuCareers.style.display = 'none';
     }
