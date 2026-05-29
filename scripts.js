@@ -944,45 +944,36 @@ function rewriteRelativeURLs() {
         const urlPath = window.location.pathname;
         let languageRegion = urlPath.split('/')[1];
         
-        const queryParams = new URLSearchParams(window.location.search);
-        const regParam = queryParams.get('reg');
-        const langParam = queryParams.get('lang');
-        if (regParam) {
-            localStorage.setItem('reg', regParam);
-        }
-        if (langParam) {
-            localStorage.setItem('lang', langParam);
-        }
-        
         if (getLangFromURL() && getRegFromURL()) {
             const langValue = getLangFromURL();
             const regValue = getRegFromURL();
             languageRegion = regValue + '-' + langValue;
-            
-            // ISPRAVLJENO: Redirect SAMO za root URL-ove, ne za sve stranice
-            // Normalizujemo pathname (uklanjamo trailing slash za poređenje)
+
+            const VALID_LOCALES = ['rs-en', 'rs-sr', 'me-en', 'me-me', 'eu-en', 'eu-hu', 'ww-en'];
             const normalizedPath = urlPath.replace(/\/+$/, '') || '/';
-            
-            // Lista putanja koje trebaju redirect na home
-            const rootPaths = [
-                '/',
-                '/' + languageRegion,
-                '/rs-en',
-                '/rs-sr', 
-                '/me-en',
-                '/me-me',
-                '/eu-en',
-                '/eu-hu',
-                '/ww-en'
-            ];
-            
-            if (rootPaths.includes(normalizedPath)) {
-                setTimeout(() => {
-                    window.location.href = '/' + languageRegion + '/home';
-                }, 1);
+            const firstSeg = normalizedPath.split('/')[1] || '';
+
+            // Remember the visitor's locale whenever they are on a real locale page,
+            // so a later visit to the bare homepage can restore their choice.
+            if (VALID_LOCALES.includes(firstSeg)) {
+                try { localStorage.setItem('selectedLocale', firstSeg); } catch (e) {}
+            }
+
+            // Homepage ("/"): never auto-redirect a first-time visitor — show the
+            // region picker (Google best practice; also lets crawlers reach every
+            // locale instead of being funnelled to rs-en). Only a RETURNING visitor
+            // with a saved choice is redirected. Bare locale roots (/rs-en, /rs-sr,
+            // …) are handled by a real 301 on the proxy, so the old JS redirect for
+            // them is no longer needed here.
+            if (normalizedPath === '/') {
+                let saved = null;
+                try { saved = localStorage.getItem('selectedLocale'); } catch (e) {}
+                if (saved && VALID_LOCALES.includes(saved)) {
+                    window.location.replace('/' + saved + '/home');
+                }
             }
         }
-        
+
         const relativeLinks = document.querySelectorAll('a[href^="/"]');
         relativeLinks.forEach(link => {
             const siblingLinks = link.parentNode.querySelectorAll('a[id^="geo-"]');
