@@ -1447,6 +1447,7 @@ function e(c) {
 e('header__link-list-track');
 
 document.cookie = 'rlx-consent=false; path=/';
+document.cookie = 'rlx-marketing=false; path=/';
 
 window.addEventListener('CookiebotOnAccept', function (e) {
     if (Cookiebot.consent.necessary) {
@@ -1455,6 +1456,7 @@ window.addEventListener('CookiebotOnAccept', function (e) {
             _satellite.setVar("Analyticsconsent", "true");
         }
     }
+    document.cookie = 'rlx-marketing=' + (Cookiebot.consent.marketing ? 'true' : 'false') + '; path=/; max-age=31536000';
 }, false);
 
 window.addEventListener('CookiebotOnDecline', function (e) {
@@ -1464,6 +1466,7 @@ window.addEventListener('CookiebotOnDecline', function (e) {
             _satellite.setVar("Analyticsconsent", "false");
         }
     }
+    document.cookie = 'rlx-marketing=' + (Cookiebot.consent.marketing ? 'true' : 'false') + '; path=/; max-age=31536000';
 }, false);
 
 (function () {
