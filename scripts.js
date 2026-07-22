@@ -854,6 +854,8 @@ function generateI18nTags() {
                 // Create a new string to store the copy of the original innerHTML
                 let copyOfInnerHTML = "" + element.innerHTML;
 
+                copyOfInnerHTML = copyOfInnerHTML.replace(/<!--\/?\$-->/g, '');
+
                 // Log the original innerHTML to console for debugging
                 console.log("Original innerHTML:", copyOfInnerHTML);
 
@@ -891,7 +893,8 @@ function generateI18nTags() {
             } else if (hasTextNodes && !hasElementNodes && element.getAttribute('data-i18n') === null) {
                 const shouldExclude = isExcludedElement(element);
                 if (!shouldExclude) {
-                    const translationKey = element.innerHTML.trim();
+                    // const translationKey = element.innerHTML.trim();
+                    const translationKey = element.innerHTML.replace(/<!--\/?\$-->/g, '').trim();
                     element.setAttribute('data-i18n', translationKey);
                 }
             }
