@@ -1335,6 +1335,12 @@ function handleLanguage() {
         hide('fMessika');
         hide('fRc');
         hide('fPd');
+        // home page v3
+        hide('section-spotlight');
+        hide('section-brands');
+        hide('section-recommends');
+        hide('section-featured');
+
     };
 
     if (currentUrl.includes('/eu-hu/')) {
