@@ -1415,38 +1415,8 @@ setInterval(function () {
     }
 }, 250);
 
-// function hasScrolled() {
-//     var st = $(this).scrollTop();
-//     if (Math.abs(lastScrollTop - st) <= delta)
-//         return;
-//     if (st > lastScrollTop && st > navbarHeight) {
-//         $('#navbar').removeClass('nav-down').addClass('nav-up');
-//         $('#rolex-nav').removeClass('rolex-nav--down').addClass('rolex-nav--up');
-//         $('#tudor-nav').removeClass('tudor-nav--down').addClass('tudor-nav--up');
-//         $('#swiss-nav').removeClass('swiss-nav--down').addClass('swiss-nav--up');
-//         $('#m-nav').removeClass('m-nav--down').addClass('m-nav--up');
-//         $('#rc-nav').removeClass('rc-nav--down').addClass('rc-nav--up');
-//         $('#p-nav').removeClass('p-nav--down').addClass('p-nav--up');
-//         $("#re-nav").removeClass("re-nav--down").addClass("re-nav--up");
-//         $("#cartier-nav").removeClass("cartier-nav--down").addClass("cartier-nav--up");
-//     } else {
-//         if (st + $(window).height() < $(document).height()) {
-//             $('#navbar').removeClass('nav-up').addClass('nav-down');
-//             $('#rolex-nav').removeClass('rolex-nav--up').addClass('rolex-nav--down');
-//             $('#tudor-nav').removeClass('tudor-nav--up').addClass('tudor-nav--down');
-//             $('#swiss-nav').removeClass('swiss-nav--up').addClass('swiss-nav--down');
-//             $('#m-nav').removeClass('m-nav--up').addClass('m-nav--down');
-//             $('#rc-nav').removeClass('rc-nav--up').addClass('rc-nav--down');
-//             $('#p-nav').removeClass('p-nav--up').addClass('p-nav--down');
-//             $("#re-nav").removeClass("re-nav--up").addClass("re-nav--down");
-//             $("#cartier-nav").removeClass("cartier-nav--up").addClass("cartier-nav--down");
-//         }
-//     }
-//     lastScrollTop = st;
-// }
-
 var lastToggleTime = 0;
-var toggleCooldown = 300; // ms - sprečava toggle klase odmah nakon prethodne promene
+var toggleCooldown = 300;
 
 function hasScrolled() {
     var st = $(this).scrollTop();
