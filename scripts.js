@@ -939,7 +939,8 @@ function isExcludedElement(element) {
     const hasComment = element.querySelectorAll(':not(script):not(html):not(br)').length > 0;
     const isPaginationText = element.getAttribute('id') === 'page-container';
     const isLanguageText = element.getAttribute('id') === 'region-language';
-    return isExcludedTag || isComment || isFunction || hasFunction || hasComment || isPrice || isPaginationText || isRemainingTime || isLanguageText;
+    const isCmsCount = element.hasAttribute('fs-cmsload-element') && ['visible-count', 'items-count'].includes(element.getAttribute('fs-cmsload-element'));
+    return isExcludedTag || isComment || isFunction || hasFunction || hasComment || isPrice || isPaginationText || isRemainingTime || isLanguageText || isCmsCount;
 }
 
 function rewriteRelativeURLs() {
