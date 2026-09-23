@@ -940,7 +940,8 @@ function isExcludedElement(element) {
     const isPaginationText = element.getAttribute('id') === 'page-container';
     const isLanguageText = element.getAttribute('id') === 'region-language';
     const isCmsCount = element.hasAttribute('fs-cmsload-element') && ['visible-count', 'items-count'].includes(element.getAttribute('fs-cmsload-element'));
-    return isExcludedTag || isComment || isFunction || hasFunction || hasComment || isPrice || isPaginationText || isRemainingTime || isLanguageText || isCmsCount;
+    const isSortPrice = element.closest('[fs-cmssort-field="price"], .price-text-tudor') !== null;
+    return isExcludedTag || isComment || isFunction || hasFunction || hasComment || isPrice || isPaginationText || isRemainingTime || isLanguageText || isCmsCount || isSortPrice;
 }
 
 function rewriteRelativeURLs() {
