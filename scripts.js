@@ -1513,15 +1513,15 @@ window.addEventListener('CookiebotOnConsentReady', function (e) {
     }
   })();
 
-  function hideEmptySectionsOnRolexPage() {
-    if (/\/rolex\/?$/.test(window.location.pathname)) {
-      var style = document.createElement('style');
-      style.textContent = `
-        section:has(.w-dyn-empty) {
-          display: none;
-        }
-      `;
-      document.head.appendChild(style);
-    }
+function hideEmptyRolexSelection() {
+  if (/\/rolex\/?$/.test(window.location.pathname)) {
+    var style = document.createElement('style');
+    style.textContent = `
+      .re-container:has(.rolex-grid-list-empty.w-dyn-empty) {
+        display: none;
+      }
+    `;
+    document.head.appendChild(style);
   }
-  hideEmptySectionsOnRolexPage();
+}
+hideEmptyRolexSelection();
