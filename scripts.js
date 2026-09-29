@@ -1475,21 +1475,17 @@ document.cookie = 'rlx-consent=false; path=/';
 document.cookie = 'rlx-marketing=false; path=/';
 
 window.addEventListener('CookiebotOnAccept', function (e) {
-    if (Cookiebot.consent.necessary) {
-        document.cookie = 'rlx-consent=true; path=/';
-        if (typeof _satellite !== 'undefined') {
-            _satellite.setVar("Analyticsconsent", "true");
-        }
+    document.cookie = 'rlx-consent=' + (Cookiebot.consent.statistics ? 'true' : 'false') + '; path=/; max-age=31536000';
+    if (typeof _satellite !== 'undefined') {
+        _satellite.setVar("Analyticsconsent", Cookiebot.consent.statistics ? "true" : "false");
     }
     document.cookie = 'rlx-marketing=' + (Cookiebot.consent.marketing ? 'true' : 'false') + '; path=/; max-age=31536000';
 }, false);
 
 window.addEventListener('CookiebotOnDecline', function (e) {
-    if (Cookiebot.consent.necessary) {
-        document.cookie = 'rlx-consent=false; path=/';
-        if (typeof _satellite !== 'undefined') {
-            _satellite.setVar("Analyticsconsent", "false");
-        }
+    document.cookie = 'rlx-consent=' + (Cookiebot.consent.statistics ? 'true' : 'false') + '; path=/; max-age=31536000';
+    if (typeof _satellite !== 'undefined') {
+        _satellite.setVar("Analyticsconsent", Cookiebot.consent.statistics ? "true" : "false");
     }
     document.cookie = 'rlx-marketing=' + (Cookiebot.consent.marketing ? 'true' : 'false') + '; path=/; max-age=31536000';
 }, false);
