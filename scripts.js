@@ -1490,6 +1490,14 @@ window.addEventListener('CookiebotOnDecline', function (e) {
     document.cookie = 'rlx-marketing=' + (Cookiebot.consent.marketing ? 'true' : 'false') + '; path=/; max-age=31536000';
 }, false);
 
+window.addEventListener('CookiebotOnConsentReady', function (e) {
+    document.cookie = 'rlx-consent=' + (Cookiebot.consent.statistics ? 'true' : 'false') + '; path=/; max-age=31536000';
+    if (typeof _satellite !== 'undefined') {
+        _satellite.setVar("Analyticsconsent", Cookiebot.consent.statistics ? "true" : "false");
+    }
+    document.cookie = 'rlx-marketing=' + (Cookiebot.consent.marketing ? 'true' : 'false') + '; path=/; max-age=31536000';
+}, false);
+
 (function () {
     // Proveri da li je URL "search-results" stranica
     if (window.location.href.includes("search-results")) {
