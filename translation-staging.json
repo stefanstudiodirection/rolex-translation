@@ -25737,7 +25737,8 @@
     "Oysterlock": "Oysterlock",
     "Easylink, Oysterlock": "Easylink, Oysterlock",
     "Easylink, Oysterclasp": "Easylink, Oysterclasp",
-    "Fliplock, Oysterlock": "Fliplock, Oysterlock"
+    "Fliplock, Oysterlock": "Fliplock, Oysterlock",
+    "Filter your search": "Filtrirajte pretragu"
   },
   "hu": {
     "250": "250",
@@ -45659,6 +45660,7 @@
     "Sort by": "Sortirajte prema",
     "Model Size": "Veličina modela",
     "Price": "Maloprodajna vrijednost",
-    "Filters +": "Filteri +"
+    "Filters +": "Filteri +",
+    "Filter your search": "Filtrirajte pretragu"
   }
 }
