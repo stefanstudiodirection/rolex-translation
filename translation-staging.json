@@ -25553,7 +25553,16 @@
     "Bracelet Type": "Tip narukvice",
     "Global Warranty Exclusion Performance": "Isključenje iz međunarodne garancije: performanse",
     "Global Warranty Exclusion Waterproof": "Isključenje iz međunarodne garancije: vodootpornost",
-    "Global Warranty Exclusion Bracelet": "Isključenje iz međunarodne garancije: narukvica"
+    "Global Warranty Exclusion Bracelet": "Isključenje iz međunarodne garancije: narukvica",
+    "Case diameter": "Dijametar kućišta",
+    "Case bezel": "Prsten",
+    "Case crystal": "Staklo",
+    "Case dial description": "Opis brojčanika",
+    "Movement calibre ID": "Oznaka mehanizma",
+    "Movement calibre type": "Tip mehanizma",
+    "Movement power reserve": "Rezerva rada",
+    "Bracelet type": "Tip narukvice",
+    "Bracelet clasp": "Kopča"
   },
   "hu": {
     "250": "250",
