@@ -18277,7 +18277,9 @@
     "The architecture of movement": "Arhitektura pokreta",
     "View all watches": "Pogledajte sve časovnike",
     "Watches on her wishlist": "Časovnici na njenoj listi želja",
+    "WATCHES ON HER WISHLIST": "ČASOVNICI NA NJENOJ LISTE ŽELJA",
     "Watches on his wishlist": "Časovnici na njegovoj listi želja",
+    "WATCHES ON HIS WISHLIST": "ČASOVNICI NA NJEGOVOJ LISTI ŽELJA",
     "Moderniste bracelet medium": "Moderniste „medium” narukvica",
     "A statement piece, sculpted from light. Through the Moderniste collection, Valérie Messika imbues gold with character. Inspired by octagons, the Moderniste yellow gold bracelet for women and men embodies a contemporary, architectural, and conceptual vision of jewelry. Its silhouette has a magnetic presence, with alternating mirror-polished and matte brushed gold for a vibrant contrast. At every angle, light reveals a new facet of the jewelry—and with it, a new emotion. Designed for the assertive, this gold diamond bracelet sits like a sculpture on the wrist. A unique piece that transforms every gesture into a declaration.": "Upečatljiv komad nakita. Kolekcijom Moderniste Valeri Mesika daruje zlatu poseban karakter. Inspirisana osmouglom, narukvica od žutog zlata za dame i gospodu primer je savremene, arhitektonske, konceptualne vizije nakita. Njena silueta privlači magnetskim prisustvom koje nastaje u naizmeničnoj igri kontrasta između mat zlata i zlata visokog sjaja. Iz svakog ugla ove kreacije svetlost otkriva novu fasetu – a sa njom i novu emociju. Dizajnirana za odvažne ličnosti, ova dijamantska narukvica deluje poput skulpture. Jedinstveni komad koji svaki pokret ruke pretvara u jasnu poruku.",
     "A precious sculpture, cut to catch the light. Drawing from the clean lines of contemporary architecture, the Moderniste collection imbues gold with character. Featuring a bold silhouette inspired by octagons, this diamond bracelet turns heads with a subtle radiance. Made of 18k pink gold, it plays with balancing the warmth of its metal with the radicality of its structure. Alternating satin and mirror-polished finishes strike a fascinating contrast, shaping each reflection with precision. This multi-faceted diamond bracelet in pink gold embodies the plurality and strength of its wearer. More than embellishment, it's a manifesto. A suit of armor, forged from light, that transforms everything you do into an expression of who you are.": "Dragocena kreacija, stvorena da reflektuje svetlost. Nadahnuta pročišćenim linijama savremene arhitekture, kolekcija Moderniste daruje zlatu poseban karakter. Uz odvažnu siluetu inspirisanu osmouglom, ova dijamantska narukvica privlači poglede svojim suptilnim sjajem. U izvedbi od osamnaestokaratnog ružičastog zlata poigrava se ravnotežom između toplog metala i radikalne forme. Naizmenična smena satenske i polirane završne obrade stvara fascinantan kontrast, precizno oblikujući svaki odsjaj. Ova višestruko brušena dijamantska narukvica u ružičastom zlatu simbolizuje svestranost i snagu osobe koja je nosi. Više od ukrasa, kreacija je manifest. Nalik štitu satkanom od svetlosti, pretvara svaki vaš pokret u izraz vaše suštine – onoga što zaista jeste.",
@@ -25698,7 +25700,10 @@
     "Year": "Godina",
     "Caliber": "Kalibar",
     "Bracelet material": "Narukvica",
-    "Gold 18 Carat White": "Osamnaestokaratno belo zlato"
+    "Gold 18 Carat White": "Osamnaestokaratno belo zlato",
+    "All Watches": "Svi časovnici",
+    "": "",
+
   },
   "hu": {
     "250": "250",
