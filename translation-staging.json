@@ -25822,7 +25822,19 @@
     "1575, Automatic": "1575, Automatski",
     "130, Winding manual": "130, Sa ručnim navijanjem",
     "3185, Automatic": "3185, Automatski",
-    "3235, Automatic": "3235, Automatski"
+    "3235, Automatic": "3235, Automatski",
+    "Rotatable, 24-hour": "Rotirajući, sa 24-časovnom skalom",
+    "Rotatable, Green, 60 minutes": "Rotirajući, zeleni, sa 60-minutnom skalom",
+    "Fixed, Smooth": "Fiksni, gladak",
+    "Fixed, Black": "Fiksni, crni",
+    "Fixed, Black, Tachymeter 400": "Fiksni, crni, sa tahimetrijskom skalom do 400",
+    "Fixed, Tachymeter 400": "Fiksni, sa tahimetrijskom skalom do 400",
+    "Rotatable, Black, 60 minutes": "Rotirajući, crni, sa 60-minutnom skalom",
+    "Fixed, Domed": "Fiksni, zaobljeni",
+    "Fixed": "Fiksni",
+    "Rotatable, Blue, 60 minutes": "Rotirajući, plavi, sa 60-minutnom skalom",
+    "Fixed, 24-hour": "Fiksni, sa 24-časovnom skalom",
+    "Fixed, Fluted": "Fiksni, nazubljeni"
   },
   "hu": {
     "250": "250",
