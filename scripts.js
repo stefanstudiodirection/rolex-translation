@@ -772,6 +772,8 @@ const langRegion = urlPath.split('/')[1];
 const [reg, lang] = langRegion.split('-');
 i18next.init({
     lng: lang,
+    nsSeparator: false,
+    keySeparator: false,
     resources: {
         en: {},
         hu: {},
